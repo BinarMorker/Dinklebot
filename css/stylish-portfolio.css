@@ -1,0 +1,668 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a:link, a:hover, a:active, a:focus, a:visited {
+	outline: none;
+	text-decoration: none;
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+.btn-dark {
+    border-radius: 0;
+    color: #fff;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.btn-light {
+    border-radius: 0;
+    color: #333;
+    background-color: rgb(255,255,255);
+}
+
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+}
+
+hr {
+	color: rgba(255,255,255,0.2);
+	border-color: rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.2);
+}
+
+hr.small {
+    max-width: 100px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    margin-right: -250px;
+    overflow-y: auto;
+    background: #222;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 55px;
+    font-size: 18px;
+    line-height: 55px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+#menu-toggle {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#sidebar-wrapper.active {
+    right: 250px;
+    width: 250px;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.toggle {
+    margin: 5px 5px 0 0;
+}
+
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+	color: #222;
+    background: url(http://localhost/mastodon-parking/img/bg.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.about {
+    padding: 50px 0;
+}
+
+.services {
+    padding: 50px 0;
+}
+
+.service-item {
+    margin-bottom: 30px;
+}
+
+.callout {
+    display: table;
+    width: 100%;
+    height: 400px;
+    color: #fff;
+    background: url(http://localhost/mastodon-parking/img/callout.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.callout.extra {
+	color: #222;
+	background: url(http://localhost/mastodon-parking/img/extra.jpg) no-repeat center center scroll;
+}
+
+.portfolio {
+    padding: 50px 0;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.img-portfolio {
+    margin: 0 auto;
+}
+
+.img-portfolio:hover {
+    opacity: 0.8;
+}
+
+.call-to-action > .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.call-to-action .btn {
+    margin: 10px;
+}
+
+.call-to-action.extra .btn {
+	margin: 0;
+}
+
+.bg-secondary {
+	background: #2a2a2a;
+}
+
+footer {
+    padding: 100px 0;
+}
+
+#destiny-container {
+	background: url(http://localhost/mastodon-parking/img/background-faded.jpg) #2a2a2a no-repeat center top;
+}
+
+#destiny-container *:hover {
+    text-decoration: none;
+}
+
+.input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group {
+	margin-right: -2px;
+}
+
+.form-control:disabled, .form-control[disabled], .btn:disabled, .btn[disabled] {
+	background-color: #fff;
+	opacity: 0.65;
+}
+
+span.player-label {
+	letter-spacing: 10px;
+	font-size: 20px;
+	color: #fff;
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+span.information {
+	font-size: 14px;
+	color: #aaa;
+	display: block;
+}
+
+.character-label {
+	display: block;
+	width: 301px;
+	height: 59px;
+	background: #000;
+	margin: 0 auto 2px auto;
+	padding: 1px;
+	text-align: left;
+}
+
+.character-label img {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+
+.character-label h2 {
+	color: #fff;
+	font-size: 20px;
+	margin-top: 5px;
+	line-height: 0.9;
+	display: inline-block;
+	text-align: left;
+}
+
+.character-label h2 small {
+	color: #fff;
+}
+
+.character-label h3 {
+	text-align: right;
+	color: #fff;
+	font-size: 20px;
+	margin-top: 5px;
+	margin-right: 5px;
+	line-height: 0.9;
+	display: inline-block;
+	float: right;
+}
+
+h3.prestige, span.prestige {
+	color: #f5dc56;
+}
+
+h3.prestige:before, span.prestige:before {
+	content: "\2726";
+	display: inline-block;
+	vertical-align: 22%;
+	font-size: 50%;
+}
+
+.character-label h3 small {
+	color: #fff;
+}
+
+.character-label h3 small img {
+	width: 11px;
+	height: 11px;
+	vertical-align: middle;
+}
+
+.character-label .progress-bar {
+	width: 100%;
+	height: 8px;
+	background: rgba(245,245,245,0.1); 
+	position: relative;
+	top: -2px;
+}
+
+.character-label .progress-bar div {
+	height: 100%;
+	background: #5da469;
+}
+
+.character-label .progress-bar div.prestige {
+	background: #f5dc56;
+}
+
+.progression h2 {
+	color: #dfdfdf;
+}
+
+.marks {
+    display: inline-block;
+    width: 100px;
+    height: 160px;
+    vertical-align: middle;
+}
+
+.marks h3 {
+	font-size: 18px;
+	color: #fff;
+    margin-bottom: -10px;
+}
+
+.marks h3 small {
+    font-size: 22px;
+    color: #ddd;
+}
+
+.diagram {
+	max-width: 100px;
+	display: inline-block;
+    vertical-align: middle;
+}
+
+.diagram div {
+	background-size: contain;
+}
+
+.diagram h3 {
+	font-size: 15px;
+	/*margin-bottom: -10px;*/
+	color: #fff;
+}
+
+.diagram h3 small {
+	/*position: relative;
+	top: 50px;*/
+	font-size: 12px;
+	color: #ddd;
+}
+
+.item {
+    background: #888;
+	margin: 0 auto 2px auto;
+	width: 301px;
+	height: 30px;
+	display: block;
+	vertical-align: middle;
+}
+
+.item img {
+	float: left;
+	clear: both;
+}
+
+.item .item-name {
+	display: table-cell;
+	line-height: 2;
+	width: 100%;
+	padding-left: 10px;
+	text-align: left;
+	font-size: 15px;
+	overflow: hidden;
+	height: 30px;
+}
+
+.item small {
+	display: table-cell;
+	white-space: nowrap;
+	padding-right: 10px;
+	font-size: 12px;
+}
+
+.item small.dark {
+    position: relative;
+	text-align: right;
+	opacity: 0.8;
+}
+
+.item small.type {
+    margin-top: -2px;
+    float: left;
+    padding-left: 10px;
+}
+
+.item > img {
+    margin: 0 auto;
+	width: auto;
+	height: 100%;
+	display: block;
+}
+
+.item-card {
+	text-align: left;
+	padding: 10px;
+	margin: -2px auto 0 auto;
+	width: 301px;
+	//height: 100px;
+	display: block;
+	overflow: hidden;
+}
+
+.item:hover {
+	cursor: pointer;
+}
+
+.stat {
+	margin: 0 auto;
+	text-align: right;
+}
+
+.stat span {
+	display: inline-block;
+	padding-right: 10px;
+	vertical-align: middle;
+}
+
+.stat small {
+	vertical-align: middle;
+	display: inline-block;
+	text-align: center;
+	text-shadow: 0 1px 1px #000;
+	width: 50%;
+	margin-left: -50%;
+}
+
+.stat-bar {
+	vertical-align: middle;
+	display: inline-block;
+	width: 50%;
+	height: 20px;
+	background: #111;
+}
+
+.stat-bar div {
+	height: 20px;
+	background: #aaa;
+}
+
+.locked {
+	border-color: #c2bcb4;
+	color: #c2bcb4;
+}
+
+.tier-common {
+	background: #c2bcb4;
+	border-color: #c2bcb4;
+	color: #1e242b;
+}
+
+.tier-common-dark, .tier-uncommon-dark, .tier-rare-dark, .tier-legendary-dark, .tier-exotic-dark {
+	background: #333;
+	border-color: #333;
+	color: #ddd;
+}
+
+.tier-uncommon {
+	background: #366e41;
+	border-color: #366e41;
+	color: #f5f5f5;
+}
+
+.tier-rare {
+	background: #5076a3;
+	border-color: #5076a3;
+	color: #f5f5f5;
+}
+
+.tier-legendary {
+	background: #512e64;
+	border-color: #512e64;
+	color: #f5f5f5;
+}
+	
+.tier-exotic {
+	background: #cdad32;
+	border-color: #cdad32;
+	color: #f5f5f5;
+}
+
+.element-kinetic {
+	padding: 0 5px;
+	border-radius: 2px;
+	display: inline-block;
+	height: 22px;
+	min-width: 22px;
+}
+
+.element-fire {
+	background: #ce2011;
+	padding: 0 5px;
+	border-radius: 2px;
+	display: inline-block;
+	height: 22px;
+	min-width: 22px;
+}
+
+.element-arc {
+	background: #1186ce;
+	padding: 0 5px;
+	border-radius: 2px;
+	display: inline-block;
+	height: 22px;
+	min-width: 22px;
+}
+
+.element-void {
+	background: #e623cd;
+	padding: 0 5px;
+	border-radius: 2px;
+	display: inline-block;
+	height: 22px;
+	min-width: 22px;
+}
+
+.achievement {
+	padding: 4px;
+}
+
+.achievement div {
+	min-height: 80px;
+	border-radius: 2px;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+h2.achievement {
+	color: #dfdfdf;
+}
+
+.achievement h3, .achievement h3 small, .achievement h4  {
+	font-size: 14px;
+	margin: 0;
+	color: inherit;
+}
+
+.achievement h3 {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.achievement h3 small {
+	font-style: italic;
+}
+
+.new {
+	border-color: #c6c606;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 48px rgba(255,255,255,.075), 0 0 24px rgba(233,233,102,1);
+	box-shadow: inset 0 1px 48px rgba(255,255,255,.075), 0 0 24px rgba(233,233,102,1);
+}
+
+.vanguard {
+	background: url(http://localhost/mastodon-parking/img/node_vanguard.png) center center no-repeat;
+}
+
+.crucible {
+	background: url(http://localhost/mastodon-parking/img/node_crucible.png) center center no-repeat;
+}
+
+.deadorbit {
+	background: url(http://localhost/mastodon-parking/img/node_dead_orbit.png) center center no-repeat;
+}
+
+.futurewarcult {
+	background: url(http://localhost/mastodon-parking/img/node_future_war_cult.png) center center no-repeat;
+}
+
+.newmonarchy {
+	background: url(http://localhost/mastodon-parking/img/node_new_monarchy.png) center center no-repeat;
+}
+
+.cryptarch {
+	background: url(http://localhost/mastodon-parking/img/node_cryptarch.png) center center no-repeat;
+}
+
+.ironbanner {
+	background: url(http://localhost/mastodon-parking/img/node_iron_banner.png) center center no-repeat;
+}
+
+.queen {
+	background: url(http://localhost/mastodon-parking/img/node_queen.png) center center no-repeat;
+}
+
+.eris {
+	background: url(http://localhost/mastodon-parking/img/node_crota.png) center center no-repeat;
+}
+
+.dlc_crota::after {
+	content:'';
+	background: url(http://localhost/mastodon-parking/img/node_dlc_crota.png) top right no-repeat;
+	background-size: contain;
+	height: 64px;
+	width: 64px;
+	display: block;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border-radius: 3px;
+}
+
+.popover {
+	background-color: rgba(8,8,8,0.8);
+	color: rgba(255,255,255,0.8);
+	border: 0;
+	border-radius: 0;
+	width: 300px;
+}
+
+.popover-title {
+	background-color: rgba(0,0,0,0.8);
+	color: rgba(255,255,255,0.8);
+	border: 0;
+	border-radius: 0;
+}
+
+.popover.bottom > .arrow:after {
+	color: rgba(8,8,8,0.8);
+	border-bottom-color: rgba(8,8,8,0.8);
+}

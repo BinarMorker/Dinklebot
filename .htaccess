@@ -1,0 +1,7 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^([\d]+)(\/)([\w\d\s-]+)((\/)([\w]{2}))?(\/)?$ index.php?c=$1&u=$3&l=$6
