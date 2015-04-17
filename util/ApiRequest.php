@@ -14,11 +14,12 @@ class ApiRequest {
 		);
 		$context = stream_context_create($options);
 		$response = json_decode(file_get_contents($url, false, $context), false);
-		$this->error_code = $response->ErrorCode;
-		if ($this->error_code == 1) {
+		if ($response->ErrorCode == 1 && $response->Response != null) {
 			$this->response = $response->Response;
+			$this->error_code = 1;
 		} else {
-			die();
+			$this->response = null;
+			$this->error_code = -1;
 		}
 	}
 

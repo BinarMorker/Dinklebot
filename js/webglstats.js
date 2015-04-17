@@ -1,0 +1,2 @@
+var WebGLStats=function(){var startTime=Date.now(),prevTime=startTime;var ms=0,msMin=Infinity,msMax=0;var fps=0,fpsMin=Infinity,fpsMax=0;var frames=0,mode=0;return{REVISION:11,begin:function(){startTime=Date.now();},end:function(){var time=Date.now();ms=time- startTime;msMin=Math.min(msMin,ms);msMax=Math.max(msMax,ms);frames++;if(time>prevTime+ 1000){fps=Math.round((frames*1000)/ (time - prevTime));this.fps=fps;fpsMin=Math.min(fpsMin,fps);fpsMax=Math.max(fpsMax,fps);prevTime=time;frames=0;}
+return time;},update:function(){startTime=this.end();},fps:0}};
