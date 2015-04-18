@@ -39,7 +39,7 @@ $validProgressions = array(
 			<a class='btn btn-dark' href='http://mastodon.tk/<?=$console?>/<?=$username?>/<?=$language?>' target='_blank'>
 				<i class='glyphicon glyphicon-link'></i>&nbsp;<?=Language::get($language, "button_permalink")?>
 			</a>
-			<a class='btn btn-dark' href='/mastodon/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
+			<a class='btn btn-dark' href='//mastodon.tk/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
 				<i class='glyphicon glyphicon-refresh'></i>&nbsp;<?=Language::get($language, "button_reload")?>
 			</a>
 		</div>
@@ -107,7 +107,9 @@ $validProgressions = array(
 				</ul>
 				<div role="tabpanel" id="overview-<?=$character->characterBase->characterId?>" class="tab-pane overview active">
 					<div class="medalcard">
-						<h3>In development, sorry!</h3>
+						<img class="player-model" src="//mastodon.tk/img/character.png" height="350px"/>
+						<div class="player-overview">
+						</div>
 					</div>
 				</div>
 				<div role="tabpanel" id="weekly-<?=$character->characterBase->characterId?>" class="tab-pane weekly">
@@ -177,9 +179,6 @@ $validProgressions = array(
 					foreach ($response->data->progressions as $index => $prog) { 
 						$hash = $prog->progressionHash;
 						if (in_array($hash, $validProgressions)) {
-							/*if (($hash == "2161005788" || $hash == "594203991") && (empty((array)$advisors->events->events) || (!empty((array)$advisors->events->events) && $advisors->events->events[0]->eventIdentifier != "SPECIAL_EVENT_IRON_BANNER"))) {
-								continue;
-							}*/
 						 	$card = new ProgressionCard($prog, $progDefs['progressions'], $language);
 						 	$card->display();
 						}
@@ -193,9 +192,9 @@ $validProgressions = array(
 						$medals = $response->allPvP->allTime;
 						?>
 						<div class="medalcard">
-							<?php /* ?><h4><?=$statDefs[$medals->allMedalsScore->statId]['statName']?>: <?=$medals->allMedalsScore->basic->value?></h4>
+							<h4><?=$statDefs[$medals->allMedalsScore->statId]['statName']?>: <?=$medals->allMedalsScore->basic->value?></h4>
 							<h5><?=$statDefs[$medals->allMedalsEarned->statId]['statName']?>: <?=$medals->allMedalsEarned->basic->value?></h5>
-							<hr/><?php */ ?>
+							<hr/>
 							<?php
 							foreach($medals as $id => $medal) {
 								if ($id != "activitiesEntered" && $id != "allMedalsScore" && $id != "allMedalsEarned" && $id != "medalsUnknown") {
@@ -254,14 +253,14 @@ $validProgressions = array(
 							<a href="#global-<?=$character->characterBase->characterId?>" 
 								aria-controls="global-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="/mastodon/img/global.png"/>
+								<img src="//mastodon.tk/img/global.png"/>
 							</a>
 						</li>
 						<li role="story">
 							<a href="#story-<?=$character->characterBase->characterId?>" 
 								aria-controls="story-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="/mastodon/img/story.png"/>
+								<img src="//mastodon.tk/img/story.png"/>
 							</a>
 						</li>
 						<?php if (property_exists($response->patrol, "allTime")) { ?>
@@ -269,7 +268,7 @@ $validProgressions = array(
 							<a href="#patrol-<?=$character->characterBase->characterId?>" 
 								aria-controls="patrol-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="/mastodon/img/patrols.png"/>
+								<img src="//mastodon.tk/img/patrols.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->allStrikes, "allTime")) { ?>
@@ -277,7 +276,7 @@ $validProgressions = array(
 							<a href="#strikes-<?=$character->characterBase->characterId?>" 
 								aria-controls="strikes-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="/mastodon/img/strikes.png"/>
+								<img src="//mastodon.tk/img/strikes.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->allPvP, "allTime")) { ?>
@@ -285,7 +284,7 @@ $validProgressions = array(
 							<a href="#crucible-<?=$character->characterBase->characterId?>" 
 								aria-controls="crucible-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="/mastodon/img/crucible.png"/>
+								<img src="//mastodon.tk/img/crucible.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->raid, "allTime")) { ?>
@@ -293,7 +292,7 @@ $validProgressions = array(
 							<a href="#raid-<?=$character->characterBase->characterId?>" 
 								aria-controls="raid-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="/mastodon/img/raids.png"/>
+								<img src="//mastodon.tk/img/raids.png"/>
 							</a>
 						</li>
 						<?php } ?>

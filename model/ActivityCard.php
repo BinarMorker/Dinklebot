@@ -46,7 +46,7 @@ class ActivityCard {
 				<small class="type" style="display: none;"><?=$this->defs['destinations'][(string)$destination]['destinationName']?></small>
 			</div>
 			<?php if ($this->completed) { ?>
-			<div class="upgrade"><img src="/mastodon/img/light.png"/></div>
+			<div class="upgrade" title="<?=Language::get($this->lang, "info_completed")?>"><img src="//mastodon.tk/img/light.png"/></div>
 			<?php } ?>
 		</div>
 		<div class="item-card subclass-dark" style="display:none">

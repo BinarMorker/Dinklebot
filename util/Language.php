@@ -52,6 +52,7 @@ class Language {
 			"info_ends_f" => "",
 			"info_modifiers" => "Modifiers:",
 			"info_rewards" => "Possible Rewards:",
+			"info_completed" => "Completed",
 			"button_share" => "Share",
 			"button_permalink" => "Permalink",
 			"button_reload" => "Reload",

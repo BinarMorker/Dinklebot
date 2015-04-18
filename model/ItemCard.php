@@ -68,20 +68,29 @@ class ItemCard {
 		</h2>
 		<?php } ?>
 		<i><?=@$this->info['itemDescription']?></i>
-		<?php if (count($this->data->stats) > 0) { ?>
-		<hr/>
-		<div class="row">
-		<?php foreach($this->data->stats as $index => $stat) {
-			$hash = $stat->statHash;
-			if ($hash == "1735777505" || $hash == "144602215" || $hash == "4244567218") { ?>
-			<div class="stat col-xs-4" id="<?=(string)$this->data->itemHash."-".(string)$hash?>">
-				<img src="<?=Cache::base64Convert("http://www.bungie.net".$this->defs['stats'][(string)$hash]['icon'])?>"/>
-				<span><?=$stat->value?></span>
-			</div>
-		<?php }
-			} ?>
-		</div>
-		<?php }
+		<?php if (count($this->data->stats) > 0) { 
+			$stats = array();
+			foreach($this->data->stats as $index => $stat) {
+				$hash = $stat->statHash;
+				if (($hash == "1735777505" || $hash == "144602215" || $hash == "4244567218") && $stat->value > 0) {
+					array_push($stats, $hash);
+				}
+			} 
+			if (!empty($stats)) { ?>
+			<hr/>
+			<?php foreach($this->data->stats as $index => $stat) {
+					$hash = $stat->statHash;
+					if (in_array($hash, $stats)) { ?>
+					<div class="stat" id="<?=(string)$this->data->itemHash."-".(string)$hash?>">
+						<img src="<?=Cache::base64Convert("http://www.bungie.net".$this->defs['stats'][(string)$hash]['icon'])?>"/>
+						<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
+						<small class="stat-text"><?=$stat->value?></small>
+					</div>
+					<?php 
+					}
+				}
+			}
+		}
 	}
 
 	private function display_other() { 
@@ -128,7 +137,7 @@ class ItemCard {
 		<small class="type" style="display: none;"><?=$this->info['itemTypeName']?></small>
 	</div>
 	<?php if ($this->data->isGridComplete) { ?>
-	<div class="upgrade"><img src="/mastodon/img/light.png"/></div>
+	<div class="upgrade" title="<?=Language::get($this->lang, "info_completed")?>"><img src="//mastodon.tk/img/light.png"/></div>
 	<?php } ?>
 </div>
 <div class="item-card tier-<?=$tier?>-dark" style="display:none<?=$nocard?";visibility:hidden;height:0;padding:0;margin:0":""?>">

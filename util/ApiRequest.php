@@ -14,6 +14,8 @@ class ApiRequest {
 		);
 		$context = stream_context_create($options);
 		$response = json_decode(file_get_contents($url, false, $context), false);
+		//var_dump($url);
+		//var_dump($response);
 		if ($response->ErrorCode == 1 && $response->Response != null) {
 			$this->response = $response->Response;
 			$this->error_code = 1;

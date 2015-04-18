@@ -23,7 +23,7 @@ $(document).ready(function(){
 			}, 400, "swing", function(){
 				elem.children(".progress-name").textfill({maxFontPixels:15,explicitWidth:200,explicitHeight:30});
 			});
-			elem.children(".progress-name").children(".progress-bar").animate({
+			elem.children(".progress-info").children(".progress-bar").animate({
 				height: '30px',
 				borderRightWidth: '30px'
 			});
@@ -38,7 +38,7 @@ $(document).ready(function(){
 			elem.animate({
 				height: '50px'
 			}, 400, "swing");
-			elem.children(".progress-name").children(".progress-bar").animate({
+			elem.children(".progress-info").children(".progress-bar").animate({
 				height: '50px',
 				borderRightWidth: '50px'
 			});

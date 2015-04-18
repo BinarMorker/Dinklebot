@@ -1,14 +1,14 @@
 <?php
 class Cache {
 
-	private static $full_caching = true;
+	private static $full_caching = false;
 
 	private $cachefile;
 	private $enabled = true;
 	private $cache_time = 3600;
 
 	public function __construct() {
-		$url = $_SERVER["REQUEST_URI"];
+		$url = explode('?', $_SERVER["REQUEST_URI"])[0];
 		$num = count(explode('/', $_SERVER["SCRIPT_NAME"])) - 1;
 		$break = explode('/', $url);
 		$break = array_slice($break, $num, count($break) - $num);
@@ -35,6 +35,13 @@ class Cache {
 
 	public function disable() {
 		$this->enabled = false;
+	}
+
+	public function resume() {
+		if ($this->enabled == false) {
+			$this->enabled = true;
+			$this->start();
+		}
 	}
 
 	public function remove() {
