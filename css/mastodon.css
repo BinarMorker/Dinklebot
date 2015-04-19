@@ -111,7 +111,7 @@ hr.small {
     height: 300px;
     color: #fff;
     text-align: center;
-    background: url(//mastodon.tk/img/header.jpg) no-repeat center center scroll;
+    background: url(../img/header.jpg) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -154,7 +154,7 @@ hr.small {
 }
 
 #destiny-container {
-    background: #191a1e url(//mastodon.tk/img/background.jpg) no-repeat top center scroll;
+    background: #191a1e url(../img/background.jpg) no-repeat top center scroll;
     padding-top: 30px;
 }
 
@@ -200,13 +200,18 @@ span.information {
     color: #fff;
     font-size: 20px;
     margin-top: 5px;
+    margin-bottom: 0px;
     line-height: 0.9;
     display: inline-block;
     text-align: left;
 }
 
-.character-label h2 small {
+.character-label small {
     color: #fff;
+    display: inline-block;
+    height: 18px;
+    line-height: 28px;
+    margin-bottom: 0px;
 }
 
 .character-label h3 {
@@ -215,6 +220,7 @@ span.information {
     font-size: 20px;
     margin-top: 5px;
     margin-right: 5px;
+    margin-bottom: 0px;
     line-height: 0.9;
     display: inline-block;
     float: right;
@@ -231,13 +237,8 @@ span.prestige:before {
     -webkit-text-stroke: 1px;
     font-size: 50%;
     height: 50%;
-    display: inline-block;
     vertical-align: 33%;
-    margin-right: 2px;
-}
-
-.character-label h3 small {
-    color: #fff;
+    margin-right: 4px;
 }
 
 .character-label h3 small img {
@@ -251,7 +252,7 @@ span.prestige:before {
     height: 8px;
     background: rgba(245, 245, 245, 0.1);
     position: relative;
-    top: -2px;
+    top: 1px;
 }
 
 .character-label .progress-bar div {
@@ -666,7 +667,7 @@ span.prestige:before {
     background: #333;
     width: 301px;
     color: #ddd;
-    padding-bottom: 5px;
+    padding: 0 15px 5px;
 }
 
 .statcard .stat small.stat-text {
@@ -676,7 +677,6 @@ span.prestige:before {
 
 .statcard .outer {
     width: 100%;
-    padding: 0 15px;
     display: inline-block;
     *display: inline;
     zoom: 1;
@@ -829,7 +829,7 @@ span.prestige:before {
     height: 30px;
     vertical-align: bottom;
     margin-right: 5px;
-    background-image: url('//mastodon.tk/img/elements.png');
+    background-image: url('../img/elements.png');
     background-repeat: no-repeat;
     background-size: 30px;
 }

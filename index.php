@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$site_root = "http://mastodon.tk";
+
 // include "lib/Load.php";
 foreach (glob("util/*.php") as $filename) {
     include $filename;
@@ -36,7 +38,10 @@ if (!empty($_GET['l'])) {
 	exit;
 }
 
+//var_dump(Language::get_missing($language));
+
 $cache = new Cache();
+//$cache->disable();
 
 if (isset($_SESSION['post_data'])) {
     $_POST = $_SESSION['post_data'];

@@ -37,15 +37,16 @@ class ItemCard {
 		foreach($this->info['stats'] as $hash => $stat) { 
 			if ($hash != "368428387" && $hash != "3555269338" && $hash != "3871231066" &&
 				$hash != "1931675084" && $hash != "943549884" && $hash != "1345609583" &&
-				$hash != "2715839340" && $count < 5) { ?>
+				$hash != "2715839340" && $count < 5) { 
+				$maximum = $stat['maximum'] > 0 ? $stat['maximum'] : $stat['value']; ?>
 		<div class="stat" id="<?=(string)$this->data->itemHash."-".(string)$hash?>">
 			<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
 			<div class="stat-bar">
-				<div style="width:<?=$stat['maximum']?>%">
-					<div style="width:<?=@($stat['value']/$stat['maximum'])*100?>%"></div>
+				<div style="width:<?=$maximum?>%">
+					<div style="width:<?=@($stat['value']/$maximum)*100?>%"></div>
 				</div>
 			</div>
-			<small><?=$stat['value']?> / <?=$stat['maximum']?></small>
+			<small><?=$stat['value']?> / <?=$maximum?></small>
 		</div>
 		<?php $count++;
 			} 
@@ -53,7 +54,7 @@ class ItemCard {
 		$stat = $this->info['stats']['3871231066']; ?>
 		<div class="stat">
 			<span><?=$this->defs['stats']['3871231066']['statName']?></span>
-			<small class="stat-text"><?=$stat['value']?> / <?=$stat['maximum']?></small>
+			<small class="stat-text"><?=$stat['value']?> / <?=$stat['maximum']>0?$stat['maximum']:$stat['value']?></small>
 		</div>
 		<?php
 	}
@@ -137,7 +138,7 @@ class ItemCard {
 		<small class="type" style="display: none;"><?=$this->info['itemTypeName']?></small>
 	</div>
 	<?php if ($this->data->isGridComplete) { ?>
-	<div class="upgrade" title="<?=Language::get($this->lang, "info_completed")?>"><img src="//mastodon.tk/img/light.png"/></div>
+	<div class="upgrade" title="<?=Language::get($this->lang, "info_completed")?>"><img src="<?=$GLOBALS['site_root']?>/img/light.png"/></div>
 	<?php } ?>
 </div>
 <div class="item-card tier-<?=$tier?>-dark" style="display:none<?=$nocard?";visibility:hidden;height:0;padding:0;margin:0":""?>">

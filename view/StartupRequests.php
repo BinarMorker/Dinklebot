@@ -26,7 +26,7 @@ $response = $request->get_response(); // Get the player instance
 $account = $response->data;
 $definitions = json_decode(json_encode($response->definitions), true);
 
-$url = "https://www.bungie.net/Platform/Destiny/Stats/Account/".$account->membershipType."/".$account->membershipId;
+$url = "https://www.bungie.net/Platform/Destiny/Stats/Account/".$account->membershipType."/".$account->membershipId."?lc=".$language;
 $globalStats = (new ApiRequest($url))->get_response();
 $url = "https://www.bungie.net/Platform/Destiny/Stats/Definition/?lc=".$language;
 $response = (new ApiRequest($url))->get_response();

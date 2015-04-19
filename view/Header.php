@@ -10,7 +10,7 @@
 	<meta property="fb:app_id" content="725262000862916"/>
 	<?php if (!empty($membership)) { ?>
 	<meta property="og:title" content="<?=$membership->displayName?>"/>
-	<meta property="og:url" content="//mastodon.tk/<?=$console?>/<?=$username?>"/>
+	<meta property="og:url" content="<?=$site_root?>/<?=$console?>/<?=$username?>"/>
 	<meta property="og:image" content="http://www.bungie.net<?=$account->characters[0]->emblemPath?>"/>
 	<meta property="og:type"   content="mastodonparking:player" /> 
 	<meta property="og:description" content="<?php
@@ -26,24 +26,24 @@
 	<title><?=$membership->displayName?></title>
 	<?php } else { ?>
 	<meta property="og:title" content="Mastodon Parking"/>
-	<meta property="og:url" content="/mastodon"/>
-	<meta property="og:image" content="//mastodon.tk/img/og_image.png"/>
+	<meta property="og:url" content="<?=$site_root?>"/>
+	<meta property="og:image" content="<?=$site_root?>/img/og_image.png"/>
 	<meta property="og:type"   content="website" /> 
 	<meta property="og:description" content="Mastodon Parking is a cross-platform whatever"/> <?php // TODO ?>
 	<title>Mastodon Parking</title>
 	<?php } ?>
 
 	<!-- Favicon -->
-	<link rel="icon" href="//mastodon.tk/favicon.png" type="image/png"/>
-	<link rel="shortcut icon" href="//mastodon.tk/favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="<?=$site_root?>/favicon.png" type="image/png"/>
+	<link rel="shortcut icon" href="<?=$site_root?>/favicon.ico" type="image/x-icon"/>
 
 	<!-- CSS -->
-	<link href="//mastodon.tk/css/bootstrap.min.css" rel="stylesheet">
-	<link href="//mastodon.tk/css/tooltipster.min.css" rel="stylesheet">
-	<link href="//mastodon.tk/css/mastodon.min.css" rel="stylesheet">
+	<link href="<?=$site_root?>/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?=$site_root?>/css/tooltipster.min.css" rel="stylesheet">
+	<link href="<?=$site_root?>/css/mastodon.min.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
-	<link href="//mastodon.tk/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="<?=$site_root?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -62,7 +62,7 @@
 
     <div class="header">
       <a href="/mastodon">
-    		<img src="//mastodon.tk/img/logo_transparent.png" style="height:50%"/>
+    		<img src="<?=$site_root?>/img/logo_transparent.png" style="height:50%"/>
 				<h1>Mastodon Parking</h1>
 				<p class="lead">Destiny basic stats and unique achievements.</p>
 			</a>
@@ -80,7 +80,7 @@
 					<form id="destiny" action="#">
 						<div class="input-group input-group-lg">
 							<div class="input-group-btn">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span><img id="console-choice" style="height:20px;width:20px" src="//mastodon.tk/img/playstation-icon.png"/></span> <span class="caret"></span></button>
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span><img id="console-choice" style="height:20px;width:20px" src="<?=$site_root?>/img/playstation-icon.png"/></span> <span class="caret"></span></button>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="#" id="psn-choice">Playstation Network</a></li>
 									<li><a href="#" id="xbl-choice">Xbox Live</a></li>

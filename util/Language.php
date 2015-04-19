@@ -45,6 +45,20 @@ class Language {
 		}
 	}
 
+	public static function get_missing($language) {
+		if (array_key_exists($language, self::$translation)) {
+			$result = array();
+			foreach(self::$translation['en'] as $key => $string) {
+				if (!array_key_exists($key, self::$translation[$language])) {
+					array_push($result, array($key => $string));
+				}
+			}
+			return $result;
+		} else {
+			return null;
+		}
+	}
+
 	public static $translation = array(
 		"en" => array(
 			"info_refresh" => "These informations refresh every hour.",
@@ -53,6 +67,13 @@ class Language {
 			"info_modifiers" => "Modifiers:",
 			"info_rewards" => "Possible Rewards:",
 			"info_completed" => "Completed",
+			"info_light_twenty" => "You must be level 20 to gain Light.",
+			"info_no_pvp" => "You must participate in the Crucible at least once to obtain medals.",
+			"time_played" => "Played ",
+			"time_played_f" => "",
+			"time_minute" => "m ",
+			"time_hour" => "h ",
+			"time_day" => "d ",
 			"button_share" => "Share",
 			"button_permalink" => "Permalink",
 			"button_reload" => "Reload",
@@ -68,7 +89,6 @@ class Language {
 			"menu_strikes" => "Strike",
 			"menu_crucible" => "Crucible",
 			"menu_raid" => "Raid",
-			"never_entered_pvp" => "You must play Crucible at least once to obtain medals.",
 			"playstation_exclusive" => "Playstation Exclusive",
 			"vog_exclusive" => "Vault of Glass Exclusive",
 			"crota_exclusive" => "Crota's End Exclusive",
@@ -97,9 +117,20 @@ class Language {
 			"info_refresh" => "Ces informations sont mises à jour toutes les heures.",
 			"info_ends" => "Termine ",
 			"info_ends_f" => "",
+			"info_modifiers" => "Modificateurs:",
+			"info_rewards" => "Récompenses possibles:",
+			"info_completed" => "Complété",
+			"info_light_twenty" => "Vous devez être niveau 20 pour obtenir de la Lumière.",
+			"info_no_pvp" => "Vous devez participer à L'Épreuve au moins une fois pour obtenir des médailles.",
+			"time_played" => "A joué ",
+			"time_played_f" => "",
+			"time_minute" => " min ",
+			"time_hour" => " h ",
+			"time_day" => " j ",
 			"button_share" => "Partager",
 			"button_permalink" => "Permalien",
 			"button_reload" => "Mettre à jour",
+			"menu_overview" => "Aperçu",
 			"menu_weekly" => "Périodique",
 			"menu_equipment" => "Équipement",
 			"menu_progression" => "Progression",
@@ -139,9 +170,20 @@ class Language {
 			"info_refresh" => "Diese Informationen jede Stunde actualizieren.",
 			"info_ends" => "Enden ",
 			"info_ends_f" => "",
+			"info_modifiers" => "Modifikatoren:",
+			"info_rewards" => "Mögliche Belohnungen:",
+			"info_completed" => "Fertiggestellt",
+			"info_light_twenty" => "Du musst sein Level 20 bis Licht zu gewinnen.",
+			"info_no_pvp" => "Sie müssen im Schmelztiegel mindestens einmal teilnehmen, um Medaillen zu erhalten.",
+			"time_played" => "Spielten ",
+			"time_played_f" => "",
+			"time_minute" => "Min. ",
+			"time_hour" => "Std. ",
+			"time_day" => "T. ",
 			"button_share" => "Teilen",
 			"button_permalink" => "Permalink",
 			"button_reload" => "Nachladen",
+			"menu_overview" => "Überblick",
 			"menu_weekly" => "Periodisch",
 			"menu_equipment" => "Ausrüstung",
 			"menu_progression" => "Fortschritt",

@@ -17,7 +17,7 @@ class SubclassCard extends ItemCard {
 				<small class="type" style="display: none;"><?=$this->info['itemTypeName']?></small>
 			</div>
 			<?php if ($this->data->isGridComplete) { ?>
-			<div class="upgrade" title="<?=Language::get($this->lang, "info_completed")?>"><img src="//mastodon.tk/img/light.png"/></div>
+			<div class="upgrade" title="<?=Language::get($this->lang, "info_completed")?>"><img src="<?=$GLOBALS['site_root']?>/img/light.png"/></div>
 			<?php } ?>
 		</div>
 		<div class="item-card subclass-dark" style="display:none">

@@ -33,13 +33,13 @@ $validProgressions = array(
 				$definitions['items'][(string)$account->inventory->currencies[0]->itemHash]['itemName'].": ".$account->inventory->currencies[0]->value?></span>
 <?php } ?>
 			<span class='information'><i><?=Language::get($language, "info_refresh")?></i></span>
-			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=//mastodon.tk/<?=$console?>/<?=$username?>/<?=$language?>&t=<?=$membership->displayName?>' 
+			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>&t=<?=$membership->displayName?>' 
 				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
 				target='_blank'><i class='glyphicon glyphicon-share'></i>&nbsp;<?=Language::get($language, "button_share")?></a>
-			<a class='btn btn-dark' href='http://mastodon.tk/<?=$console?>/<?=$username?>/<?=$language?>' target='_blank'>
+			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>' target='_blank'>
 				<i class='glyphicon glyphicon-link'></i>&nbsp;<?=Language::get($language, "button_permalink")?>
 			</a>
-			<a class='btn btn-dark' href='//mastodon.tk/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
+			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
 				<i class='glyphicon glyphicon-refresh'></i>&nbsp;<?=Language::get($language, "button_reload")?>
 			</a>
 		</div>
@@ -107,8 +107,63 @@ $validProgressions = array(
 				</ul>
 				<div role="tabpanel" id="overview-<?=$character->characterBase->characterId?>" class="tab-pane overview active">
 					<div class="medalcard">
-						<img class="player-model" src="//mastodon.tk/img/character.png" height="350px"/>
+						<img class="player-model" src="<?=$site_root?>/img/character.png" height="350px"/>
+						<hr/>
 						<div class="player-overview">
+							<h4><?php
+							$days = floor($character->characterBase->minutesPlayedTotal / (60 * 24));
+							if ($days > 0) {
+								$days = $days . Language::get($language, "time_day");
+							} else {
+								$days = "";
+							}
+							$hours = floor($character->characterBase->minutesPlayedTotal / 60) - ($days * 24);
+							if ($hours > 0) {
+								$hours = $hours . Language::get($language, "time_hour");
+							} else {
+								$hours = "";
+							}
+							$minutes = $character->characterBase->minutesPlayedTotal - ($hours * 60) - ($days * 24 * 60);
+							if ($minutes > 0) {
+								$minutes = $minutes . Language::get($language, "time_minute");
+							} else {
+								$minutes = "";
+							}
+							echo Language::get($language, "time_played") . $days . $hours . $minutes . Language::get($language, "time_played_f");
+							?></h4>
+							<div class="row">
+								<div class="col-xs-6">
+									<?php $stat = $character->characterBase->stats->STAT_DEFENSE; ?>
+									<strong><?=$definitions['stats'][(string)$stat->statHash]['statName']?></strong><br/>
+									<span><?=$stat->value?></span>
+								</div>
+								<div class="col-xs-6">
+									<?php @$stat = $character->characterBase->stats->STAT_LIGHT; if ($stat != null) { ?>
+									<strong><?=$definitions['stats'][(string)$stat->statHash]['statName']?></strong><br/>
+									<span><?=$stat->value?></span>
+									<?php } else { ?>
+									<span><?=Language::get($language, "info_light_twenty")?></span>
+									<?php } ?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4">
+									<?php $stat = $character->characterBase->stats->STAT_INTELLECT; ?>
+									<strong><?=$definitions['stats'][(string)$stat->statHash]['statName']?></strong><br/>
+									<span><?=$stat->value?></span>
+								</div>
+								<div class="col-xs-4">
+									<?php $stat = $character->characterBase->stats->STAT_DISCIPLINE; ?>
+									<strong><?=$definitions['stats'][(string)$stat->statHash]['statName']?></strong><br/>
+									<span><?=$stat->value?></span>
+								</div>
+								<div class="col-xs-4">
+									<?php $stat = $character->characterBase->stats->STAT_STRENGTH; ?>
+									<strong><?=$definitions['stats'][(string)$stat->statHash]['statName']?></strong><br/>
+									<span><?=$stat->value?></span>
+								</div>
+							</div>
+							<?php //echo var_dump($character); ?>
 						</div>
 					</div>
 				</div>
@@ -206,7 +261,7 @@ $validProgressions = array(
 						</div>
 					<?php } else { ?>
 						<div class="medalcard">
-							<h4><?=Language::get($language, "never_entered_pvp")?></h4>
+							<h4><?=Language::get($language, "info_no_pvp")?></h4>
 						</div>
 					<?php } ?>
 				</div>
@@ -253,14 +308,14 @@ $validProgressions = array(
 							<a href="#global-<?=$character->characterBase->characterId?>" 
 								aria-controls="global-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="//mastodon.tk/img/global.png"/>
+								<img src="<?=$site_root?>/img/global.png"/>
 							</a>
 						</li>
 						<li role="story">
 							<a href="#story-<?=$character->characterBase->characterId?>" 
 								aria-controls="story-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="//mastodon.tk/img/story.png"/>
+								<img src="<?=$site_root?>/img/story.png"/>
 							</a>
 						</li>
 						<?php if (property_exists($response->patrol, "allTime")) { ?>
@@ -268,7 +323,7 @@ $validProgressions = array(
 							<a href="#patrol-<?=$character->characterBase->characterId?>" 
 								aria-controls="patrol-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="//mastodon.tk/img/patrols.png"/>
+								<img src="<?=$site_root?>/img/patrols.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->allStrikes, "allTime")) { ?>
@@ -276,7 +331,7 @@ $validProgressions = array(
 							<a href="#strikes-<?=$character->characterBase->characterId?>" 
 								aria-controls="strikes-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="//mastodon.tk/img/strikes.png"/>
+								<img src="<?=$site_root?>/img/strikes.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->allPvP, "allTime")) { ?>
@@ -284,7 +339,7 @@ $validProgressions = array(
 							<a href="#crucible-<?=$character->characterBase->characterId?>" 
 								aria-controls="crucible-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="//mastodon.tk/img/crucible.png"/>
+								<img src="<?=$site_root?>/img/crucible.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->raid, "allTime")) { ?>
@@ -292,37 +347,37 @@ $validProgressions = array(
 							<a href="#raid-<?=$character->characterBase->characterId?>" 
 								aria-controls="raid-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="//mastodon.tk/img/raids.png"/>
+								<img src="<?=$site_root?>/img/raids.png"/>
 							</a>
 						</li>
 						<?php } ?>
 					</ul>
 					<div role="tabpanel" id="global-<?=$character->characterBase->characterId?>" class="tab-pane statcard active">
-						<h4><?=Language::get($language, "menu_all")?></h4><hr class="small"/>
+						<h4><?=Language::get($language, "menu_all")?></h4><hr/>
 						<?=$global->display()?>
 					</div>
 					<div role="tabpanel" id="story-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
-						<h4><?=Language::get($language, "menu_story")?></h4><hr class="small"/>
+						<h4><?=Language::get($language, "menu_story")?></h4><hr/>
 						<?=$story->display()?>
 					</div>
 					<?php if (property_exists($response->patrol, "allTime")) { ?>
 					<div role="tabpanel" id="patrol-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
-						<h4><?=Language::get($language, "menu_patrol")?></h4><hr class="small"/>
+						<h4><?=Language::get($language, "menu_patrol")?></h4><hr/>
 						<?=$patrol->display()?>
 					</div>
 					<?php } if (property_exists($response->allStrikes, "allTime")) { ?>
 					<div role="tabpanel" id="strikes-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
-						<h4><?=Language::get($language, "menu_strikes")?></h4><hr class="small"/>
+						<h4><?=Language::get($language, "menu_strikes")?></h4><hr/>
 						<?=$strikes->display()?>
 					</div>
 					<?php } if (property_exists($response->allPvP, "allTime")) { ?>
 					<div role="tabpanel" id="crucible-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
-						<h4><?=Language::get($language, "menu_crucible")?></h4><hr class="small"/>
+						<h4><?=Language::get($language, "menu_crucible")?></h4><hr/>
 						<?=$crucible->display()?>
 					</div>
 					<?php } if (property_exists($response->raid, "allTime")) { ?>
 					<div role="tabpanel" id="raid-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
-						<h4><?=Language::get($language, "menu_raid")?></h4><hr class="small"/>
+						<h4><?=Language::get($language, "menu_raid")?></h4><hr/>
 						<?=$raid->display()?>
 					</div>
 					<?php } ?>

@@ -24,13 +24,13 @@
 	<![endif]-->
 
 	<!-- Javascript -->
-	<script src="//mastodon.tk/js/jquery-1.11.2.min.js"></script>
-	<script src="//mastodon.tk/js/jquery.textfill.min.js"></script>
-	<script src="//mastodon.tk/js/jquery.tooltipster.min.js"></script>
-	<script src="//mastodon.tk/js/jquery.timeago.min.js"></script>
-	<script src="//mastodon.tk/js/jquery.timeago.<?=$language?>.js"></script>
-	<script src="//mastodon.tk/js/bootstrap.min.js"></script>
-	<script src="//mastodon.tk/js/mastodon.min.js"></script>
+	<script src="<?=$site_root?>/js/jquery-1.11.2.min.js"></script>
+	<script src="<?=$site_root?>/js/jquery.textfill.min.js"></script>
+	<script src="<?=$site_root?>/js/jquery.tooltipster.min.js"></script>
+	<script src="<?=$site_root?>/js/jquery.timeago.min.js"></script>
+	<script src="<?=$site_root?>/js/jquery.timeago.<?=$language?>.js"></script>
+	<script src="<?=$site_root?>/js/bootstrap.min.js"></script>
+	<script src="<?=$site_root?>/js/mastodon.min.js"></script>
 
 	<script>
 		$(document).ready(function(){
@@ -62,17 +62,17 @@
 					if (!$("#console-choice").hasClass("xb_icon")) {
 						machine = "2";
 					}
-					window.location.replace("//mastodon.tk/"+machine+"/"+escape($("#destiny-input").val())+"/<?=$language?>");
+					window.location.replace("<?=$site_root?>/"+machine+"/"+escape($("#destiny-input").val())+"/<?=$language?>");
 				}
 			});
 			$("#psn-choice").click(function(event) {
 				event.preventDefault();
-				$("#console-choice").attr("src", "//mastodon.tk/img/playstation-icon.png");
+				$("#console-choice").attr("src", "<?=$site_root?>/img/playstation-icon.png");
 				$("#console-choice").removeClass("xb_icon");
 			});
 			$("#xbl-choice").click(function(event) {
 				event.preventDefault();
-				$("#console-choice").attr("src", "//mastodon.tk/img/xbox-icon.png");
+				$("#console-choice").attr("src", "<?=$site_root?>/img/xbox-icon.png");
 				$("#console-choice").addClass("xb_icon");
 			});
 		});
