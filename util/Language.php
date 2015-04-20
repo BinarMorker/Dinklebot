@@ -118,7 +118,8 @@ class Language {
 			"pve_coins" => "Vanguard Marks",
 			"pvp_coins" => "Crucible Marks",
 			"weekly_pve" => "Weekly Vanguard Marks",
-			"weekly_pvp" => "Weekly Crucible Marks"
+			"weekly_pvp" => "Weekly Crucible Marks",
+			"medal_value" => "Value",
 		),
 		"fr" => array(
 			"site_name" => "Dinklebot",
@@ -178,7 +179,8 @@ class Language {
 			"pve_coins" => "Estime de l'Avant-Garde",
 			"pvp_coins" => "Estime de l'Épreuve",
 			"weekly_pve" => "Estime de l'Avant-Garde hebdomadaire",
-			"weekly_pvp" => "Estime de l'Épreuve hebdomadaire"
+			"weekly_pvp" => "Estime de l'Épreuve hebdomadaire",
+			"medal_value" => "Valeur",
 		),
 		"de" => array(
 			"info_refresh" => "Diese Informationen jede Stunde actualizieren.",

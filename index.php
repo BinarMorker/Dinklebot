@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$site_root = "http://mastodon.tk";
+$site_root = "http://dinklebot.net";
 
 // include "lib/Load.php";
 foreach (glob("util/*.php") as $filename) {

@@ -160,7 +160,7 @@ class ItemCard {
 	if (count($this->data->perks) > 0) { ?>
 	<hr/>
 	<?php foreach($this->data->perks as $index => $perk) { 
-		$perk_enabled = $perk->isActive ? "" : " style=\"opacity: 0.3;\""; ?>
+		$perk_enabled = $perk->isActive ? "" : " style=\"opacity: 0.2;\""; ?>
 	<div class="perk row" <?=$perk_enabled?>id="<?=(string)$this->data->itemHash."-".(string)$perk->perkHash?>">
 		<img class="col-xs-2" src="<?=Cache::base64Convert("http://www.bungie.net".$perk->iconPath)?>"/>
 		<div class="col-xs-10">
