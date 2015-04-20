@@ -1,12 +1,12 @@
 	</div>
 	<div id="footer">
-		<span>For feedback, suggestions, bug reports or anything related with this website, <a href="https://www.facebook.com/mastodonparking">contact us on Facebook!</a></span><br/>
-		<span>Mastodon Parking is in no way affiliated with Bungie.</span><br/>
+		<span><?=Language::get($language, "site_footer_contact")?></span><br/>
+		<span><?=Language::get($language, "site_name")?> <?=Language::get($language, "site_footer_mention")?></span><br/>
 		<span><a href="http://kitaiweb.ca">KitaiWeb (François Allard)</a> &copy; <?=date('Y', time())?></span>
 		<br/>
 		<br/>
 		<form>
-			<label for="language">Language:</label>
+			<label for="language"><?=Language::get($language, "site_footer_language")?>:</label>
 			<select name="language" id="language">
 				<?php foreach(Language::get_languages() as $name => $code) { 
 					$selected = ($code == $language) ? " selected='selected'" : ""; ?>

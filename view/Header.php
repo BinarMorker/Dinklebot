@@ -25,12 +25,12 @@
 	?>"/>
 	<title><?=$membership->displayName?></title>
 	<?php } else { ?>
-	<meta property="og:title" content="Mastodon Parking"/>
+	<meta property="og:title" content="<?=Language::get($language, "site_name")?>"/>
 	<meta property="og:url" content="<?=$site_root?>"/>
 	<meta property="og:image" content="<?=$site_root?>/img/og_image.png"/>
 	<meta property="og:type"   content="website" /> 
-	<meta property="og:description" content="Mastodon Parking is a cross-platform whatever"/> <?php // TODO ?>
-	<title>Mastodon Parking</title>
+	<meta property="og:description" content="<?=Language::get($language, "site_description")?>"/>
+	<title><?=Language::get($language, "site_name")?></title>
 	<?php } ?>
 
 	<!-- Favicon -->
@@ -61,10 +61,10 @@
 	<div class="left-box"><div class="fb-like" data-href="https://www.facebook.com/mastodonparking" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div></div>
 
     <div class="header">
-      <a href="/mastodon">
+      <a href="<?=$site_root?>">
     		<img src="<?=$site_root?>/img/logo_transparent.png" style="height:50%"/>
-				<h1>Mastodon Parking</h1>
-				<p class="lead">Destiny basic stats and unique achievements.</p>
+				<h1><?=Language::get($language, "site_name")?></h1>
+				<p class="lead"><?=Language::get($language, "site_styled_description")?></p>
 			</a>
     </div>
 
@@ -86,7 +86,7 @@
 									<li><a href="#" id="xbl-choice">Xbox Live</a></li>
 								</ul>
 							</div>
-							<input id="destiny-input" type="text" class="form-control" autocomplete="on" placeholder="Username" value=<?=empty($_GET['u'])?"":$_GET['u']?>>
+							<input id="destiny-input" type="text" class="form-control" autocomplete="on" placeholder="<?=Language::get($language, "site_username")?>" value=<?=empty($_GET['u'])?"":$_GET['u']?>>
 							<div class="input-group-btn">
 								<button class="btn btn-default" type="submit" id="submit">Go!</button>
 							</div>

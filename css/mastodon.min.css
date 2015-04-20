@@ -4,7 +4,7 @@ html,body{width:100%;height:100%}body{font-family:"Roboto","Helvetica Neue",Helv
 hr{color:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.2);background-color:rgba(255,255,255,0.2)}hr.small{max-width:200px}.left-box{z-index:1;position:fixed;top:0;left:0;margin:5px}
 .header{height:300px;color:#fff;text-align:center;background:url(../img/header.jpg) no-repeat center center scroll;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover}
 .header>a{display:inline-block;height:300px;text-align:center;vertical-align:middle;color:inherit;text-decoration:none}.header>a h1{margin:0;padding:0;font-size:4.5em;font-weight:700}
-.input-block{padding:50px 0;color:#fff;background-color:#428bca}.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group{margin-right:-2px}
+.input-block{padding:50px 15px;color:#fff;background-color:#428bca}.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group{margin-right:-2px}
 .form-control:disabled,.form-control[disabled],.btn:disabled,.btn[disabled]{background-color:#fff;opacity:.65}#destiny-container{background:#191a1e url(../img/background.jpg) no-repeat top center scroll;padding-top:30px}
 span.player-label{letter-spacing:10px;font-size:20px;color:#fff;display:block;width:100%;text-align:center}span.information{font-size:14px;color:#aaa;display:block}
 .character-label{display:block;width:301px;height:59px;background:#000;margin:0 auto 22px auto;padding:1px;text-align:left}.character-label:hover{cursor:pointer}
