@@ -48,7 +48,11 @@ $validProgressions = array(
 	<div id='characters' class='row text-center'>
 <?php foreach ($account->characters as $key => $character) {
 	$prestigeClass = $character->isPrestigeLevel ? " class='prestige'" : ""; 
-	$gender = $character->characterBase->genderType ? "Female" : "Male"; ?>
+	$gender = $character->characterBase->genderType ? "Female" : "Male";
+	$url = "http://www.bungie.net/Platform/Destiny/".$account->membershipType."/Account/".$account->membershipId."/Character/".$character->characterBase->characterId."/Inventory/?definitions=true&lc=".$language;
+	$response = (new ApiRequest($url))->get_response();
+	$inventory = $response->data;
+	$inventoryDefs = json_decode(json_encode($response->definitions), true); ?>
 		<div id='character-<?=$character->characterBase->characterId?>' class='col-md-4'>
 			<div class='character-label equip' style='background:url(<?=Cache::base64Convert("http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
 				<img src='<?=Cache::base64Convert("http://www.bungie.net".$character->emblemPath)?>'/>
@@ -131,6 +135,7 @@ $validProgressions = array(
 							}
 							echo Language::get($language, "time_played") . $days . $hours . $minutes . Language::get($language, "time_played_f");
 							?></h4>
+							<hr class="small"/>
 							<div class="row">
 								<div class="col-xs-6">
 									<?php $stat = $character->characterBase->stats->STAT_DEFENSE; ?>
@@ -163,7 +168,16 @@ $validProgressions = array(
 									<span><?=$stat->value?></span>
 								</div>
 							</div>
-							<?php //echo var_dump($character); ?>
+							<div class="row">
+								<div class="col-xs-6">
+									<strong><?=$inventoryDefs['items'][(string)$inventory->currencies[1]->itemHash]['itemName']?></strong><br/>
+									<span><?=$inventory->currencies[1]->value?></span>
+								</div>
+								<div class="col-xs-6">
+									<strong><?=$inventoryDefs['items'][(string)$inventory->currencies[2]->itemHash]['itemName']?></strong><br/>
+									<span><?=$inventory->currencies[2]->value?></span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -211,17 +225,14 @@ $validProgressions = array(
 				</div>
 				<div role="tabpanel" id="equipment-<?=$character->characterBase->characterId?>" class="tab-pane equipment">
 					<?php 
-					$url = "http://www.bungie.net/Platform/Destiny/".$account->membershipType."/Account/".$account->membershipId."/Character/".$character->characterBase->characterId."/Inventory/?definitions=true&lc=".$language;
-					$response = (new ApiRequest($url))->get_response();
-					$inventory = json_decode(json_encode($response->definitions), true);
-					foreach ($response->data->buckets->Equippable as $index => $item) {
+					foreach ($inventory->buckets->Equippable as $index => $item) {
 						if ($index == 0) {
-							$card = new SubclassCard($item->items[0], $inventory, $character->characterBase->stats, $language);
+							$card = new SubclassCard($item->items[0], $inventoryDefs, $character->characterBase->stats, $language);
 							$card->display();
 							continue;
 						}
 						if (array_key_exists(0, $item->items)) {
-							$card = new ItemCard($item->items[0], $inventory, $language); 
+							$card = new ItemCard($item->items[0], $inventoryDefs, $language); 
 							$card->display();
 						}
 					} ?>
