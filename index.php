@@ -1,6 +1,8 @@
 <?php
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
 session_start();
-$_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 $site_root = "http://dinklebot.net";
 
 foreach (glob("util/*.php") as $filename) {
@@ -43,13 +45,13 @@ $cache = new Cache();
 //$cache->disable();
 
 if (isset($_SESSION['post_data'])) {
-    $_POST = $_SESSION['post_data'];
-    $_SERVER['REQUEST_METHOD'] = 'POST';
-    unset($_SESSION['post_data']);
-    $alert = "<div class='alert alert-danger alert-dismissible' role='alert'>
-		  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-		  <h4>".$_POST['title']."</h4><p>".$_POST['message']."</p>
-		</div>";
+  $_POST = $_SESSION['post_data'];
+  $_SERVER['REQUEST_METHOD'] = 'POST';
+  unset($_SESSION['post_data']);
+  $alert = "<div class='alert alert-danger alert-dismissible' role='alert'>
+	  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+	  <h4>".$_POST['title']."</h4><p>".$_POST['message']."</p>
+	</div>";
 }
 
 if (empty($_GET['u']) && empty($_GET['c']) && empty($_GET['r'])) {
@@ -66,12 +68,6 @@ foreach (glob("model/*.php") as $filename) {
 
 if (!empty($_GET['u']) && !empty($_GET['c']) && !empty($_GET['r']) && $_GET['r'] == "refresh") {
 	$cache->remove();
-	if (class_exists(Resque)) {
-		Resque::enqueue("defaut", "CacheJob", array(
-			'username' => $_GET['u'],
-			'console' => $_GET['c']
-		), true);
-	}
 	$url = "";
 	$break = explode('/', $_SERVER['REQUEST_URI']);
 	foreach($break as $item) {
@@ -83,8 +79,6 @@ if (!empty($_GET['u']) && !empty($_GET['c']) && !empty($_GET['r']) && $_GET['r']
 	exit;
 }
 
-echo "<!-- Selected language is ".$language." -->\n";
-
 if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	$username = rawurlencode(trim($_GET['u']));
 	$console = $_GET['c'];
@@ -95,12 +89,15 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	include("view/Footer.php");
 	$cache->close();
 } else {
-	header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
+	//header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
 	if (isset($_SESSION['previous_page'])) {
   	$_SESSION['post_data'] = array("title" => "Missing information", "message" => "You need to specify both the console and the username.");
-		header('Location: ' . $_SESSION['previous_page']);
+  	$_POST = $_SESSION;
+		header('Location: ' . $_POST['previous_page']);
 	}
 	exit;
 }
+
+$_SESSION['previous_page'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 ?>
