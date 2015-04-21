@@ -114,8 +114,15 @@ $validProgressions = array(
 						<img class="player-model" src="<?=$site_root?>/img/character.png" height="350px"/>
 						<hr/>
 						<div class="player-overview">
-							<h4><?php
-							$days = floor($character->characterBase->minutesPlayedTotal / (60 * 24));
+							<?php
+							foreach($globalStats->characters as $cs) {
+								if($cs->characterId == $character->characterBase->characterId) {
+									$charStats = $cs;
+									break;
+								}
+							} ?>
+							<h4>
+							<?php $days = floor($character->characterBase->minutesPlayedTotal / (60 * 24));
 							if ($days > 0) {
 								$days = $days . Language::get($language, "time_day");
 							} else {
@@ -134,7 +141,8 @@ $validProgressions = array(
 								$minutes = "";
 							}
 							echo Language::get($language, "time_played") . $days . $hours . $minutes . Language::get($language, "time_played_f");
-							?></h4>
+							?><br/>
+							<small><?=Language::get($language, "time_active") . ": " . $charStats->merged->allTime->secondsPlayed->basic->displayValue?></small></h4>
 							<hr class="small"/>
 							<div class="row">
 								<div class="col-xs-6">
@@ -183,7 +191,7 @@ $validProgressions = array(
 				</div>
 				<div role="tabpanel" id="weekly-<?=$character->characterBase->characterId?>" class="tab-pane weekly">
 					<?php 
-					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=AllPvP&count=25&lc=".$language;
+					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=AllPvP&count=50&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$hash = (string)$advisors->dailyCrucibleHash;
 					$card = new ActivityCard($hash, $advisorsDefs, $activities, $advisors->dailyCrucibleResetDate, "1 day", $advisorsDefs['activities'][(string)$hash], $language);
@@ -197,7 +205,7 @@ $validProgressions = array(
 						if ($completed) $card->completed = $completed;
 						$card->display();
 					}
-					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Strike&count=10&lc=".$language;
+					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Strike&count=50&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$completed = false;
 					foreach(array_reverse($advisors->heroicStrikeHashes) as $hash) {
@@ -254,7 +262,8 @@ $validProgressions = array(
 					<?php
 					$url = "https://www.bungie.net/Platform/Destiny/Stats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?modes=allPvP&groups=Medals";
 					$response = (new ApiRequest($url))->get_response();
-					if (!empty((array)$response->allPvP)) {
+					$allPvP = (array)$response->allPvP;
+					if (!empty($allPvP)) {
 						$medals = $response->allPvP->allTime;
 						?>
 						<div class="medalcard">
@@ -278,12 +287,6 @@ $validProgressions = array(
 				</div>
 				<div role="tabpanel" id="statistics-<?=$character->characterBase->characterId?>" class="tab-pane statistics">
 					<?php
-					foreach($globalStats->characters as $cs) {
-						if($cs->characterId == $character->characterBase->characterId) {
-							$charStats = $cs;
-							break;
-						}
-					}
 					$global = new StatList($charStats->merged->allTime, $statDefs, $language);
 					$url = "http://www.bungie.net/Platform/Destiny/Stats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?lc=".$language;
 					$response = (new ApiRequest($url))->get_response();

@@ -1,9 +1,8 @@
 <?php
 session_start();
-
+$_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 $site_root = "http://dinklebot.net";
 
-// include "lib/Load.php";
 foreach (glob("util/*.php") as $filename) {
     include $filename;
 }
@@ -47,7 +46,6 @@ if (isset($_SESSION['post_data'])) {
     $_POST = $_SESSION['post_data'];
     $_SERVER['REQUEST_METHOD'] = 'POST';
     unset($_SESSION['post_data']);
-    //var_dump($_POST);
     $alert = "<div class='alert alert-danger alert-dismissible' role='alert'>
 		  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 		  <h4>".$_POST['title']."</h4><p>".$_POST['message']."</p>
@@ -98,9 +96,9 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	$cache->close();
 } else {
 	header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
-	if (isset($_SERVER['HTTP_REFERER'])) {
+	if (isset($_SESSION['previous_page'])) {
   	$_SESSION['post_data'] = array("title" => "Missing information", "message" => "You need to specify both the console and the username.");
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		header('Location: ' . $_SESSION['previous_page']);
 	}
 	exit;
 }

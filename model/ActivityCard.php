@@ -21,7 +21,8 @@ class ActivityCard {
 		$this->lang = $lang;
 
 		$this->completed = false;
-		if (!empty((array)$this->data)) {
+		$test = (array)$this->data;
+		if (!empty($test)) {
 			$date = date(strtotime($this->date));
 			$time = strtotime("-".(string)$this->time, $date);
 			foreach ($this->data->activities as $activity) {
@@ -55,7 +56,7 @@ class ActivityCard {
 			</i>
 			<span><?=$this->act['activityDescription']?></span>
 			<?php if (!empty($this->act['skulls'])) { ?>
-			<hr/><h4><?=Language::get($this->lang, "info_modifiers")?></h4>
+			<hr/><h4><?=Language::get($this->lang, "info_modifiers")?>: </h4>
 			<?php } ?>
 			<?php foreach($this->act['skulls'] as $skull) { ?>
 			<div class="perk row">
@@ -66,7 +67,7 @@ class ActivityCard {
 				</div>
 			</div>
 			<?php } if (!empty($this->act['rewards'])) { ?>
-			<hr/><h4><?=Language::get($this->lang, "info_rewards")?></h4>
+			<hr/><h4><?=Language::get($this->lang, "info_rewards")?>: </h4>
 			<?php 
 				$rew = array();
 			} ?>

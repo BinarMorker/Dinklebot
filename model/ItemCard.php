@@ -240,8 +240,8 @@ class ItemTypes {
 	);
 
 	public static function get($hash, $type) {
-		if (array_key_exists($type, Self::$exclusives)) {
-			if (in_array($hash, Self::$exclusives[$type])) {
+		if (array_key_exists($type, self::$exclusives)) {
+			if (in_array($hash, self::$exclusives[$type])) {
 				return true;
 			}
 		}

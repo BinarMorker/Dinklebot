@@ -4,9 +4,9 @@ $url = 'https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/'.$console.'
 $request = new ApiRequest($url);
 if ($request->get_error_code() != 1) {
 	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-	if (isset($_SERVER['HTTP_REFERER'])) {
+	if (isset($_SESSION['previous_page'])) {
   	$_SESSION['post_data'] = array("title" => "This player doesn't exist", "message" => $username." does not seem to exist, does not play Destiny, or may be playing on another console.");
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		header('Location: ' . $_SESSION['previous_page']);
 	}
 	exit;
 }
@@ -16,9 +16,9 @@ $url = 'https://www.bungie.net/Platform/Destiny/'.$membership->membershipType.'/
 $request = new ApiRequest($url);
 if ($request->get_error_code() != 1) {
 	header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-	if (isset($_SERVER['HTTP_REFERER'])) {
+	if (isset($_SESSION['previous_page'])) {
   	$_SESSION['post_data'] = array("title" => "This player doesn't exist", "message" => $username." exists, but has only participated in an early version of the game.");
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		header('Location: ' . $_SESSION['previous_page']);
 	}
 	exit;
 }
