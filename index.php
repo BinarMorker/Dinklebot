@@ -39,6 +39,12 @@ if (!empty($_GET['l'])) {
 	exit;
 }
 
+if (isset($_GET['t'])) {
+	include("view/Thankyou.php");
+	include("view/Footer.php");
+	exit();
+}
+
 //var_dump(Language::get_missing($language));
 
 $cache = new Cache();

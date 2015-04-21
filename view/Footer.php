@@ -5,6 +5,15 @@
 		<span><a href="http://kitaiweb.ca">KitaiWeb (François Allard)</a> &copy; <?=date('Y', time())?></span>
 		<br/>
 		<br/>
+		<iframe src="https://ghbtns.com/github-btn.html?user=binarmorker&repo=dinklebot&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+		<form style="display: inline-block" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="79CYHW3TC7BD2">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		<br/>
+		<br/>
 		<form>
 			<label for="language"><?=Language::get($language, "site_footer_language")?>:</label>
 			<select name="language" id="language">
