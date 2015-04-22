@@ -243,9 +243,19 @@ class Language {
 			"pve_coins" => "Vorhut-Marken",
 			"pvp_coins" => "Schmelztiegel-Marken",
 			"weekly_pve" => "Wöchentlicher Vorhut-Marken",
-			"weekly_pvp" => "Wöchentlicher Schmelztiegel-Marken"
+			"weekly_pvp" => "Wöchentlicher Schmelztiegel-Marken",
+			"medal_value" => "Wert",
 		),
 		"ja" => array(
+			"site_name" => "Dinklebot",
+			"site_description" => "ガーディアンを追跡と陳列するための個人相手",
+			"site_styled_description" => "ガーディアンを<strong>追跡と陳列するため</strong>の<i>個人相手</i>",
+			"site_username" => "ユーザー名",
+			"site_footer_contact" => "手応えや提案やバグレポートなど場合は、<a href='https://www.facebook.com/dinklebotapp'>Facebook</a>または<a href='http://redd.it/33aizq'>Reddit</a>に私達を連絡ください。",
+			"site_footer_mention" => "はBungieと連関していません。",
+			"site_footer_language" => "言語",
+			"site_thankyou" => "ありがとうございました!",
+			"site_thankyou_f" => "寄付はすべて大切です。",
 			"info_refresh" => "そこの情報は、毎時更新します。",
 			"info_ends" => "",
 			"info_ends_f" => "で終了",
@@ -299,6 +309,7 @@ class Language {
 			"pvp_coins" => "今週のクルーシブル",
 			"weekly_pve" => "今週のバンガードの紋章",
 			"weekly_pvp" => "今週のクルーシブルの紋章"
+			"medal_value" => "価値",
 		),
 	);
 
