@@ -308,7 +308,7 @@ class Language {
 			"pve_coins" => "今週のバンガード",
 			"pvp_coins" => "今週のクルーシブル",
 			"weekly_pve" => "今週のバンガードの紋章",
-			"weekly_pvp" => "今週のクルーシブルの紋章"
+			"weekly_pvp" => "今週のクルーシブルの紋章",
 			"medal_value" => "価値",
 		),
 	);
