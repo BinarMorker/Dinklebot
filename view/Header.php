@@ -18,7 +18,7 @@
 			$gender = $character->characterBase->genderType ? "Female" : "Male";
 			echo $character->characterLevel . " " . $definitions['classes'][(string)$character->characterBase->classHash]['className'.$gender] . 
 				" " . $definitions['races'][(string)$character->characterBase->raceHash]['raceName'.$gender];
-			if ($key < count($account->characters)) {
+			if ($key < count($account->characters) - 1) {
 				echo " // ";
 			}
 		}
