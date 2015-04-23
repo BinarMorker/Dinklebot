@@ -27,7 +27,7 @@
 	<?php } else { ?>
 	<meta property="og:title" content="<?=Language::get($language, "site_name")?>"/>
 	<meta property="og:url" content="<?=$site_root?>"/>
-	<meta property="og:image" content="<?=$site_root?>/img/og_image.png"/>
+	<meta property="og:image" content="<?=$site_root?>/img/header.png"/>
 	<meta property="og:type"   content="website" /> 
 	<meta property="og:description" content="<?=Language::get($language, "site_description")?>"/>
 	<title><?=Language::get($language, "site_name")?></title>
