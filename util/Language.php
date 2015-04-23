@@ -17,6 +17,9 @@ class Language {
 	}
 
 	public static function best() {
+		if(!isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+			return 'en';
+		}
 		$languages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 		foreach($languages as $lang) {
 			$lang = explode(';', $lang)[0];
