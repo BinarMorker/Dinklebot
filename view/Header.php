@@ -10,7 +10,7 @@
 	<meta property="fb:app_id" content="725262000862916"/>
 	<?php if (!empty($membership)) { ?>
 	<meta property="og:title" content="<?=$membership->displayName?>"/>
-	<meta property="og:url" content="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"/>
+	<meta property="og:url" content="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"/>
 	<meta property="og:image" content="http://www.bungie.net<?=$account->characters[0]->emblemPath?>"/>
 	<meta property="og:type"   content="mastodonparking:player" /> 
 	<meta property="og:description" content="<?php
@@ -26,7 +26,7 @@
 	<title><?=$membership->displayName?></title>
 	<?php } else { ?>
 	<meta property="og:title" content="<?=Language::get($language, "site_name")?>"/>
-	<meta property="og:url" content="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"/>
+	<meta property="og:url" content="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"/>
 	<meta property="og:image" content="<?=$site_root?>/img/header.png"/>
 	<meta property="og:type"   content="website" /> 
 	<meta property="og:description" content="<?=Language::get($language, "site_description")?>"/>
