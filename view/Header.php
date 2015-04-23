@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<?=$language?>">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# mastodonparking: http://ogp.me/ns/fb/mastodonparking#">
-	<meta charset="utf-16">
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
@@ -10,7 +10,7 @@
 	<meta property="fb:app_id" content="725262000862916"/>
 	<?php if (!empty($membership)) { ?>
 	<meta property="og:title" content="<?=$membership->displayName?>"/>
-	<meta property="og:url" content="<?=$site_root?>/<?=$console?>/<?=$username?>"/>
+	<meta property="og:url" content="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"/>
 	<meta property="og:image" content="http://www.bungie.net<?=$account->characters[0]->emblemPath?>"/>
 	<meta property="og:type"   content="mastodonparking:player" /> 
 	<meta property="og:description" content="<?php
@@ -26,7 +26,7 @@
 	<title><?=$membership->displayName?></title>
 	<?php } else { ?>
 	<meta property="og:title" content="<?=Language::get($language, "site_name")?>"/>
-	<meta property="og:url" content="<?=$site_root?>"/>
+	<meta property="og:url" content="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"/>
 	<meta property="og:image" content="<?=$site_root?>/img/header.png"/>
 	<meta property="og:type"   content="website" /> 
 	<meta property="og:description" content="<?=Language::get($language, "site_description")?>"/>
