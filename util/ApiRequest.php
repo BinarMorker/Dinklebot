@@ -1,7 +1,7 @@
 <?php
 class ApiRequest {
 
-	private $API_KEY = "X-API-Key: 8147443ac3d64b238d680f89b912e285";
+	private static $API_KEY = "X-API-Key: 8147443ac3d64b238d680f89b912e285";
 	private $response;
 	private $error_code;
 
@@ -9,20 +9,20 @@ class ApiRequest {
 		$options = array(
 			"http" => array(
 				"method" => "GET",
-				"header" => $this->API_KEY
+				"header" => self::$API_KEY
 			)
 		);
 		$context = stream_context_create($options);
 		$response = json_decode(file_get_contents($url, false, $context), false);
-		//var_dump($url);
-		//var_dump($response);
-		if ($response->ErrorCode == 1 && $response->Response != null) {
+		/*if ($response->ErrorCode == 1 && $response->Response != null) {
 			$this->response = $response->Response;
 			$this->error_code = 1;
 		} else {
 			$this->response = null;
 			$this->error_code = -1;
-		}
+		}*/
+		@$this->response = $response->Response;
+		$this->error_code = $response->ErrorCode;
 	}
 
 	public function get_response() {

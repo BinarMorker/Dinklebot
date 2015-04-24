@@ -12,7 +12,7 @@ class SubclassCard extends ItemCard {
 	public function display() { ?>
 		<div id="<?=(string)$this->data->itemHash."-".(string)$this->data->itemInstanceId?>" class="item subclass card-popup">
 			<div class="item-data">
-				<img src="<?=Cache::base64Convert("http://www.bungie.net".$this->info['secondaryIcon'], false)?>" />
+				<img src="<?=Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->info['secondaryIcon'], false)?>" />
 				<div class="item-name"><span><?=$this->info['itemName']?></span></div>
 				<small class="type" style="display: none;"><?=$this->info['itemTypeName']?></small>
 			</div>

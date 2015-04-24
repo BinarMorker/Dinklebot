@@ -11,7 +11,7 @@
 	<?php if (!empty($membership)) { ?>
 	<meta property="og:title" content="<?=$membership->displayName?>"/>
 	<meta property="og:url" content="http://<?=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']?>"/>
-	<meta property="og:image" content="http://www.bungie.net<?=$account->characters[0]->emblemPath?>"/>
+	<meta property="og:image" content="<?=$site_root?>/util/SimpleImage.php?size=100&url=http://www.bungie.net<?=$account->characters[0]->emblemPath?>"/>
 	<meta property="og:type"   content="mastodonparking:player" /> 
 	<meta property="og:description" content="<?php
 		foreach ($account->characters as $key => $character) {

@@ -107,6 +107,75 @@ hr.small {
     margin: 5px;
 }
 
+.destiny-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/sprite_left_nav_v2.png");
+    background-repeat: no-repeat;
+    background-position: -15px -6px;
+}
+
+.destiny-icon.news {
+    background-position: -15px -6px;
+}
+
+.destiny-icon.character {
+    background-position: -15px -47px;
+}
+
+.destiny-icon.legend {
+    background-position: -15px -88px;
+}
+
+.destiny-icon.director {
+    background-position: -15px -130px;
+}
+
+.destiny-icon.grimoire {
+    background-position: -15px -170px;
+}
+
+.destiny-icon.clans {
+    background-position: -15px -211px;
+}
+
+.destiny-icon.groups {
+    background-position: -15px -252px;
+}
+
+.destiny-icon.forums {
+    background-position: -15px -293px;
+}
+
+.destiny-icon.support {
+    background-position: -15px -334px;
+}
+
+.destiny-icon.aboutus {
+    background-position: -15px -375px;
+}
+
+.destiny-icon.careers {
+    background-position: -15px -416px;
+}
+
+.destiny-icon.store {
+    background-position: -15px -457px;
+}
+
+.destiny-icon.destiny {
+    background-position: -15px -744px;
+}
+
+.destiny-icon.armory {
+    background-position: -15px -497px;
+}
+
+.destiny-icon.more {
+    background-position: -15px 100%;
+}
+
 .header {
     height: 300px;
     color: #fff;
@@ -370,6 +439,10 @@ span.prestige:before {
     width: 16.66666%;
 }
 
+.nav-tabs.seven > li {
+    width: 14.28571%;
+}
+
 .character-content {
     margin-top: -20px;
     margin-bottom: 20px;
@@ -387,15 +460,15 @@ span.prestige:before {
     display: inline-block;
     height: 30px;
     width: 301px;
-    background: #555;
-    color: #111;
+    background: #111;
+    color: #ecd;
     margin-bottom: 2px;
 }
 
 .card-bg h1 {
     margin: 0 auto;
-    font-size: 28px;
-    line-height: 1;
+    font-size: 20px;
+    line-height: 28px;
 }
 
 .item {
@@ -634,14 +707,15 @@ span.prestige:before {
     display: table-cell;
 }
 
-.progress-card .level {
+.level {
+    text-align: center;
     float: right;
     display: inline-block;
     width: 30px;
     height: 30px;
 }
 
-.progress-card .level h3 {
+.level h3 {
     margin: auto;
     vertical-align: middle;
     line-height: 1.5;

@@ -13,22 +13,22 @@ class ProgressionCard {
 
 	public function display() {
 		if ($this->data->progressionHash == "594203991") {
-			$icon = Cache::base64Convert("http://www.bungie.net".$this->defs['2161005788']['icon']);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs['2161005788']['icon']);
 			$percent = $this->data->level * 20;
 			$count = $this->data->level;
 			$max = 5;
 		} elseif ($this->data->progressionHash == "2033897742") {
-			$icon = Cache::base64Convert("http://www.bungie.net".$this->defs['3233510749']['icon']);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs['3233510749']['icon']);
 			$percent = $this->data->level;
 			$count = $this->data->level;
 			$max = 100;
 		} elseif ($this->data->progressionHash == "2033897755") {
-			$icon = Cache::base64Convert("http://www.bungie.net".$this->defs['1357277120']['icon']);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs['1357277120']['icon']);
 			$percent = $this->data->level;
 			$count = $this->data->level;
 			$max = 100;
 		} else {
-			$icon = Cache::base64Convert("http://www.bungie.net".$this->defs[(string)$this->data->progressionHash]['icon']);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs[(string)$this->data->progressionHash]['icon']);
 			$percent = @($this->data->progressToNextLevel / $this->data->nextLevelAt) * 100;
 			$count = $this->data->progressToNextLevel;
 			$max = $this->data->nextLevelAt;

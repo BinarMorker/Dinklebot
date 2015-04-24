@@ -3,7 +3,7 @@ error_reporting(-1);
 ini_set('display_errors', 'On');
 
 session_start();
-$site_root = "http://dinklebot.net";
+$site_root = "http://srv.sml.name:81/dinklebot";
 
 foreach (glob("util/*.php") as $filename) {
     include $filename;

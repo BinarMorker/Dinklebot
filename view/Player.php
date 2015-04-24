@@ -54,62 +54,63 @@ $validProgressions = array(
 	$inventory = $response->data;
 	$inventoryDefs = json_decode(json_encode($response->definitions), true); ?>
 		<div id='character-<?=$character->characterBase->characterId?>' class='col-md-4'>
-			<div class='character-label equip' style='background:url(<?=Cache::base64Convert("http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
-				<img src='<?=Cache::base64Convert("http://www.bungie.net".$character->emblemPath)?>'/>
+			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($site_root."/util/SimpleImage.php?size=301x59&url=http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
+				<img src='<?=Cache::base64Convert($site_root."/util/SimpleImage.php?size=48&url=http://www.bungie.net".$character->emblemPath)?>'/>
 				<h2><?=$definitions['classes'][(string)$character->characterBase->classHash]['className'.$gender]?><br/>
 				<small><?=$definitions['races'][(string)$character->characterBase->raceHash]['raceName'.$gender]?></small></h2>
 				<h3<?=$prestigeClass?>><?=$character->characterLevel?><br/>
-				<small><img src='<?=Cache::base64Convert("http://www.bungie.net/img/theme/destiny/icons/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
+				<small><img src='<?=Cache::base64Convert($site_root."/util/SimpleImage.php?size=11&url=http://www.bungie.net/img/theme/destiny/icons/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
 				<div class='progress-bar'>
 					<div<?=$prestigeClass?> style='width:<?=$character->percentToNextLevel?>%'></div>
 				</div>
 			</div>
 			<div class="character-content">
-				<ul class="nav nav-tabs main-nav">
+				<ul class="nav nav-tabs img six">
 					<li role="presentation" class="active">
 						<a href="#overview-<?=$character->characterBase->characterId?>" 
 							aria-controls="overview-<?=$character->characterBase->characterId?>" 
 							role="tab" data-toggle="tab">
-							<?=Language::get($language, "menu_overview")?>
+							<i class="destiny-icon character" title="<?=Language::get($language, "menu_overview")?>"></i>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#weekly-<?=$character->characterBase->characterId?>" 
 							aria-controls="weekly-<?=$character->characterBase->characterId?>" 
 							role="tab" data-toggle="tab">
-							<?=Language::get($language, "menu_weekly")?>
+							<i class="destiny-icon director" title="<?=Language::get($language, "menu_weekly")?>"></i>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#equipment-<?=$character->characterBase->characterId?>" 
 							aria-controls="equipment-<?=$character->characterBase->characterId?>" 
 							role="tab" data-toggle="tab">
-							<?=Language::get($language, "menu_equipment")?>
+							<i class="destiny-icon legend" title="<?=Language::get($language, "menu_equipment")?>"></i>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#progression-<?=$character->characterBase->characterId?>" 
 							aria-controls="progression-<?=$character->characterBase->characterId?>" 
 							role="tab" data-toggle="tab">
-							<?=Language::get($language, "menu_progression")?>
+							<i class="destiny-icon news" title="<?=Language::get($language, "menu_progression")?>"></i>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#statistics-<?=$character->characterBase->characterId?>" 
 							aria-controls="statistics-<?=$character->characterBase->characterId?>" 
 							role="tab" data-toggle="tab">
-							<?=Language::get($language, "menu_statistics")?>
+							<i class="destiny-icon armory" title="<?=Language::get($language, "menu_statistics")?>"></i>
 						</a>
 					</li>
 					<li role="presentation">
 						<a href="#medals-<?=$character->characterBase->characterId?>" 
 							aria-controls="medals-<?=$character->characterBase->characterId?>" 
 							role="tab" data-toggle="tab">
-							<?=Language::get($language, "menu_medals")?>
+							<i class="destiny-icon clans" title="<?=Language::get($language, "menu_medals")?>"></i>
 						</a>
 					</li>
 				</ul>
 				<div role="tabpanel" id="overview-<?=$character->characterBase->characterId?>" class="tab-pane overview active">
+					<div class="card-bg"><h1><?=Language::get($language, "menu_overview")?></h1></div>
 					<div class="medalcard">
 						<img class="player-model" src="<?=$site_root?>/img/character.png" height="350px"/>
 						<hr/>
@@ -190,48 +191,71 @@ $validProgressions = array(
 					</div>
 				</div>
 				<div role="tabpanel" id="weekly-<?=$character->characterBase->characterId?>" class="tab-pane weekly">
+					<div class="card-bg"><h1><?=Language::get($language, "menu_weekly")?></h1></div>
 					<?php 
 					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=AllPvP&count=50&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$hash = (string)$advisors->dailyCrucibleHash;
-					$card = new ActivityCard($hash, $advisorsDefs, $activities, $advisors->dailyCrucibleResetDate, "1 day", $advisorsDefs['activities'][(string)$hash], $language);
+					$card = new TimedActivityCard($hash, $advisorsDefs, $activities, $advisors->dailyCrucibleResetDate, "1 day", $advisorsDefs['activities'][(string)$hash], $language);
 					$card->display(false);
 					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Story&count=25&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$completed = false;
 					foreach(array_reverse($advisors->dailyChapterHashes) as $hash) {
-						$card = new ActivityCard($hash, $advisorsDefs, $activities, $advisors->dailyChapterResetDate, "1 day", $advisorsDefs['activities'][(string)$hash], $language);
-						if ($card->completed) $completed = $card->completed;
-						if ($completed) $card->completed = $completed;
+						$card = new TimedActivityCard($hash, $advisorsDefs, $activities, $advisors->dailyChapterResetDate, "1 day", $advisorsDefs['activities'][(string)$hash], $language);
+						if ($card->completed) {
+							$completed = $card->completed;
+							$time = $card->time;
+						}
+						if ($completed) {
+							$card->completed = $completed;
+							$card->time = $time;
+						}
 						$card->display();
 					}
 					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Strike&count=50&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$completed = false;
 					foreach(array_reverse($advisors->heroicStrikeHashes) as $hash) {
-						$card = new ActivityCard($hash, $advisorsDefs, $activities, $advisors->heroicStrikeResetDate, "1 week", $advisorsDefs['activities'][(string)$hash], $language);
-						if ($card->completed) $completed = $card->completed;
-						if ($completed) $card->completed = $completed;
+						$card = new TimedActivityCard($hash, $advisorsDefs, $activities, $advisors->heroicStrikeResetDate, "1 week", $advisorsDefs['activities'][(string)$hash], $language);
+						if ($card->completed) {
+							$completed = $card->completed;
+							$time = $card->time;
+						}
+						if ($completed) {
+							$card->completed = $completed;
+							$card->time = $time;
+						}
 						$card->display();
 					}
-					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Nightfall&count=10&lc=".$language;
+					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Nightfall&count=3&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$hash = (string)$advisors->nightfallActivityHash;
-					$card = new ActivityCard($hash, $advisorsDefs, $activities, $advisors->nightfallResetDate, "1 week", $advisorsDefs['activities'][(string)$hash], $language);
+					$card = new TimedActivityCard($hash, $advisorsDefs, $activities, $advisors->nightfallResetDate, "1 week", $advisorsDefs['activities'][(string)$hash], $language);
 					$card->display();
 					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Raid&count=10&lc=".$language;
 					$response = (new ApiRequest($url))->get_response();
 					$activities = $response->data;
+					$url = "http://www.bungie.net/Platform/Destiny/Stats/AggregateActivityStats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/";
+					$raidActs = (new ApiRequest($url))->get_response()->data->activities;
 					$hashes = array("2659248068", "2659248071", "1836893119", "1836893116");
 					foreach($hashes as $hash) {
 						$url = "https://www.bungie.net/Platform/Destiny/Manifest/Activity/".$hash."/?definitions=true&lc=".$language;
 						$defs = json_decode(json_encode((new ApiRequest($url))->get_response()), true);
-						$card = new ActivityCard($hash, $defs['definitions'], $activities, $advisors->nightfallResetDate, "1 week", $defs['data']['activity'], $language);
-						$card->display();
+						$count = 0;
+						foreach ($raidActs as $raid) {
+							if ($raid->activityHash == $hash) {
+								$count = $raid->values->activityCompletions->basic->value;
+								break;
+							}
+						}
+						$card = new TimedActivityCard($hash, $defs['definitions'], $activities, $advisors->nightfallResetDate, "1 week", $defs['data']['activity'], $language);
+						$card->display(true, $count);
 					}
 					?>
 				</div>
 				<div role="tabpanel" id="equipment-<?=$character->characterBase->characterId?>" class="tab-pane equipment">
+					<div class="card-bg"><h1><?=Language::get($language, "menu_equipment")?></h1></div>
 					<?php 
 					foreach ($inventory->buckets->Equippable as $index => $item) {
 						if ($index == 0) {
@@ -246,6 +270,7 @@ $validProgressions = array(
 					} ?>
 				</div>
 				<div role="tabpanel" id="progression-<?=$character->characterBase->characterId?>" class="tab-pane progression">
+					<div class="card-bg"><h1><?=Language::get($language, "menu_progression")?></h1></div>
 					<?php 
 					$url = "http://www.bungie.net/Platform/Destiny/".$account->membershipType."/Account/".$account->membershipId."/Character/".$character->characterBase->characterId."/Progression/?definitions=true&lc=".$language;
 					$response = (new ApiRequest($url))->get_response();
@@ -259,6 +284,7 @@ $validProgressions = array(
 					} ?>
 				</div>
 				<div role="tabpanel" id="medals-<?=$character->characterBase->characterId?>" class="tab-pane medals">
+					<div class="card-bg"><h1><?=Language::get($language, "menu_medals")?></h1></div>
 					<?php
 					$url = "https://www.bungie.net/Platform/Destiny/Stats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?modes=allPvP&groups=Medals";
 					$response = (new ApiRequest($url))->get_response();
@@ -286,6 +312,7 @@ $validProgressions = array(
 					<?php } ?>
 				</div>
 				<div role="tabpanel" id="statistics-<?=$character->characterBase->characterId?>" class="tab-pane statistics">
+					<div class="card-bg"><h1><?=Language::get($language, "menu_statistics")?></h1></div>
 					<?php
 					$global = new StatList($charStats->merged->allTime, $statDefs, $language);
 					$url = "http://www.bungie.net/Platform/Destiny/Stats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?lc=".$language;

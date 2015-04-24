@@ -2,6 +2,12 @@ html,body{width:100%;height:100%}body{font-family:"Roboto","Helvetica Neue",Helv
 .row{margin-left:0;margin-right:0}.container,.col-xs-1,.col-sm-1,.col-md-1,.col-lg-1,.col-xs-2,.col-sm-2,.col-md-2,.col-lg-2,.col-xs-3,.col-sm-3,.col-md-3,.col-lg-3,.col-xs-4,.col-sm-4,.col-md-4,.col-lg-4,.col-xs-5,.col-sm-5,.col-md-5,.col-lg-5,.col-xs-6,.col-sm-6,.col-md-6,.col-lg-6,.col-xs-7,.col-sm-7,.col-md-7,.col-lg-7,.col-xs-8,.col-sm-8,.col-md-8,.col-lg-8,.col-xs-9,.col-sm-9,.col-md-9,.col-lg-9,.col-xs-10,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-11,.col-sm-11,.col-md-11,.col-lg-11,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{padding-left:0;padding-right:0}
 .btn-dark{margin:10px;border-radius:0;color:#fff;background-color:rgba(0,0,0,0.4)}.btn-dark:hover,.btn-dark:focus,.btn-dark:active{color:#fff;background-color:rgba(0,0,0,0.7)}
 hr{color:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.2);background-color:rgba(255,255,255,0.2)}hr.small{max-width:200px}.left-box{z-index:1;position:fixed;top:0;left:0;margin:5px}
+.destiny-icon{display:inline-block;width:30px;height:30px;background-image:url("../img/sprite_left_nav_v2.png");background-repeat:no-repeat;background-position:-15px -6px}
+.destiny-icon.news{background-position:-15px -6px}.destiny-icon.character{background-position:-15px -47px}.destiny-icon.legend{background-position:-15px -88px}
+.destiny-icon.director{background-position:-15px -130px}.destiny-icon.grimoire{background-position:-15px -170px}.destiny-icon.clans{background-position:-15px -211px}
+.destiny-icon.groups{background-position:-15px -252px}.destiny-icon.forums{background-position:-15px -293px}.destiny-icon.support{background-position:-15px -334px}
+.destiny-icon.aboutus{background-position:-15px -375px}.destiny-icon.careers{background-position:-15px -416px}.destiny-icon.store{background-position:-15px -457px}
+.destiny-icon.destiny{background-position:-15px -744px}.destiny-icon.armory{background-position:-15px -497px}.destiny-icon.more{background-position:-15px 100%}
 .header{height:300px;color:#fff;text-align:center;background:url(../img/header.jpg) no-repeat center center scroll;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover}
 .header>a{display:inline-block;height:300px;text-align:center;vertical-align:middle;color:inherit;text-decoration:none}.header>a h1{margin:0;padding:0;font-size:4.5em;font-weight:700}
 .input-block{padding:50px 15px;color:#fff;background-color:#428bca}.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group{margin-right:-2px}
@@ -19,9 +25,10 @@ h3.prestige,span.prestige{color:#f5dc56}h3.prestige:before,span.prestige:before{
 .nav-tabs>li:last-child>a{margin-right:0}.nav-tabs>li:only-child>a{margin-left:0;margin-right:0}.nav-tabs.main-nav{height:94px}.nav-tabs.main-nav>li:nth-child(2)>a,.nav-tabs.main-nav>li:nth-child(4)>a{margin-right:0}
 .nav-tabs.main-nav>li:nth-child(3)>a,.nav-tabs.main-nav>li:nth-child(5)>a{margin-left:0}.nav-tabs.main-nav>li{width:50%;margin-bottom:2px}.nav-tabs.one>li{width:100%}
 .nav-tabs.two>li{width:50%}.nav-tabs.three>li{width:33.33333%}.nav-tabs.four>li{width:25%}.nav-tabs.five>li{width:20%}.nav-tabs.six>li{width:16.66666%}
-.character-content{margin-top:-20px;margin-bottom:20px}.tab-pane{display:none}.tab-pane.active{display:inline-block}.card-bg{display:inline-block;height:30px;width:301px;background:#555;color:#111;margin-bottom:2px}
-.card-bg h1{margin:0 auto;font-size:28px;line-height:1}.item{text-align:left;background:#555;margin:0 auto 2px auto;width:301px;height:30px;display:block;vertical-align:middle}
-.item:hover{cursor:pointer}.item .item-data{display:inline-block;height:30px;width:271px;overflow:hidden}.item .item-name{display:table-cell;line-height:1;vertical-align:middle;width:100%;padding-left:10px;text-align:left;font-size:15px;overflow:hidden;height:30px}
+.nav-tabs.seven>li{width:14.28571%}.character-content{margin-top:-20px;margin-bottom:20px}.tab-pane{display:none}.tab-pane.active{display:inline-block}
+.card-bg{display:inline-block;height:30px;width:301px;background:#111;color:#ecd;margin-bottom:2px}.card-bg h1{margin:0 auto;font-size:20px;line-height:28px}
+.item{text-align:left;background:#555;margin:0 auto 2px auto;width:301px;height:30px;display:block;vertical-align:middle}.item:hover{cursor:pointer}.item .item-data{display:inline-block;height:30px;width:271px;overflow:hidden}
+.item .item-name{display:table-cell;line-height:1;vertical-align:middle;width:100%;padding-left:10px;text-align:left;font-size:15px;overflow:hidden;height:30px}
 .item small{display:table-cell;white-space:nowrap;padding-right:10px;font-size:12px}.item small.dark{vertical-align:middle;position:relative;text-align:right;opacity:.8}
 .item small.type{margin-top:-2px;float:left;padding-left:10px}.item img{float:left;clear:both;margin:0 auto;width:auto;height:100%;display:block}.upgrade{float:right;display:inline-block;width:30px;height:30px}
 .item-card{text-align:left;padding:10px;width:301px;margin:-2px auto 2px auto;display:block;overflow:hidden}.item-card .exclusive{display:block;font-weight:bold;margin-bottom:5px}
@@ -33,7 +40,7 @@ h3.prestige,span.prestige{color:#f5dc56}h3.prestige:before,span.prestige:before{
 .progress-card:hover{cursor:pointer}.progress-card img{float:left;clear:both;margin:0 auto;width:auto;height:100%;display:block}.progress-data{position:relative;display:inline-block;height:30px;width:270px;overflow:hidden}
 .progress-data small.more{display:block;margin-left:30px;margin-top:-2px;float:left;padding-left:10px;position:absolute}.progress-card .progress-info{display:table-cell;line-height:1;vertical-align:middle;width:100%;text-align:left;font-size:15px;overflow:hidden;height:30px}
 .progress-info .progress-name{display:table-cell;padding-left:10px;position:absolute;top:0;height:30px;vertical-align:middle;line-height:1}.progress-name span{vertical-align:middle;line-height:1;height:30px;display:table-cell}
-.progress-card .level{float:right;display:inline-block;width:30px;height:30px}.progress-card .level h3{margin:auto;vertical-align:middle;line-height:1.5;font-size:18px}
+.level{text-align:center;float:right;display:inline-block;width:30px;height:30px}.level h3{margin:auto;vertical-align:middle;line-height:1.5;font-size:18px}
 .progress-card .progress-bar{border-right-style:solid;border-right-width:30px;position:absolute;width:100%;top:0;background:#111;float:none}.progress-card .progress-bar>div{height:100%;background:#555}
 .statcard{background:#333;width:301px;color:#ddd;padding:0 15px 5px}.statcard .stat small.stat-text{width:33%;margin-left:0}.statcard .outer{width:100%;display:inline-block;*display:inline;zoom:1;position:relative;clip:auto;overflow:hidden}
 .statcard .inner{position:relative;text-align:right;white-space:nowrap}.statcard .filler{position:absolute;left:0;right:0;border-bottom:1px dotted #aaa;height:60%}
