@@ -38,6 +38,7 @@
 	<script src="<?=$site_root?>/js/jquery.tooltipster.min.js"></script>
 	<script src="<?=$site_root?>/js/jquery.timeago.min.js"></script>
 	<script src="<?=$site_root?>/js/jquery.timeago.<?=$language?>.js"></script>
+	<script src="<?=$site_root?>/js/masonry.pkgd.min.js"></script>
 	<script src="<?=$site_root?>/js/bootstrap.min.js"></script>
 	<script src="<?=$site_root?>/js/mastodon.min.js"></script>
 

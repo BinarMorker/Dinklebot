@@ -16,6 +16,14 @@ $(document).ready(function(){
 		var p = context.getImageData(0, 0, 1, 1).data;
 		$(this).css("background-color", "rgb("+p[0]+","+p[1]+","+p[2]+")");
 	});
+    var grimoire = new Masonry('#grimoire', {
+      itemSelector: '.grimoire'
+    });
+    var grimoire_lore = new Masonry('#grimoire-lore', {
+      itemSelector: '.grimoire'
+    });
+    /*grimoire.layout();
+    grimoire_lore.layout();*/
     $(".progress-card").click(function(){
     	var elem = $(this).children(".progress-data");
 		if($(this).hasClass('big')) {
@@ -125,11 +133,17 @@ $(document).ready(function(){
         });
     });
     $(".grimoire-popup").click(function(){
-        $(this).next("div").animate({
+        $(this).next("div").toggle();
+        grimoire.layout();
+        grimoire_lore.layout();
+        /*$(this).next("div").animate({
             height: 'toggle',
             paddingTop: 'toggle',
             paddingBottom: 'toggle'
-        });
+        }, '400', 'swing', function(){
+            grimoire.layout();
+            grimoire_lore.layout();
+        });*/
     });
 	$('.medal-tooltip').tooltipster({
 		contentAsHTML: true,
