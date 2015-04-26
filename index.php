@@ -1,6 +1,6 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 'On');
+/*error_reporting(-1);
+ini_set('display_errors', 'On');*/
 
 session_start();
 $site_root = "http://dinklebot.net";
