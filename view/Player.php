@@ -1,5 +1,16 @@
 <?php
 
+$url = "https://www.bungie.net/Platform/Destiny/Stats/Account/".$account->membershipType."/".$account->membershipId."/?lc=".$language;
+$globalStats = (new ApiRequest($url))->get_response();
+$url = "https://www.bungie.net/Platform/Destiny/Stats/Definition/?lc=".$language;
+$response = (new ApiRequest($url))->get_response();
+$statDefs = json_decode(json_encode($response), true);
+
+$url = "https://www.bungie.net/platform/destiny/advisors/?definitions=true&lc=".$language;
+$response = (new ApiRequest($url))->get_response();
+$advisors = $response->data;
+$advisorsDefs = json_decode(json_encode($response->definitions), true);
+
 $validProgressions = array(
 	"2030054750",
 	/* "1774654531",
@@ -41,6 +52,9 @@ $validProgressions = array(
 			</a>
 			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
 				<i class='glyphicon glyphicon-refresh'></i>&nbsp;<?=Language::get($language, "button_reload")?>
+			</a>
+			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>'>
+				<i class='destiny-icon grimoire'></i>&nbsp;<?=Language::get($language, "button_grimoire")?>
 			</a>
 		</div>
 	</div>

@@ -7,6 +7,7 @@ $(document).ready(function(){
 	$('.item-name').textfill({maxFontPixels:15,explicitWidth:150,explicitHeight:30});
 	$('.progress-name').textfill({maxFontPixels:15,explicitWidth:200,explicitHeight:30});
     $('.activity-name').textfill({maxFontPixels:15,explicitWidth:200,explicitHeight:30});
+    $('.grimoire-name').textfill({maxFontPixels:18});
 	$('.shader').each(function(){
 		var canvas = document.getElementById('canvas');
 		var context = canvas.getContext('2d');
@@ -117,6 +118,13 @@ $(document).ready(function(){
                 top: '20px'
             }).addClass('down');
         }
+        $(this).next("div").animate({
+            height: 'toggle',
+            paddingTop: 'toggle',
+            paddingBottom: 'toggle'
+        });
+    });
+    $(".grimoire-popup").click(function(){
         $(this).next("div").animate({
             height: 'toggle',
             paddingTop: 'toggle',

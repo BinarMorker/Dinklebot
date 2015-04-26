@@ -91,7 +91,11 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	include("view/StartupRequests.php");
 	include("view/Header.php");
 	$cache->start();
-	include("view/Player.php");
+	if (!empty($_GET['o']) && $_GET['o'] == "grimoire") {
+		include("view/Grimoire.php");
+	} else {
+		include("view/Player.php");
+	}
 	include("view/Footer.php");
 	$cache->close();
 } else {

@@ -3,7 +3,7 @@ html,body{width:100%;height:100%}body{font-family:"Roboto","Helvetica Neue",Helv
 .btn-dark{margin:10px;border-radius:0;color:#fff;background-color:rgba(0,0,0,0.4)}.btn-dark:hover,.btn-dark:focus,.btn-dark:active{color:#fff;background-color:rgba(0,0,0,0.7)}
 hr{color:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.2);background-color:rgba(255,255,255,0.2)}hr.small{max-width:200px}.left-box{z-index:1;position:fixed;top:0;left:0;margin:5px}
 .destiny-icon{display:inline-block;width:30px;height:30px;background-image:url("../img/sprite_left_nav_v2.png");background-repeat:no-repeat;background-position:-15px -6px}
-.destiny-icon.news{background-position:-15px -6px}.destiny-icon.character{background-position:-15px -47px}.destiny-icon.legend{background-position:-15px -88px}
+.btn .destiny-icon{margin:-10px -7px}.destiny-icon.news{background-position:-15px -6px}.destiny-icon.character{background-position:-15px -47px}.destiny-icon.legend{background-position:-15px -88px}
 .destiny-icon.director{background-position:-15px -130px}.destiny-icon.grimoire{background-position:-15px -170px}.destiny-icon.clans{background-position:-15px -211px}
 .destiny-icon.groups{background-position:-15px -252px}.destiny-icon.forums{background-position:-15px -293px}.destiny-icon.support{background-position:-15px -334px}
 .destiny-icon.aboutus{background-position:-15px -375px}.destiny-icon.careers{background-position:-15px -416px}.destiny-icon.store{background-position:-15px -457px}
@@ -26,18 +26,21 @@ h3.prestige,span.prestige{color:#f5dc56}h3.prestige:before,span.prestige:before{
 .nav-tabs.main-nav>li:nth-child(3)>a,.nav-tabs.main-nav>li:nth-child(5)>a{margin-left:0}.nav-tabs.main-nav>li{width:50%;margin-bottom:2px}.nav-tabs.one>li{width:100%}
 .nav-tabs.two>li{width:50%}.nav-tabs.three>li{width:33.33333%}.nav-tabs.four>li{width:25%}.nav-tabs.five>li{width:20%}.nav-tabs.six>li{width:16.66666%}
 .nav-tabs.seven>li{width:14.28571%}.character-content{margin-top:-20px;margin-bottom:20px}.tab-pane{display:none}.tab-pane.active{display:inline-block}
-.card-bg{display:inline-block;height:30px;width:301px;background:#111;color:#ecd;margin-bottom:2px}.card-bg h1{margin:0 auto;font-size:20px;line-height:28px}
-.item{text-align:left;background:#555;margin:0 auto 2px auto;width:301px;height:30px;display:block;vertical-align:middle}.item:hover{cursor:pointer}.item .item-data{display:inline-block;height:30px;width:271px;overflow:hidden}
-.item .item-name{display:table-cell;line-height:1;vertical-align:middle;width:100%;padding-left:10px;text-align:left;font-size:15px;overflow:hidden;height:30px}
+.card-bg{display:inline-block;height:30px;width:301px;background:#111;color:#ddd;margin-bottom:2px}.card-bg h1{margin:0 auto;font-size:20px;line-height:28px}
+.grimoire-cards{margin-bottom:15px}.grimoire{padding:0 5px 2px}.grimoire-info{width:100%;height:83px;text-align:left}.grimoire-info:hover{cursor:pointer}
+.grimoire-info>img{float:left;margin-right:5px}.grimoire-info>.grimoire-name{font-size:18px;height:60px;width:100%}.grimoire-info>.grimoire-score{height:18px;width:100%}
+.grimoire-card{padding:10px;width:100%}.item{text-align:left;background:#555;margin:0 auto 2px auto;width:301px;height:30px;display:block;vertical-align:middle}
+.item:hover{cursor:pointer}.item .item-data{display:inline-block;height:30px;width:271px;overflow:hidden}.item .item-name{display:table-cell;line-height:1;vertical-align:middle;width:100%;padding-left:10px;text-align:left;font-size:15px;overflow:hidden;height:30px}
 .item small{display:table-cell;white-space:nowrap;padding-right:10px;font-size:12px}.item small.dark{vertical-align:middle;position:relative;text-align:right;opacity:.8}
 .item small.type{margin-top:-2px;float:left;padding-left:10px}.item img{float:left;clear:both;margin:0 auto;width:auto;height:100%;display:block}.upgrade{float:right;display:inline-block;width:30px;height:30px}
 .item-card{text-align:left;padding:10px;width:301px;margin:-2px auto 2px auto;display:block;overflow:hidden}.item-card .exclusive{display:block;font-weight:bold;margin-bottom:5px}
 .item-card h2{margin-top:0;line-height:1}.item-card h2>span{text-transform:uppercase;font-size:22px}.item-card h3{margin-top:5px;line-height:1}.item-card hr{margin:8px}
 .stat{margin:0 auto 5px auto;text-align:right;height:20px}.stat img{height:100%}.stat span{display:inline-block;padding-right:10px;vertical-align:middle}
 .stat small{vertical-align:middle;display:inline-block;text-align:center;width:50%;margin-left:-50%;text-shadow:0 1px 1px #000}.stat small.stat-text{text-align:left;margin-left:0;text-shadow:none}
-.stat-bar{vertical-align:middle;display:inline-block;width:50%;height:20px;background:#111}.stat-bar>div{height:20px;background:#555}.stat-bar>div>div{height:20px;background:#aaa}
-.perk{margin-top:10px}.perk>div,.perk>img{margin:0;padding-left:0;padding-right:10px}.perk>img{margin-top:5px}.perk>div>span{font-size:18px}.progress-card{display:block;background:#555;color:#ddd;text-shadow:0 1px 1px #000}
-.progress-card:hover{cursor:pointer}.progress-card img{float:left;clear:both;margin:0 auto;width:auto;height:100%;display:block}.progress-data{position:relative;display:inline-block;height:30px;width:270px;overflow:hidden}
+.grimoire-stat{padding-left:2px;padding-right:2px}.stat-bar{vertical-align:middle;display:inline-block;width:100%;height:20px;background:#111}.stat .stat-bar{width:50%}
+.stat-bar>div{height:20px;background:#555}.stat-bar>div>div{height:20px;background:#aaa}.perk{margin-top:10px}.perk>div,.perk>img{margin:0;padding-left:0;padding-right:10px}
+.perk>img{margin-top:5px}.perk>div>span{font-size:18px}.progress-card{display:block;background:#555;color:#ddd;text-shadow:0 1px 1px #000}.progress-card:hover{cursor:pointer}
+.progress-card img{float:left;clear:both;margin:0 auto;width:auto;height:100%;display:block}.progress-data{position:relative;display:inline-block;height:30px;width:270px;overflow:hidden}
 .progress-data small.more{display:block;margin-left:30px;margin-top:-2px;float:left;padding-left:10px;position:absolute}.progress-card .progress-info{display:table-cell;line-height:1;vertical-align:middle;width:100%;text-align:left;font-size:15px;overflow:hidden;height:30px}
 .progress-info .progress-name{display:table-cell;padding-left:10px;position:absolute;top:0;height:30px;vertical-align:middle;line-height:1}.progress-name span{vertical-align:middle;line-height:1;height:30px;display:table-cell}
 .level{text-align:center;float:right;display:inline-block;width:30px;height:30px}.level h3{margin:auto;vertical-align:middle;line-height:1.5;font-size:18px}

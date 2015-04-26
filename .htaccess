@@ -77,7 +77,8 @@ Options +FollowSymLinks
   RewriteEngine On
   RewriteCond %{SCRIPT_FILENAME} !-d
   RewriteCond %{SCRIPT_FILENAME} !-f
-  RewriteRule ^thankyou((\/)([\w]{2}))?(\/)? index.php?t=1&l=$3
+  RewriteRule ^thankyou(\/([\w]{2}))?(\/)? index.php?t=1&l=$3
   RewriteRule ^([\w]{2})?(\/)?$ index.php?l=$1
-  RewriteRule ^([\d]+)(\/)([\w\d\s-]+)((\/)([\w]{2}))?((\/)(refresh))?(\/)?$ index.php?c=$1&u=$3&l=$6&r=$9
+  RewriteRule ^([\d]+)\/([\w\d\s-]+)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&l=$4&r=$6
+  RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(grimoire)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7
 </IfModule>
