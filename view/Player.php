@@ -13,10 +13,10 @@ $advisorsDefs = json_decode(json_encode($response->definitions), true);
 
 $validProgressions = array(
 	"2030054750",
-	/* "1774654531",
+	"1774654531",
 	"2193513588",
 	"1707948164",
-	"2158037182", */
+	"2158037182",
 	"529303302",
 	"174528503",
 	"2161005788",

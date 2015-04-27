@@ -27,6 +27,34 @@ class ProgressionCard {
 			$percent = $this->data->level;
 			$count = $this->data->level;
 			$max = 100;
+		} elseif ($this->data->progressionHash == "1774654531") {
+			$url = "https://www.bungie.net/platform/destiny/manifest/Destination/3393213630/?lc=".$this->lang;
+			$request = new ApiRequest($url);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&crop=200&pos=100&url=http://www.bungie.net".$request->get_response()->data->destination->icon);
+			$percent = @($this->data->level / 5) * 100;
+			$count = $this->data->level;
+			$max = 5;
+		} elseif ($this->data->progressionHash == "2193513588") {
+			$url = "https://www.bungie.net/platform/destiny/manifest/Destination/4072959335/?lc=".$this->lang;
+			$request = new ApiRequest($url);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&crop=200&pos=100&url=http://www.bungie.net".$request->get_response()->data->destination->icon);
+			$percent = @($this->data->level / 5) * 100;
+			$count = $this->data->level;
+			$max = 5;
+		} elseif ($this->data->progressionHash == "1707948164") {
+			$url = "https://www.bungie.net/platform/destiny/manifest/Destination/4233735899/?lc=".$this->lang;
+			$request = new ApiRequest($url);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&crop=200&pos=100&url=http://www.bungie.net".$request->get_response()->data->destination->icon);
+			$percent = @($this->data->level / 5) * 100;
+			$count = $this->data->level;
+			$max = 5;
+		} elseif ($this->data->progressionHash == "2158037182") {
+			$url = "https://www.bungie.net/platform/destiny/manifest/Destination/518553403/?lc=".$this->lang;
+			$request = new ApiRequest($url);
+			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&crop=200&pos=100&url=http://www.bungie.net".$request->get_response()->data->destination->icon);
+			$percent = @($this->data->level / 5) * 100;
+			$count = $this->data->level;
+			$max = 5;
 		} else {
 			$icon = Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs[(string)$this->data->progressionHash]['icon']);
 			$percent = @($this->data->progressToNextLevel / $this->data->nextLevelAt) * 100;
