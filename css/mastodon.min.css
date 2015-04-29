@@ -26,10 +26,10 @@ h3.prestige,span.prestige{color:#f5dc56}h3.prestige:before,span.prestige:before{
 .nav-tabs.main-nav>li:nth-child(3)>a,.nav-tabs.main-nav>li:nth-child(5)>a{margin-left:0}.nav-tabs.main-nav>li{width:50%;margin-bottom:2px}.nav-tabs.one>li{width:100%}
 .nav-tabs.two>li{width:50%}.nav-tabs.three>li{width:33.33333%}.nav-tabs.four>li{width:25%}.nav-tabs.five>li{width:20%}.nav-tabs.six>li{width:16.66666%}
 .nav-tabs.seven>li{width:14.28571%}.character-content{margin-top:-20px;margin-bottom:20px}.tab-pane{display:none}.tab-pane.active{display:inline-block}
-.card-bg{display:inline-block;height:30px;width:301px;background:#111;color:#ddd;margin-bottom:2px}.card-bg h1{margin:0 auto;font-size:20px;line-height:28px}
-.grimoire-cards{margin-bottom:15px}.grimoire{padding:0 5px 2px}.grimoire-info{width:100%;height:83px;text-align:left}.grimoire-info:hover{cursor:pointer}
-.grimoire-info>img{float:left;margin-right:5px}.grimoire-info>.grimoire-name{font-size:18px;height:60px;width:100%}.grimoire-info>.grimoire-score{height:18px;width:100%}
-.grimoire-card{padding:10px;width:100%}.item{text-align:left;background:#555;margin:0 auto 2px auto;width:301px;height:30px;display:block;vertical-align:middle}
+.card-bg{display:inline-block;height:30px;width:301px;background:#111;color:#ddd;margin-bottom:2px;text-align:center}.card-bg h1{margin:0 auto;font-size:20px;line-height:28px}
+.collection-card{text-align:center}.collection-inner{width:301px;margin:0 auto 15px}.grimoire-cards{margin-bottom:15px}.grimoire{padding:0 5px 2px}.grimoire-info{width:100%;height:83px;text-align:left}
+.grimoire-info:hover{cursor:pointer}.grimoire-info>img{float:left;margin-right:5px}.grimoire-info>.grimoire-name{font-size:18px;height:60px;width:100%}
+.grimoire-info>.grimoire-score{height:18px;width:100%}.grimoire-card{padding:10px;width:100%}.item{text-align:left;background:#555;margin:0 auto 2px auto;width:301px;height:30px;display:block;vertical-align:middle}
 .item:hover{cursor:pointer}.item .item-data{display:inline-block;height:30px;width:271px;overflow:hidden}.item .item-name{display:table-cell;line-height:1;vertical-align:middle;width:100%;padding-left:10px;text-align:left;font-size:15px;overflow:hidden;height:30px}
 .item small{display:table-cell;white-space:nowrap;padding-right:10px;font-size:12px}.item small.dark{vertical-align:middle;position:relative;text-align:right;opacity:.8}
 .item small.type{margin-top:-2px;float:left;padding-left:10px}.item img{float:left;clear:both;margin:0 auto;width:auto;height:100%;display:block}.upgrade{float:right;display:inline-block;width:30px;height:30px}

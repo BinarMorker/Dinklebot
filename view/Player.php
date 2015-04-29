@@ -1,5 +1,35 @@
 <?php
 
+$database = DatabaseRequest::init("localhost", "dinklebot", "dinklebot", "dEaZheRX56TwTh2f");
+$query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
+$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
+$request->send();
+
+$query = "SELECT id FROM users WHERE console = ? AND membership_id = ?;";
+$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
+$request->receive();
+$userId = $request->get_result();
+
+if (array_key_exists(0, $userId)) {
+	$query = "SELECT id, hash FROM items";
+	$request = new DatabaseRequest($database, $query, null);
+	$request->receive();
+	$itemList = $request->get_result();
+
+	foreach ($account->characters as $character) {
+		foreach ($character->characterBase->peerView->equipment as $item) {
+			foreach ($itemList as $possibleItem) {
+				if ((string)$item->itemHash == (string)$possibleItem['hash']) {
+					$query = "INSERT IGNORE INTO users_items (`user_id`, `item_id`) VALUES (?, ?);";
+					$request = new DatabaseRequest($database, $query, array($userId[0]['id'], $possibleItem['id']));
+					$request->send();
+					break;
+				}
+			}
+		}
+	}
+}
+
 $url = "https://www.bungie.net/Platform/Destiny/Stats/Account/".$account->membershipType."/".$account->membershipId."/?lc=".$language;
 $globalStats = (new ApiRequest($url))->get_response();
 $url = "https://www.bungie.net/Platform/Destiny/Stats/Definition/?lc=".$language;
@@ -55,6 +85,9 @@ $validProgressions = array(
 			</a>
 			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>'>
 				<i class='destiny-icon grimoire'></i>&nbsp;<?=Language::get($language, "button_grimoire")?>
+			</a>
+			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>'>
+				<i class='destiny-icon store'></i>&nbsp;<?=Language::get($language, "button_collection")?>
 			</a>
 		</div>
 	</div>

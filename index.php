@@ -93,6 +93,8 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	$cache->start();
 	if (!empty($_GET['o']) && $_GET['o'] == "grimoire") {
 		include("view/Grimoire.php");
+	} elseif (!empty($_GET['o']) && $_GET['o'] == "collection") {
+		include("view/Collection.php");
 	} else {
 		include("view/Player.php");
 	}

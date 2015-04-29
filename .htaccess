@@ -81,4 +81,5 @@ Options +FollowSymLinks
   RewriteRule ^([\w]{2})?(\/)?$ index.php?l=$1
   RewriteRule ^([\d]+)\/([\w\d\s-]+)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&l=$4&r=$6
   RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(grimoire)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7
+  RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(collection)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7
 </IfModule>

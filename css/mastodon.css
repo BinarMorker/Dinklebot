@@ -467,12 +467,22 @@ span.prestige:before {
     background: #111;
     color: #ddd;
     margin-bottom: 2px;
+    text-align: center;
 }
 
 .card-bg h1 {
     margin: 0 auto;
     font-size: 20px;
     line-height: 28px;
+}
+
+.collection-card {
+    text-align: center;
+}
+
+.collection-inner {
+    width: 301px;
+    margin: 0 auto 15px;
 }
 
 .grimoire-cards {

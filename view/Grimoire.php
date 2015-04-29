@@ -32,6 +32,9 @@ $definitions = json_decode(json_encode($response->cardDefinitions), true);
 			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>'>
 				<i class='destiny-icon groups'></i>&nbsp;<?=Language::get($language, "button_characters")?>
 			</a>
+			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>'>
+				<i class='destiny-icon store'></i>&nbsp;<?=Language::get($language, "button_collection")?>
+			</a>
 		</div>
 	</div>
 	<hr/>

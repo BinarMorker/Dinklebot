@@ -22,8 +22,9 @@ $(document).ready(function(){
     var grimoire_lore = new Masonry('#grimoire-lore', {
       itemSelector: '.grimoire'
     });
-    /*grimoire.layout();
-    grimoire_lore.layout();*/
+    var collection = new Masonry('#collection', {
+      itemSelector: '.collection-card'
+    });
     $(".progress-card").click(function(){
     	var elem = $(this).children(".progress-data");
 		if($(this).hasClass('big')) {
@@ -62,39 +63,59 @@ $(document).ready(function(){
     });
     $(".card-popup").click(function(){
     	var elem = $(this).children(".item-data");
-		if($(this).hasClass('big')) {
-			elem.animate({
-				height: '30px'
-			}, 400, "swing", function(){
-				elem.children(".item-name").textfill({maxFontPixels:15,explicitWidth:150,explicitHeight:30});
-			});
-    		$(this).animate({
-    			height: '30px'
-    		}).removeClass('big');
-    	} else {
-    		elem.children(".item-name").textfill({maxFontPixels:15,explicitWidth:130,explicitHeight:30});
-			elem.animate({
-				height: '50px'
-			}, 400, "swing");
-    		$(this).animate({
-    			height: '50px'
-    		}).addClass('big');
-    	}
-    	elem.children("small.type").fadeToggle();
-        if(elem.children("small.dark").hasClass('down')) {
-            elem.children("small.dark").animate({
-                top: '0'
-            }).removeClass('down');                
+        if ($(this).hasClass('collection-popup')) {
+            if($(this).hasClass('big')) {
+    			elem.css("height", '30px');
+    			elem.children(".item-name").textfill({maxFontPixels:15,explicitWidth:150,explicitHeight:30});
+        		$(this).css("height", '30px').removeClass('big');
+            } else {
+                elem.children(".item-name").textfill({maxFontPixels:15,explicitWidth:130,explicitHeight:30});
+                elem.css("height", '50px');
+                $(this).css("height", '50px').addClass('big');
+            }
+            elem.children("small.type").toggle();
+            if(elem.children("small.dark").hasClass('down')) {
+                elem.children("small.dark").css("top", '0').removeClass('down');                
+            } else {
+                elem.children("small.dark").css("top", '20px').addClass('down');
+            }
+            $(this).next("div").toggle();
+            collection.layout();
         } else {
-            elem.children("small.dark").animate({
-                top: '20px'
-            }).addClass('down');
-        }
-        $(this).next("div").animate({
-            height: 'toggle',
-            paddingTop: 'toggle',
-            paddingBottom: 'toggle'
-        });
+            if($(this).hasClass('big')) {
+                elem.animate({
+                    height: '30px'
+                }, 400, "swing", function(){
+                    elem.children(".item-name").textfill({maxFontPixels:15,explicitWidth:150,explicitHeight:30});
+                });
+                $(this).animate({
+                    height: '30px'
+                }).removeClass('big');
+            } else {
+                elem.children(".item-name").textfill({maxFontPixels:15,explicitWidth:130,explicitHeight:30});
+                elem.animate({
+                    height: '50px'
+                }, 400, "swing");
+                $(this).animate({
+                    height: '50px'
+                }).addClass('big');
+            }
+            elem.children("small.type").fadeToggle();
+            if(elem.children("small.dark").hasClass('down')) {
+                elem.children("small.dark").animate({
+                    top: '0'
+                }).removeClass('down');                
+            } else {
+                elem.children("small.dark").animate({
+                    top: '20px'
+                }).addClass('down');
+            }
+            $(this).next("div").animate({
+                height: 'toggle',
+                paddingTop: 'toggle',
+                paddingBottom: 'toggle'
+            });
+    	}
     });
     $(".activity-popup").click(function(){
         var elem = $(this).children(".item-data");
@@ -136,14 +157,6 @@ $(document).ready(function(){
         $(this).next("div").toggle();
         grimoire.layout();
         grimoire_lore.layout();
-        /*$(this).next("div").animate({
-            height: 'toggle',
-            paddingTop: 'toggle',
-            paddingBottom: 'toggle'
-        }, '400', 'swing', function(){
-            grimoire.layout();
-            grimoire_lore.layout();
-        });*/
     });
 	$('.medal-tooltip').tooltipster({
 		contentAsHTML: true,
