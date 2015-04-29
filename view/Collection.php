@@ -1,6 +1,6 @@
 <?php
 
-$database = DatabaseRequest::init("localhost", "dinklebot", "dinklebot", "dEaZheRX56TwTh2f");
+$database = DatabaseRequest::init("localhost", "kitaiweb_dinklebot", "kitaiweb_dinkleb", "dEaZheRX56TwTh2f");
 $query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
 $request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
 $request->send();
