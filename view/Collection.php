@@ -117,7 +117,7 @@ if (array_key_exists(0, $userId)) {
 									}
 								}
 
-								/*ob_start();
+								/*ob_start();*/
 
 								$url = "https://www.bungie.net/Platform/Destiny/Manifest/InventoryItem/".$item['hash']."/?definitions=true&lc=".$language;
 								$apiRequest = new ApiRequest($url);
@@ -128,14 +128,14 @@ if (array_key_exists(0, $userId)) {
 									$itemDefs->data->talentGrid = $request->get_response()->data->talentGrid;
 								}
 
-								echo json_encode($itemDefs);
+								/*echo json_encode($itemDefs);
 								$cachefile = "items/".$item['hash'].".".$language.".json";
 								$fp = fopen($cachefile, 'w'); 
 								fwrite($fp, ob_get_contents()); 
 								fclose($fp); 
 								ob_end_flush(); */
 								
-								$itemDefs = json_decode(file_get_contents("items/".$item['hash'].".".$language.".json"), false);
+								//$itemDefs = json_decode(file_get_contents("items/".$item['hash'].".".$language.".json"), false);
 
 								$card = new ItemCollectionCard($itemDefs, $obtained, $language); 
 								$card->display();

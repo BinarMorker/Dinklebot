@@ -34,7 +34,7 @@ class ItemCollectionCard extends ItemCard {
 				}
 			}
 		} ?>
-		<h2<?=$damageClass?>><?=$damageIcon.$this->info['stats']['368428387']['maximum']?>
+		<h2<?=$damageClass?>><?=$damageIcon.$this->info['stats']['368428387']['value']?>
 			<span><?=$this->defs['stats']['368428387']['statName']?></span>
 		</h2>
 		<i><?=@$this->info['itemDescription']?></i>
@@ -47,9 +47,9 @@ class ItemCollectionCard extends ItemCard {
 		<div class="stat" id="<?=(string)$this->info['itemHash']."-".(string)$hash?>">
 			<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
 			<div class="stat-bar">
-				<div style="width:<?=$stat['maximum']?>%"></div>
+				<div style="width:<?=$stat['value']?>%"></div>
 			</div>
-			<small><?=$stat['maximum']?></small>
+			<small><?=$stat['value']?></small>
 		</div>
 		<?php $count++;
 			} 
@@ -57,17 +57,17 @@ class ItemCollectionCard extends ItemCard {
 		$stat = $this->info['stats']['3871231066']; ?>
 		<div class="stat">
 			<span><?=$this->defs['stats']['3871231066']['statName']?></span>
-			<small class="stat-text"><?=$stat['maximum']?></small>
+			<small class="stat-text"><?=$stat['value']?></small>
 		</div>
 		<?php
 	}
 
 	private function display_armor() { 
 		if (count($this->info['stats']) > 0) { 
-			if ($this->info['stats']['2391494160']['maximum'] > 0) { ?>
-		<h3 class="prestige pull-right"><?=$this->info['stats']['2391494160']['maximum']?></h3>
+			if (array_key_exists('2391494160', $this->info['stats']) && $this->info['stats']['2391494160']['value'] > 0) { ?>
+		<h3 class="prestige pull-right"><?=$this->info['stats']['2391494160']['value']?></h3>
 		<?php } ?>
-		<h2><?=$this->info['stats']['3897883278']['maximum']?>
+		<h2><?=$this->info['stats']['3897883278']['value']?>
 			<span><?=$this->defs['stats']['3897883278']['statName']?></span>
 		</h2>
 		<?php } ?>
@@ -76,7 +76,7 @@ class ItemCollectionCard extends ItemCard {
 			$stats = array();
 			foreach($this->info['stats'] as $index => $stat) {
 				$hash = $stat['statHash'];
-				if (($hash == "1735777505" || $hash == "144602215" || $hash == "4244567218") && $stat['maximum'] > 0) {
+				if (($hash == "1735777505" || $hash == "144602215" || $hash == "4244567218") && $stat['value'] > 0) {
 					array_push($stats, $hash);
 				}
 			} 
@@ -88,7 +88,7 @@ class ItemCollectionCard extends ItemCard {
 					<div class="stat" id="<?=(string)$this->info['itemHash']."-".(string)$hash?>">
 						<img src="<?=Cache::base64Convert($GLOBALS['site_root']."/util/SimpleImage.php?size=20&url=http://www.bungie.net".$this->defs['stats'][(string)$hash]['icon'])?>"/>
 						<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
-						<small class="stat-text"><?=$stat['maximum']?></small>
+						<small class="stat-text"><?=$stat['value']?></small>
 					</div>
 					<?php 
 					}

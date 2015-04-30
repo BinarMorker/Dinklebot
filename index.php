@@ -30,7 +30,7 @@ if (!empty($_GET['l'])) {
 	$url = "";
 	$break = explode('/', $_SERVER['REQUEST_URI']);
 	foreach($break as $item) {
-		if ($item != null && $item != "" && !empty($item) && $item != "refresh") {
+		if ($item != null && $item != "" && !empty($item) && $item != "refresh" && $item != $language) {
 			$url .= "/".$item;
 		}
 	}
@@ -77,10 +77,11 @@ if (!empty($_GET['u']) && !empty($_GET['c']) && !empty($_GET['r']) && $_GET['r']
 	$url = "";
 	$break = explode('/', $_SERVER['REQUEST_URI']);
 	foreach($break as $item) {
-		if ($item != null && $item != "" && !empty($item) && $item != "refresh") {
+		if ($item != null && $item != "" && !empty($item) && $item != "refresh" && $item != $language) {
 			$url .= "/".$item;
 		}
 	}
+	$url .= "/".$language;
 	header("Location: ".$url);
 	exit;
 }
@@ -110,6 +111,6 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	exit;
 }
 
-$_SESSION['previous_page'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$_SESSION['previous_page'] = $site_root.$_SERVER['REQUEST_URI'];
 
 ?>
