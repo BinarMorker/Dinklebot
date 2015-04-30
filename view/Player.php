@@ -73,7 +73,7 @@ $validProgressions = array(
 			<span class='player-label'><?=$membership->displayName." // ".
 				$definitions['items'][(string)$account->inventory->currencies[0]->itemHash]['itemName'].": ".$account->inventory->currencies[0]->value?></span>
 <?php } ?>
-			<span class='information'><i><?=Language::get($language, "info_refresh")?></i></span>
+			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$site_root?>/img/light.png" /> = <?=Language::get($language, "info_completed")?></span></div>
 			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>&t=<?=$membership->displayName?>' 
 				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
 				target='_blank'><i class='glyphicon glyphicon-share'></i>&nbsp;<?=Language::get($language, "button_share")?></a>

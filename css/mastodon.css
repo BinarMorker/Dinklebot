@@ -244,6 +244,15 @@ span.information {
     font-size: 14px;
     color: #aaa;
     display: block;
+    vertical-align: middle;
+    height: 100%;
+    line-height: 25px;
+}
+
+span.information img {
+    margin: -5px -5px -2px 15px;
+    height: 30px;
+    width: auto;
 }
 
 .character-label {

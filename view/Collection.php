@@ -58,7 +58,7 @@ if (array_key_exists(0, $userId)) {
 			<span class='player-label'><?=$membership->displayName." // ".
 				Language::get($language, "button_collection").": ".$count."/".$total?></span>
 <?php } ?>
-			<span class='information'><i><?=Language::get($language, "info_refresh")?></i></span>
+			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$site_root?>/img/light.png" /> = <?=Language::get($language, "info_obtained")?></span></div>
 			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>&t=<?=$membership->displayName?>' 
 				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
 				target='_blank'><i class='glyphicon glyphicon-share'></i>&nbsp;<?=Language::get($language, "button_share")?></a>
