@@ -85,7 +85,7 @@ class ItemCollectionCard extends ItemCard {
 		}
 
 		?>
-		<h2><?=$this->info['stats']['3897883278']['value']?>
+		<h2><?=$defense?>
 			<span><?=$this->defs['stats']['3897883278']['statName']?></span>
 		</h2>
 		<?php } ?>
