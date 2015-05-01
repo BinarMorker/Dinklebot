@@ -2,6 +2,17 @@
 
 class ItemCollectionCard extends ItemCard {
 
+	private $normalizedValue = array(
+		"attack" => 331,
+		"defense" => array(
+			"helmet" => 447,
+			"gauntlets" => 366,
+			"chest" => 488,
+			"legs" => 325,
+		),
+		"light" => 36,
+);
+
 	private $has;
 	private $nodes;
 
@@ -34,7 +45,7 @@ class ItemCollectionCard extends ItemCard {
 				}
 			}
 		} ?>
-		<h2<?=$damageClass?>><?=$damageIcon.$this->info['stats']['368428387']['value']?>
+		<h2<?=$damageClass?>><?=$damageIcon.$this->normalizedValue['attack']?>
 			<span><?=$this->defs['stats']['368428387']['statName']?></span>
 		</h2>
 		<i><?=@$this->info['itemDescription']?></i>
@@ -64,9 +75,16 @@ class ItemCollectionCard extends ItemCard {
 
 	private function display_armor() { 
 		if (count($this->info['stats']) > 0) { 
-			if (array_key_exists('2391494160', $this->info['stats']) && $this->info['stats']['2391494160']['value'] > 0) { ?>
-		<h3 class="prestige pull-right"><?=$this->info['stats']['2391494160']['value']?></h3>
-		<?php } ?>
+			/*if (array_key_exists('2391494160', $this->info['stats']) && $this->info['stats']['2391494160']['value'] > 0) {*/ ?>
+		<h3 class="prestige pull-right"><?=$this->normalizedValue['light']?></h3>
+		<?php /*}*/ switch ($this->info['bucketTypeHash']) {
+			case "3448274439": $defense = $this->normalizedValue['defense']['helmet']; break;
+			case "3551918588": $defense = $this->normalizedValue['defense']['gauntlets']; break;
+			case "14239492": $defense = $this->normalizedValue['defense']['chest']; break;
+			case "20886954": $defense = $this->normalizedValue['defense']['legs']; break;
+		}
+
+		?>
 		<h2><?=$this->info['stats']['3897883278']['value']?>
 			<span><?=$this->defs['stats']['3897883278']['statName']?></span>
 		</h2>
@@ -80,7 +98,7 @@ class ItemCollectionCard extends ItemCard {
 					array_push($stats, $hash);
 				}
 			} 
-			if (!empty($stats)) { ?>
+			if (false && !empty($stats)) { ?>
 			<hr/>
 			<?php foreach($this->info['stats'] as $index => $stat) {
 					$hash = $stat['statHash'];
