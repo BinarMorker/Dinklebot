@@ -3,10 +3,10 @@
 ini_set('display_errors', 'On');*/
 
 session_start();
-$site_root = "http://dinklebot.net";
+$site_root = "http://srv.sml.name:81/dinklebot";
 
 foreach (glob("util/*.php") as $filename) {
-    include $filename;
+    include_once $filename;
 }
 
 if (!empty($_GET['l'])) {
@@ -40,8 +40,8 @@ if (!empty($_GET['l'])) {
 }
 
 if (isset($_GET['t'])) {
-	include("view/Thankyou.php");
-	include("view/Footer.php");
+	include_once("view/Thankyou.php");
+	include_once("view/Footer.php");
 	exit();
 }
 
@@ -49,28 +49,6 @@ if (isset($_GET['t'])) {
 
 $cache = new Cache();
 //$cache->disable();
-
-if (isset($_SESSION['post_data'])) {
-  $_POST = $_SESSION['post_data'];
-  $_SERVER['REQUEST_METHOD'] = 'POST';
-  unset($_SESSION['post_data']);
-  $alert = "<div class='alert alert-danger alert-dismissible' role='alert'>
-	  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-	  <h4>".$_POST['title']."</h4><p>".$_POST['message']."</p>
-	</div>";
-}
-
-if (empty($_GET['u']) && empty($_GET['c']) && empty($_GET['r'])) {
-	include("view/Header.php");
-	$cache->start();
-	include("view/Footer.php");
-	$cache->close();
-	exit;
-}
-
-foreach (glob("model/*.php") as $filename) {
-    include $filename;
-}
 
 if (!empty($_GET['u']) && !empty($_GET['c']) && !empty($_GET['r']) && $_GET['r'] == "refresh") {
 	$cache->remove();
@@ -86,20 +64,42 @@ if (!empty($_GET['u']) && !empty($_GET['c']) && !empty($_GET['r']) && $_GET['r']
 	exit;
 }
 
+if (isset($_SESSION['post_data'])) {
+  $_POST = $_SESSION['post_data'];
+  $_SERVER['REQUEST_METHOD'] = 'POST';
+  unset($_SESSION['post_data']);
+  $alert = "<div class='alert alert-danger alert-dismissible' role='alert'>
+	  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+	  <h4>".$_POST['title']."</h4><p>".$_POST['message']."</p>
+	</div>";
+}
+
+if (empty($_GET['u']) && empty($_GET['c']) && empty($_GET['r'])) {
+	include_once("view/Header.php");
+	$cache->start();
+	include_once("view/Footer.php");
+	$cache->close();
+	exit;
+}
+
+foreach (glob("model/*.php") as $filename) {
+    include_once $filename;
+}
+
 if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	$username = rawurlencode(trim($_GET['u']));
 	$console = $_GET['c'];
-	include("view/StartupRequests.php");
-	include("view/Header.php");
+	include_once("view/StartupRequests.php");
+	include_once("view/Header.php");
 	$cache->start();
 	if (!empty($_GET['o']) && $_GET['o'] == "grimoire") {
-		include("view/Grimoire.php");
+		include_once("view/Grimoire.php");
 	} elseif (!empty($_GET['o']) && $_GET['o'] == "collection") {
-		include("view/Collection.php");
+		include_once("view/Collection.php");
 	} else {
-		include("view/Player.php");
+		include_once("view/Player.php");
 	}
-	include("view/Footer.php");
+	include_once("view/Footer.php");
 	$cache->close();
 } else {
 	//header($_SERVER["SERVER_PROTOCOL"]." 400 Bad Request");
