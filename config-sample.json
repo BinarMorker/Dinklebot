@@ -1,0 +1,8 @@
+{
+	"site_root": "http://domain.com",
+	"db_host": "localhost",
+	"database": "database",
+	"db_user": "username",
+	"db_pass": "password",
+	"debug": false
+}
