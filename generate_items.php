@@ -12,9 +12,7 @@
 
 	if ($list != null) {
 		foreach ($list as $item) {
-			$language = "en";
-			@$language = $_GET['lang'];
-			//foreach (Language::get_languages() as $language) {
+			foreach (Language::get_languages() as $language) {
 				ob_start();
 
 				$url = "https://www.bungie.net/Platform/Destiny/Manifest/InventoryItem/".$item['hash']."/?definitions=true&lc=".$language;
@@ -32,6 +30,6 @@
 				fwrite($fp, ob_get_contents()); 
 				fclose($fp); 
 				ob_end_flush();
-			//}
+			}
 		}
 	}
