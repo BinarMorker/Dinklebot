@@ -12,7 +12,12 @@
 
 	if ($list != null) {
 		foreach ($list as $item) {
-			foreach (Language::get_languages() as $language) {
+			$language = "en";
+			@$opt = getopt("l::");
+			if(array_key_exists('l', $opt) && Language::exists($opt['l'])) {
+				$language = $opt['l'];
+			}
+			//foreach (Language::get_languages() as $language) {
 				ob_start();
 
 				$url = "https://www.bungie.net/Platform/Destiny/Manifest/InventoryItem/".$item['hash']."/?definitions=true&lc=".$language;
@@ -30,6 +35,6 @@
 				fwrite($fp, ob_get_contents()); 
 				fclose($fp); 
 				ob_end_flush();
-			}
+			//}
 		}
 	}
