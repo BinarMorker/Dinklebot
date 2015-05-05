@@ -22,7 +22,8 @@ class Language {
 		}
 		$languages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 		foreach($languages as $lang) {
-			$lang = explode(';', $lang)[0];
+			$break = explode(';', $lang);
+			$lang = $break[0];
 			if(in_array($lang, self::$supported_langs)) {
 				return $lang;
 			}
