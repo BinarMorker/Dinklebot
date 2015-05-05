@@ -1,9 +1,12 @@
 <?php
-/*error_reporting(-1);
-ini_set('display_errors', 'On');*/
+$config = json_decode(file_get_contents("config.json"));
+
+if(isset($config->debug) && $config->debug) {
+	error_reporting(-1);
+	ini_set('display_errors', 'On');
+}
 
 session_start();
-$site_root = "http://dinklebot.net";
 
 foreach (glob("util/*.php") as $filename) {
     include_once $filename;

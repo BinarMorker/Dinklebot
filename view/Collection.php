@@ -1,6 +1,6 @@
 <?php
 
-$database = DatabaseRequest::init("localhost", "kitaiweb_dinklebot", "kitaiweb_dinkleb", "dEaZheRX56TwTh2f");
+$database = DatabaseRequest::init($config->db_host, $config->database, $config->db_user, $config->db_pass);
 $query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
 $request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
 $request->send();
@@ -58,20 +58,20 @@ if (array_key_exists(0, $userId)) {
 			<span class='player-label'><?=$membership->displayName." // ".
 				Language::get($language, "button_collection").": ".$count."/".$total?></span>
 <?php } ?>
-			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$site_root?>/img/light.png" /> = <?=Language::get($language, "info_obtained")?></span></div>
-			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>&t=<?=$membership->displayName?>' 
+			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$config->site_root?>/img/light.png" /> = <?=Language::get($language, "info_obtained")?></span></div>
+			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$config->site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>&t=<?=$membership->displayName?>' 
 				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
 				target='_blank'><i class='glyphicon glyphicon-share'></i>&nbsp;<?=Language::get($language, "button_share")?></a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>' target='_blank'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>' target='_blank'>
 				<i class='glyphicon glyphicon-link'></i>&nbsp;<?=Language::get($language, "button_permalink")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>/refresh'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>/refresh'>
 				<i class='glyphicon glyphicon-refresh'></i>&nbsp;<?=Language::get($language, "button_reload")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/<?=$language?>'>
 				<i class='destiny-icon groups'></i>&nbsp;<?=Language::get($language, "button_characters")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>'>
 				<i class='destiny-icon grimoire'></i>&nbsp;<?=Language::get($language, "button_grimoire")?>
 			</a>
 		</div>
@@ -119,14 +119,14 @@ if (array_key_exists(0, $userId)) {
 
 								/*ob_start();*/
 
-								$url = "https://www.bungie.net/Platform/Destiny/Manifest/InventoryItem/".$item['hash']."/?definitions=true&lc=".$language;
+								/*$url = "https://www.bungie.net/Platform/Destiny/Manifest/InventoryItem/".$item['hash']."/?definitions=true&lc=".$language;
 								$apiRequest = new ApiRequest($url);
 								$itemDefs = $apiRequest->get_response();
 								$url = "https://www.bungie.net/Platform/Destiny/Manifest/TalentGrid/".$itemDefs->data->inventoryItem->talentGridHash."/?lc=".$language;
 								$request = new ApiRequest($url);
 								if ($request->get_response() != null) {
 									$itemDefs->data->talentGrid = $request->get_response()->data->talentGrid;
-								}
+								}*/
 
 								/*echo json_encode($itemDefs);
 								$cachefile = "items/".$item['hash'].".".$language.".json";
@@ -135,7 +135,7 @@ if (array_key_exists(0, $userId)) {
 								fclose($fp); 
 								ob_end_flush(); */
 								
-								//$itemDefs = json_decode(file_get_contents("items/".$item['hash'].".".$language.".json"), false);
+								$itemDefs = json_decode(file_get_contents("items/".(string)$item['hash'].".".$language.".json"), false);
 
 								$card = new ItemCollectionCard($itemDefs, $obtained, $language); 
 								$card->display();

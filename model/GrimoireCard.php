@@ -31,9 +31,9 @@ class GrimoireCard {
 					$params = "/util/SimpleImage.php?pos=".$path['rect']['x'].",".$path['rect']['y']."&crop=".$path['rect']['width']."x".$path['rect']['height']."&size=".$path['rect']['width']."&url=http://www.bungie.net";
 					$image = $params . $path['sheetPath'];
 				?>
-				<img src="<?=$GLOBALS['site_root'].$image?>" />
+				<img src="<?=$GLOBALS['config']->site_root.$image?>" />
 				<div class="grimoire-name"><span><?=$name?></span></div>
-				<div class="grimoire-score"><span><?=$score?> <img height="14px" src="<?=$GLOBALS['site_root']?>/img/icon_grimoire_lightgray.png" /></span></div>
+				<div class="grimoire-score"><span><?=$score?> <img height="14px" src="<?=$GLOBALS['config']->site_root?>/img/icon_grimoire_lightgray.png" /></span></div>
 			</div>
 			<div class="grimoire-card subclass-dark" style="display:none">
 				<?php if (isset($this->data->statisticCollection) && !empty($this->data->statisticCollection)) {
@@ -58,7 +58,7 @@ class GrimoireCard {
 							<div style="width:<?=@($statValue/$threshold)*100?>%"></div>
 						</div>
 						<?php if ($statValue == $threshold) { ?>
-						<small>+ <?=$points?> <img height="10px" src="<?=$GLOBALS['site_root']?>/img/icon_grimoire_lightgray.png" /></small>
+						<small>+ <?=$points?> <img height="10px" src="<?=$GLOBALS['config']->site_root?>/img/icon_grimoire_lightgray.png" /></small>
 						<?php } else { ?>
 						<small><?=$statValue?> / <?=$threshold?></small>
 						<?php } ?>

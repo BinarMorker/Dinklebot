@@ -1,6 +1,6 @@
 <?php
 
-$database = DatabaseRequest::init("localhost", "kitaiweb_dinklebot", "kitaiweb_dinkleb", "dEaZheRX56TwTh2f");
+$database = DatabaseRequest::init($config->db_host, $config->database, $config->db_user, $config->db_pass);
 $query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
 $request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
 $request->send();
@@ -73,20 +73,20 @@ $validProgressions = array(
 			<span class='player-label'><?=$membership->displayName." // ".
 				$definitions['items'][(string)$account->inventory->currencies[0]->itemHash]['itemName'].": ".$account->inventory->currencies[0]->value?></span>
 <?php } ?>
-			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$site_root?>/img/light.png" /> = <?=Language::get($language, "info_completed")?></span></div>
-			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>&t=<?=$membership->displayName?>' 
+			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$config->site_root?>/img/light.png" /> = <?=Language::get($language, "info_completed")?></span></div>
+			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$config->site_root?>/<?=$console?>/<?=$username?>/<?=$language?>&t=<?=$membership->displayName?>' 
 				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
 				target='_blank'><i class='glyphicon glyphicon-share'></i>&nbsp;<?=Language::get($language, "button_share")?></a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>' target='_blank'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/<?=$language?>' target='_blank'>
 				<i class='glyphicon glyphicon-link'></i>&nbsp;<?=Language::get($language, "button_permalink")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/<?=$language?>/refresh'>
 				<i class='glyphicon glyphicon-refresh'></i>&nbsp;<?=Language::get($language, "button_reload")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>'>
 				<i class='destiny-icon grimoire'></i>&nbsp;<?=Language::get($language, "button_grimoire")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>'>
 				<i class='destiny-icon store'></i>&nbsp;<?=Language::get($language, "button_collection")?>
 			</a>
 		</div>
@@ -101,12 +101,12 @@ $validProgressions = array(
 	$inventory = $response->data;
 	$inventoryDefs = json_decode(json_encode($response->definitions), true); ?>
 		<div id='character-<?=$character->characterBase->characterId?>' class='col-md-4'>
-			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($site_root."/util/SimpleImage.php?size=301x59&url=http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
-				<img src='<?=Cache::base64Convert($site_root."/util/SimpleImage.php?size=48&url=http://www.bungie.net".$character->emblemPath)?>'/>
+			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=301x59&url=http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
+				<img src='<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=48&url=http://www.bungie.net".$character->emblemPath)?>'/>
 				<h2><?=$definitions['classes'][(string)$character->characterBase->classHash]['className'.$gender]?><br/>
 				<small><?=$definitions['races'][(string)$character->characterBase->raceHash]['raceName'.$gender]?></small></h2>
 				<h3<?=$prestigeClass?>><?=$character->characterLevel?><br/>
-				<small><img src='<?=Cache::base64Convert($site_root."/util/SimpleImage.php?size=11&url=http://www.bungie.net/img/theme/destiny/icons/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
+				<small><img src='<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=11&url=http://www.bungie.net/img/theme/destiny/icons/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
 				<div class='progress-bar'>
 					<div<?=$prestigeClass?> style='width:<?=$character->percentToNextLevel?>%'></div>
 				</div>
@@ -159,7 +159,7 @@ $validProgressions = array(
 				<div role="tabpanel" id="overview-<?=$character->characterBase->characterId?>" class="tab-pane overview active">
 					<div class="card-bg"><h1><?=Language::get($language, "menu_overview")?></h1></div>
 					<div class="medalcard">
-						<img class="player-model" src="<?=$site_root?>/img/character.png" height="350px"/>
+						<img class="player-model" src="<?=$config->site_root?>/img/character.png" height="350px"/>
 						<hr/>
 						<div class="player-overview">
 							<?php
@@ -396,14 +396,14 @@ $validProgressions = array(
 							<a href="#global-<?=$character->characterBase->characterId?>" 
 								aria-controls="global-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="<?=$site_root?>/img/global.png"/>
+								<img src="<?=$config->site_root?>/img/global.png"/>
 							</a>
 						</li>
 						<li role="story">
 							<a href="#story-<?=$character->characterBase->characterId?>" 
 								aria-controls="story-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="<?=$site_root?>/img/story.png"/>
+								<img src="<?=$config->site_root?>/img/story.png"/>
 							</a>
 						</li>
 						<?php if (property_exists($response->patrol, "allTime")) { ?>
@@ -411,7 +411,7 @@ $validProgressions = array(
 							<a href="#patrol-<?=$character->characterBase->characterId?>" 
 								aria-controls="patrol-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="<?=$site_root?>/img/patrols.png"/>
+								<img src="<?=$config->site_root?>/img/patrols.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->allStrikes, "allTime")) { ?>
@@ -419,7 +419,7 @@ $validProgressions = array(
 							<a href="#strikes-<?=$character->characterBase->characterId?>" 
 								aria-controls="strikes-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="<?=$site_root?>/img/strikes.png"/>
+								<img src="<?=$config->site_root?>/img/strikes.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->allPvP, "allTime")) { ?>
@@ -427,7 +427,7 @@ $validProgressions = array(
 							<a href="#crucible-<?=$character->characterBase->characterId?>" 
 								aria-controls="crucible-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="<?=$site_root?>/img/crucible.png"/>
+								<img src="<?=$config->site_root?>/img/crucible.png"/>
 							</a>
 						</li>
 						<?php } if (property_exists($response->raid, "allTime")) { ?>
@@ -435,7 +435,7 @@ $validProgressions = array(
 							<a href="#raid-<?=$character->characterBase->characterId?>" 
 								aria-controls="raid-<?=$character->characterBase->characterId?>" 
 								role="tab" data-toggle="tab">
-								<img src="<?=$site_root?>/img/raids.png"/>
+								<img src="<?=$config->site_root?>/img/raids.png"/>
 							</a>
 						</li>
 						<?php } ?>

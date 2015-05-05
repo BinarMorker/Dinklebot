@@ -20,19 +20,19 @@ $definitions = json_decode(json_encode($response->cardDefinitions), true);
 				Language::get($language, "button_grimoire").": ".$score?></span>
 <?php } ?>
 			<span class='information'><i><?=Language::get($language, "info_refresh")?></i></span>
-			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>&t=<?=$membership->displayName?>' 
+			<a class='btn btn-dark' href='http://www.facebook.com/sharer/sharer.php?u=<?=$config->site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>&t=<?=$membership->displayName?>' 
 				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" 
 				target='_blank'><i class='glyphicon glyphicon-share'></i>&nbsp;<?=Language::get($language, "button_share")?></a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>' target='_blank'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>' target='_blank'>
 				<i class='glyphicon glyphicon-link'></i>&nbsp;<?=Language::get($language, "button_permalink")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>/refresh'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/grimoire/<?=$language?>/refresh'>
 				<i class='glyphicon glyphicon-refresh'></i>&nbsp;<?=Language::get($language, "button_reload")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/<?=$language?>'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/<?=$language?>'>
 				<i class='destiny-icon groups'></i>&nbsp;<?=Language::get($language, "button_characters")?>
 			</a>
-			<a class='btn btn-dark' href='<?=$site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>'>
+			<a class='btn btn-dark' href='<?=$config->site_root?>/<?=$console?>/<?=$username?>/collection/<?=$language?>'>
 				<i class='destiny-icon store'></i>&nbsp;<?=Language::get($language, "button_collection")?>
 			</a>
 		</div>

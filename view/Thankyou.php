@@ -9,22 +9,22 @@
 
 	<meta property="fb:app_id" content="725262000862916"/>
 	<meta property="og:title" content="<?=Language::get($language, "site_name")?>"/>
-	<meta property="og:url" content="<?=$site_root?>"/>
-	<meta property="og:image" content="<?=$site_root?>/img/og_image.png"/>
+	<meta property="og:url" content="<?=$config->site_root?>"/>
+	<meta property="og:image" content="<?=$config->site_root?>/img/og_image.png"/>
 	<meta property="og:type"   content="website" /> 
 	<meta property="og:description" content="<?=Language::get($language, "site_description")?>"/>
 	<title><?=Language::get($language, "site_name")?></title>
 
 	<!-- Favicon -->
-	<link rel="icon" href="<?=$site_root?>/favicon.png" type="image/png"/>
-	<link rel="shortcut icon" href="<?=$site_root?>/favicon.ico" type="image/x-icon"/>
+	<link rel="icon" href="<?=$config->site_root?>/favicon.png" type="image/png"/>
+	<link rel="shortcut icon" href="<?=$config->site_root?>/favicon.ico" type="image/x-icon"/>
 
 	<!-- CSS -->
-	<link href="<?=$site_root?>/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?=$site_root?>/css/mastodon.min.css" rel="stylesheet">
+	<link href="<?=$config->site_root?>/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?=$config->site_root?>/css/mastodon.min.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
-	<link href="<?=$site_root?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="<?=$config->site_root?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -41,8 +41,8 @@
 	<div class="left-box"><div class="fb-like" data-href="https://www.facebook.com/dinklebotapp" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div></div>
 
     <div class="header">
-      <a href="<?=$site_root?>">
-    		<img src="<?=$site_root?>/img/logo_transparent.png" style="height:50%"/>
+      <a href="<?=$config->site_root?>">
+    		<img src="<?=$config->site_root?>/img/logo_transparent.png" style="height:50%"/>
 				<h1><?=Language::get($language, "site_name")?></h1>
 				<p class="lead"><?=Language::get($language, "site_styled_description")?></p>
 			</a>
