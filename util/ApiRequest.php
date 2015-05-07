@@ -1,9 +1,9 @@
 <?php
 class ApiRequest {
 
-	private static $API_KEY = "X-API-Key: 8147443ac3d64b238d680f89b912e285";
-	private $response;
-	private $error_code;
+	protected static $API_KEY = "X-API-Key: 8147443ac3d64b238d680f89b912e285";
+	protected $response;
+	protected $error_code;
 
 	public function __construct($url) {
 		$options = array(
@@ -14,13 +14,6 @@ class ApiRequest {
 		);
 		$context = stream_context_create($options);
 		$response = json_decode(file_get_contents($url, false, $context), false);
-		/*if ($response->ErrorCode == 1 && $response->Response != null) {
-			$this->response = $response->Response;
-			$this->error_code = 1;
-		} else {
-			$this->response = null;
-			$this->error_code = -1;
-		}*/
 		@$this->response = $response->Response;
 		$this->error_code = $response->ErrorCode;
 	}

@@ -67,6 +67,17 @@ if (!empty($_GET['u']) && !empty($_GET['c']) && !empty($_GET['r']) && $_GET['r']
 	exit;
 }
 
+$url = "https://www.bungie.net/Platform/Destiny/Stats/Definition/?lc=".$language;
+$request = new ApiRequest($url);
+
+if ($request->get_error_code() == 5) {
+	$_SESSION['post_data']['title'] = "Bungie is down";
+	$_SESSION['post_data']['message'] = "This system is temporarily disabled for maintenance.";
+} else {
+	$response = $request->get_response();
+	$statDefs = json_decode(json_encode($response), true);
+}
+
 if (isset($_SESSION['post_data'])) {
   $_POST = $_SESSION['post_data'];
   $_SERVER['REQUEST_METHOD'] = 'POST';
@@ -114,6 +125,6 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	exit;
 }
 
-$_SESSION['previous_page'] = $site_root.$_SERVER['REQUEST_URI'];
+$_SESSION['previous_page'] = $config->site_root.$_SERVER['REQUEST_URI'];
 
 ?>

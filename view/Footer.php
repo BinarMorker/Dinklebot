@@ -40,7 +40,7 @@
 	<script src="<?=$config->site_root?>/js/jquery.timeago.<?=$language?>.js"></script>
 	<script src="<?=$config->site_root?>/js/masonry.pkgd.min.js"></script>
 	<script src="<?=$config->site_root?>/js/bootstrap.min.js"></script>
-	<script src="<?=$config->site_root?>/js/mastodon.min.js"></script>
+	<script src="<?=$config->site_root?>/js/dinklebot.min.js"></script>
 
 	<script>
 		$(document).ready(function(){
@@ -86,5 +86,13 @@
 				$("#console-choice").addClass("xb_icon");
 			});
 		});
+		Url = "<?=$config->site_root?>";
+		Data = {};
 	</script>
+
+	<script src="<?=$config->site_root?>/js/three.min.js"></script>
+	<script src="<?=$config->site_root?>/js/gl-matrix-min.js"></script>
+	<script src="<?=$config->site_root?>/js/webglstats.js"></script>
+	<script src="<?=$config->site_root?>/js/bnet.spasm.js"></script>
+	<script src="<?=$config->site_root?>/js/3dpreview.min.js"></script>
 </body>

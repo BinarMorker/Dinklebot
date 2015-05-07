@@ -32,9 +32,6 @@ if (array_key_exists(0, $userId)) {
 
 $url = "https://www.bungie.net/Platform/Destiny/Stats/Account/".$account->membershipType."/".$account->membershipId."/?lc=".$language;
 $globalStats = (new ApiRequest($url))->get_response();
-$url = "https://www.bungie.net/Platform/Destiny/Stats/Definition/?lc=".$language;
-$response = (new ApiRequest($url))->get_response();
-$statDefs = json_decode(json_encode($response), true);
 
 $url = "https://www.bungie.net/platform/destiny/advisors/?definitions=true&lc=".$language;
 $response = (new ApiRequest($url))->get_response();
@@ -65,12 +62,12 @@ $validProgressions = array(
 
 <div class='container' id='<?=$account->membershipId?>'>
 	<div class='row'>
-		<div class='col-lg-12 text-center'>
+		<div class='col-lg-12 text-center' id="destiny-info-id" data="<?=$account->membershipId?>">
 <?php if (!empty($account->clanName)) { ?>
-			<span class='player-label'><?=$membership->displayName." // ".$account->clanName." // ".
+			<span class='player-label'><span id="destiny-info-pl" data="<?=$account->membershipType?>"></span><?=$membership->displayName." // ".$account->clanName." // ".
 				$definitions['items'][(string)$account->inventory->currencies[0]->itemHash]['itemName'].": ".$account->inventory->currencies[0]->value?></span>
 <?php } else { ?>
-			<span class='player-label'><?=$membership->displayName." // ".
+			<span class='player-label'><span id="destiny-info-pl" data="<?=$account->membershipType?>"></span><?=$membership->displayName." // ".
 				$definitions['items'][(string)$account->inventory->currencies[0]->itemHash]['itemName'].": ".$account->inventory->currencies[0]->value?></span>
 <?php } ?>
 			<div><span class='information'><i><?=Language::get($language, "info_refresh")?></i><img src="<?=$config->site_root?>/img/light.png" /> = <?=Language::get($language, "info_completed")?></span></div>
@@ -100,7 +97,7 @@ $validProgressions = array(
 	$response = (new ApiRequest($url))->get_response();
 	$inventory = $response->data;
 	$inventoryDefs = json_decode(json_encode($response->definitions), true); ?>
-		<div id='character-<?=$character->characterBase->characterId?>' class='col-md-4'>
+		<div class='col-md-4'>
 			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=301x59&url=http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
 				<img src='<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=48&url=http://www.bungie.net".$character->emblemPath)?>'/>
 				<h2><?=$definitions['classes'][(string)$character->characterBase->classHash]['className'.$gender]?><br/>
@@ -158,8 +155,14 @@ $validProgressions = array(
 				</ul>
 				<div role="tabpanel" id="overview-<?=$character->characterBase->characterId?>" class="tab-pane overview active">
 					<div class="card-bg"><h1><?=Language::get($language, "menu_overview")?></h1></div>
-					<div class="medalcard">
-						<img class="player-model" src="<?=$config->site_root?>/img/character.png" height="350px"/>
+					<div class="medalcard character-model" data='<?=$character->characterBase->characterId?>'>
+						<div style="max-height:350px;min-height:350px;overflow:hidden">
+							<canvas height="350px" width="281px" style="display:none" id="canvas-<?=$character->characterBase->characterId?>"></canvas>
+							<img id='character-<?=$character->characterBase->characterId?>' class="player-model" src="<?=$config->site_root?>/img/character.png" height="350px"/>
+						</div>
+						<div class="text-center">
+							<a href="#show-character" class="btn btn-dark" id="button-<?=$character->characterBase->characterId?>"><?=Language::get($language, "button_show")?></a>
+						</div>
 						<hr/>
 						<div class="player-overview">
 							<?php
