@@ -7,7 +7,7 @@ $(function() {
         $('.character-model').each(function() {
             var charId = $(this).attr('data');
             Data.CanvasList[charId] = $('#canvas-' + charId).get()[0];
-            Data.SpasmList[charId] = new Spasm.ItemPreview(Data.CanvasList[charId], "/dinklebot/util/ApiProxy.php?s=www.bungie.net&p=");
+            Data.SpasmList[charId] = new Spasm.ItemPreview(Data.CanvasList[charId], Url+"/util/ApiProxy.php?s=www.bungie.net&p=");
             $('#button-' + charId).on('click', function(e) {
                 e.preventDefault();
                 $('#button-' + charId).off('click');
@@ -36,7 +36,7 @@ function fetchGearAssets(itemHashes, callback) {
     if (requestHashes.length > 0) {
         var paths = requestHashes.map(function(item) {
             //return "/dinklebot/util/ApiProxy.php?s=destinytracker.com&p=/destiny/api/manifest/22/" + item + "/";
-            return "/dinklebot/util/ApiProxy.php?s=www.bungie.net&p=/platform/destiny/manifest/gearAsset/" + item + "/";
+            return Url+"/util/ApiProxy.php?s=www.bungie.net&p=/platform/destiny/manifest/gearAsset/" + item + "/";
         });
         getItems(paths, function(responses) {
             for (var i = 0; i < responses.length; i++) {
@@ -80,7 +80,7 @@ function fetchGearDetails(itemHashes, callback) {
     if (requestHashes.length > 0) {
         var req = new XMLHttpRequest();
         //req.open("GET", "/dinklebot/util/ApiProxy.php?s=db.destinytracker.com&p=/api/items/" + requestHashes.join(","), true);
-        req.open("GET", "/dinklebot/util/ApiProxy.php?s=www.bungie.net&p=/Platform/Destiny/Manifest/InventoryItem/&x=" + requestHashes.join(","), true);
+        req.open("GET", Url+"/util/ApiProxy.php?s=www.bungie.net&p=/Platform/Destiny/Manifest/InventoryItem/&x=" + requestHashes.join(","), true);
         console.log(req);
         req.onload = function() {
             var response = JSON.parse(req.response);
@@ -96,7 +96,7 @@ function fetchGearDetails(itemHashes, callback) {
 
 function getShaderDetails(itemHash, callback) {
     var req = new XMLHttpRequest();
-    req.open("GET", "/dinklebot/util/ApiProxy.php?s=www.bungie.net&p=/Platform/Destiny/Manifest/InventoryItem/" + itemHash, true);
+    req.open("GET", Url+"/util/ApiProxy.php?s=www.bungie.net&p=/Platform/Destiny/Manifest/InventoryItem/" + itemHash, true);
     console.log(req);
     req.onload = function() {
         var response = JSON.parse(req.response);
@@ -171,7 +171,7 @@ function updateSpasm(armorIds, gender, shader, callback) {
 
 function fetchAccount(platform, id, callback) {
     var req = new XMLHttpRequest();
-    req.open("GET", "/dinklebot/util/ApiProxy.php?s=www.bungie.net&p=/Platform/Destiny/" + platform + "/Account/" + id, true);
+    req.open("GET", Url+"/util/ApiProxy.php?s=www.bungie.net&p=/Platform/Destiny/" + platform + "/Account/" + id, true);
     req.onload = function() {
         try {
             var response = JSON.parse(req.responseText);
