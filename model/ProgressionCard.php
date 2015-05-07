@@ -17,6 +17,16 @@ class ProgressionCard {
 			$percent = $this->data->level * 20;
 			$count = $this->data->level;
 			$max = 5;
+		} elseif ($this->data->progressionHash == "692939593") {
+			$icon = Cache::base64Convert($GLOBALS['config']->site_root."/img/osiris.png");
+			$percent = $this->data->level;
+			$count = $this->data->level;
+			$max = 9;
+		} elseif ($this->data->progressionHash == "2760041825") {
+			$icon = Cache::base64Convert($GLOBALS['config']->site_root."/img/osiris.png");
+			$percent = $this->data->level;
+			$count = $this->data->level;
+			$max = 3;
 		} elseif ($this->data->progressionHash == "2033897742") {
 			$icon = Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs['3233510749']['icon']);
 			$percent = $this->data->level;

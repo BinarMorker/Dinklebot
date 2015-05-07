@@ -15,6 +15,7 @@ foreach (glob("util/*.php") as $filename) {
 if (!empty($_GET['l'])) {
 	if (Language::exists($_GET['l'])) {
 		$language = $_GET['l'];
+		Language::load($language);
 	} else {
 		$language = Language::best();
 		$url = "";
@@ -125,6 +126,6 @@ if (!empty($_GET['u']) && !empty($_GET['c'])) {
 	exit;
 }
 
-$_SESSION['previous_page'] = $config->site_root.$_SERVER['REQUEST_URI'];
+$_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 
 ?>
