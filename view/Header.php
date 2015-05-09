@@ -60,7 +60,18 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="left-box"><div class="fb-like" data-href="https://www.facebook.com/dinklebotapp" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div></div>
 
-    <div class="header">
+<?php
+  $files = glob('img/header/*.*');
+  if (sizeof($files) > 0) {
+	  $file = array_rand($files);
+	  $image = $files[$file];
+	  $bg = " style='background-image:url(".$config->site_root."/".$image.")'";
+  } else {
+  	$bg = "";
+  }
+?>
+
+    <div class="header"<?=$bg?>>
       <a href="<?=$config->site_root?>">
     		<img src="<?=$config->site_root?>/img/logo_transparent.png" style="height:50%"/>
 				<h1><?=Language::get($language, "site_name")?></h1>

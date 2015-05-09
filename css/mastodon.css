@@ -795,6 +795,7 @@ span.prestige:before {
 
 .progress-card .progress-bar {
     border-right-style: solid;
+    border-right-color: #555
     border-right-width: 30px;
     position: absolute;
     width: 100%;
@@ -812,7 +813,7 @@ span.prestige:before {
     background: #333;
     width: 301px;
     color: #ddd;
-    padding: 0 15px 5px;
+    padding: 0 10px 5px;
 }
 
 .statcard .stat small.stat-text {
