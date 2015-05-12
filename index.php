@@ -12,6 +12,8 @@ foreach (glob("util/*.php") as $filename) {
     include_once $filename;
 }
 
+Language::load("en");
+
 if (!empty($_GET['l'])) {
 	if (Language::exists($_GET['l'])) {
 		$language = $_GET['l'];
