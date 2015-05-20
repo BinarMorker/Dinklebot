@@ -102,12 +102,12 @@ $validProgressions = array(
 	$inventory = $response->data;
 	$inventoryDefs = json_decode(json_encode($response->definitions), true); ?>
 		<div class='col-md-4'>
-			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=301x59&url=http://www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
-				<img src='<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=48&url=http://www.bungie.net".$character->emblemPath)?>'/>
+			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($config->site_root."/image/301x59/0/0/www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
+				<img src='<?=Cache::base64Convert($config->site_root."/image/48/0/0/www.bungie.net".$character->emblemPath)?>'/>
 				<h2><?=$definitions['classes'][(string)$character->characterBase->classHash]['className'.$gender]?><br/>
 				<small><?=$definitions['races'][(string)$character->characterBase->raceHash]['raceName'.$gender]?></small></h2>
 				<h3<?=$prestigeClass?>><?=$character->characterLevel?><br/>
-				<small><img src='<?=Cache::base64Convert($config->site_root."/util/SimpleImage.php?size=11&url=http://www.bungie.net/img/theme/destiny/icons/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
+				<small><img src='<?=Cache::base64Convert($config->site_root."/img/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
 				<div class='progress-bar'>
 					<div<?=$prestigeClass?> style='width:<?=$character->percentToNextLevel?>%'></div>
 				</div>
@@ -369,12 +369,17 @@ $validProgressions = array(
 					<div class="card-bg"><h1><?=Language::get($language, "menu_statistics")?></h1></div>
 					<?php
 					$global = new StatList($charStats->merged->allTime, $statDefs, $language);
-					$url = "http://www.bungie.net/Platform/Destiny/Stats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?lc=".$language;
+					$modelist = "Raid,Patrol,AllPvP,AllStrikes,Story,AllArena";
+					$url = "http://www.bungie.net/Platform/Destiny/Stats/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?modes=".$modelist."&lc=".$language;
 					$response = (new ApiRequest($url))->get_response();
 					$story = new StatList($response->story->allTime, $statDefs, $language);
 					$count = 2;
 					if (property_exists($response->raid, "allTime")) {
 						$raid = new StatList($response->raid->allTime, $statDefs, $language);
+						$count++;
+					}
+					if (property_exists($response->allArena, "allTime")) {
+						$prison = new StatList($response->allArena->allTime, $statDefs, $language);
 						$count++;
 					}
 					if (property_exists($response->patrol, "allTime")) {
@@ -396,6 +401,7 @@ $validProgressions = array(
 						case 4: $countWord = "four"; break;
 						case 5: $countWord = "five"; break;
 						case 6: $countWord = "six"; break;
+						case 7: $countWord = "seven"; break;
 					}
 					?>
 					<ul class="nav nav-tabs img <?=$countWord?>">
@@ -445,6 +451,14 @@ $validProgressions = array(
 								<img src="<?=$config->site_root?>/img/raids.png"/>
 							</a>
 						</li>
+						<?php } if (property_exists($response->allArena, "allTime")) { ?>
+						<li role="prison">
+							<a href="#prison-<?=$character->characterBase->characterId?>" 
+								aria-controls="prison-<?=$character->characterBase->characterId?>" 
+								role="tab" data-toggle="tab">
+								<img src="<?=$config->site_root?>/img/prison.png"/>
+							</a>
+						</li>
 						<?php } ?>
 					</ul>
 					<div role="tabpanel" id="global-<?=$character->characterBase->characterId?>" class="tab-pane statcard active">
@@ -474,6 +488,11 @@ $validProgressions = array(
 					<div role="tabpanel" id="raid-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
 						<h4><?=Language::get($language, "menu_raid")?></h4><hr/>
 						<?=$raid->display()?>
+					</div>
+					<?php } if (property_exists($response->allArena, "allTime")) { ?>
+					<div role="tabpanel" id="prison-<?=$character->characterBase->characterId?>" class="tab-pane statcard">
+						<h4><?=Language::get($language, "menu_prison")?></h4><hr/>
+						<?=$prison->display()?>
 					</div>
 					<?php } ?>
 				</div>

@@ -77,9 +77,12 @@ Options +FollowSymLinks
   RewriteEngine On
   RewriteCond %{SCRIPT_FILENAME} !-d
   RewriteCond %{SCRIPT_FILENAME} !-f
-  RewriteRule ^thankyou(\/([\w]{2}))?(\/)? index.php?t=1&l=$3
-  RewriteRule ^([\w]{2})?(\/)?$ index.php?l=$1
-  RewriteRule ^([\d]+)\/([\w\d\s-]+)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&l=$4&r=$6
-  RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(grimoire)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7
-  RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(collection)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7
+  RewriteRule ^proxy\/([^,]*)$ util/ApiProxy.php?s=$1 [L]
+  RewriteRule ^proxy\/([^,]*)\/([,\d]+)$ util/ApiProxy.php?s=$1&x=$2 [L]
+  RewriteRule ^image\/([x\d]+)\/([x\d]+)\/([,\d]+)\/(.*)$ util/SimpleImage.php?size=$1&crop=$2&pos=$3&url=$4 [L]
+  RewriteRule ^thankyou(\/([\w]{2}))?(\/)? index.php?t=1&l=$3 [L]
+  RewriteRule ^([\w]{2})?(\/)?$ index.php?l=$1 [L]
+  RewriteRule ^([\d]+)\/([\w\d\s-]+)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&l=$4&r=$6 [L]
+  RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(grimoire)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7 [L]
+  RewriteRule ^([\d]+)\/([\w\d\s-]+)\/(collection)(\/([\w]{2}))?(\/(refresh))?\/?$ index.php?c=$1&u=$2&o=$3&l=$5&r=$7 [L]
 </IfModule>

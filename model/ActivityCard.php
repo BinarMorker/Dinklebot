@@ -18,7 +18,7 @@ class ActivityCard {
 		?>
 		<div class="item subclass activity-popup" id="activity-<?=$hash?>">
 			<div class="item-data">
-				<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->defs['activities'][(string)$hash]['icon'], false)?>" />
+				<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$this->defs['activities'][(string)$hash]['icon'], false)?>" />
 				<div class="activity-name"><span><?=$this->defs['activities'][(string)$hash]['activityName']?></span></div>
 				<?php if ($displayLevel) { ?><small class="dark"><?=$this->defs['activities'][(string)$hash]['activityLevel']?></small><?php } ?>
 				<small class="type" style="display: none;"><?=$this->defs['destinations'][(string)$destination]['destinationName']?></small>
@@ -32,7 +32,7 @@ class ActivityCard {
 			<?php } ?>
 			<?php foreach($this->defs['activities'][(string)$hash]['skulls'] as $skull) { ?>
 			<div class="perk row">
-				<img class="col-xs-2" src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$skull['icon'])?>"/>
+				<img class="col-xs-2" src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$skull['icon'])?>"/>
 				<div class="col-xs-10">
 					<span><?=$skull['displayName']?></span><br/>
 					<small><?=$skull['description']?></small>
@@ -48,7 +48,7 @@ class ActivityCard {
 					array_push($rew, $reward['rewardItems'][0]['itemHash']);
 					$item = $this->defs['items'][(string)$reward['rewardItems'][0]['itemHash']]; ?>
 					<div class="reward">
-						<img src="<?=Cache::base64Convert("http://www.bungie.net".$item['icon'])?>"/>
+						<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$item['icon'])?>"/>
 						<small><?=$item['itemName']?></small>
 						<?php if ($reward['rewardItems'][0]['value'] != 0) { ?><small> x <?=$reward['rewardItems'][0]['value']?></small><?php } ?>
 					</div>

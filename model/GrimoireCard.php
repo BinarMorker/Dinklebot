@@ -28,7 +28,7 @@ class GrimoireCard {
 			<div class="grimoire-info grimoire-popup tier-<?=$tier?>">
 				<?php
 					$path = $this->defs['normalResolution']['smallImage'];
-					$params = "/util/SimpleImage.php?pos=".$path['rect']['x'].",".$path['rect']['y']."&crop=".$path['rect']['width']."x".$path['rect']['height']."&size=".$path['rect']['width']."&url=http://www.bungie.net";
+					$params = "/image/".$path['rect']['width']."/".$path['rect']['width']."x".$path['rect']['height']."/".$path['rect']['x'].",".$path['rect']['y']."&url=www.bungie.net";
 					$image = $params . $path['sheetPath'];
 				?>
 				<img src="<?=$GLOBALS['config']->site_root.$image?>" />

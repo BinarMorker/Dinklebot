@@ -28,18 +28,18 @@ class ApiProxy extends ApiRequest {
 
 }
 
-if (isset($_GET['s']) && isset($_GET['p'])) {
+if (isset($_GET['s'])) {
 	if (isset($_GET['x'])) {
 		header('Content-Type: application/json');
 		$items = explode(',', $_GET['x']);
 		$responses = array();
 		foreach ($items as $item) {
-			$proxy = new ApiProxy($_GET['s'].$_GET['p'].$item);
+			$proxy = new ApiProxy($_GET['s']."/".$item);
 			array_push($responses, json_decode($proxy->get_response()));
 		}
 		echo json_encode($responses);
 	} else {
-		$proxy = new ApiProxy($_GET['s'].$_GET['p']);
+		$proxy = new ApiProxy($_GET['s']);
 		header('Content-Type: application/json');
 		echo $proxy->get_response();
 	}

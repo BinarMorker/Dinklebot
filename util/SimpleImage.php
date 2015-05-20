@@ -1,9 +1,10 @@
 <?php
 	if (isset($_GET['url'])) {
+      $url = "https://" . $_GET['url'];
 		header('Content-Type: image/png');
 		$image = new SimpleImage();
-		$image->load($_GET['url']);
-      if (isset($_GET['pos'])) {
+		$image->load($url);
+      if (isset($_GET['pos']) && ($_GET['pos'] != 0)) {
          $pos = explode(',', $_GET['pos']);
          if (count($pos) == 2) {
             $x = $pos[0];
@@ -17,7 +18,7 @@
          }
          $image->position($x, $y);
       }
-      if (isset($_GET['crop'])) {
+      if (isset($_GET['crop']) && ($_GET['crop'] != 0)) {
          $crop = explode('x', $_GET['crop']);
          if (count($crop) == 2) {
             $cropWidth = $crop[0];
@@ -31,7 +32,7 @@
          }
          $image->crop($cropWidth, $cropHeight);
       }
-      if (isset($_GET['size'])) {
+      if (isset($_GET['size']) && ($_GET['size'] != 0)) {
          $size = explode('x', $_GET['size']);
          if (count($size) == 2) {
             $width = $size[0];

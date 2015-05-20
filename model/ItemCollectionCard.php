@@ -104,7 +104,7 @@ class ItemCollectionCard extends ItemCard {
 					$hash = $stat['statHash'];
 					if (in_array($hash, $stats)) { ?>
 					<div class="stat" id="<?=(string)$this->info['itemHash']."-".(string)$hash?>">
-						<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=20&url=http://www.bungie.net".$this->defs['stats'][(string)$hash]['icon'])?>"/>
+						<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/20/0/0/www.bungie.net".$this->defs['stats'][(string)$hash]['icon'])?>"/>
 						<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
 						<small class="stat-text"><?=$stat['value']?></small>
 					</div>
@@ -152,8 +152,8 @@ class ItemCollectionCard extends ItemCard {
 		$shaderClass = ($shader && (string)$this->info['itemHash'] !== "4248210736") ? " shader" : "";
 ?>
 <div id="<?=(string)$this->info['itemHash']?>" class="item tier-<?=$tier?> card-popup collection-popup">
-	<div class="item-data<?=$shaderClass?>" <?=$emblem?"style=\"background-image:url('".Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=271x50&url=http://www.bungie.net".$this->info['secondaryIcon'])."');background-size:cover;background-repeat:no-repeat;background-position:top left\"":""?>>
-		<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$this->info['icon'], $shader)?>" />
+	<div class="item-data<?=$shaderClass?>" <?=$emblem?"style=\"background-image:url('".Cache::base64Convert($GLOBALS['config']->site_root."/271x50/0/0/www.bungie.net".$this->info['secondaryIcon'])."');background-size:cover;background-repeat:no-repeat;background-position:top left\"":""?>>
+		<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$this->info['icon'], $shader)?>" />
 		<div class="item-name"><span><?=$this->info['itemName']?></span></div>
 		<small class="dark"><?=$this->info['tierTypeName']?></small>
 		<small class="type" style="display: none;"><?=$this->info['itemTypeName']?></small>
@@ -177,7 +177,7 @@ class ItemCollectionCard extends ItemCard {
 	<?php foreach($this->nodes as $perk) { 
 		if (array_key_exists(0, $perk->steps[0]->perkHashes) && array_key_exists((string)$perk->steps[0]->perkHashes[0], $this->defs['perks']) && @$this->defs['perks'][(string)$perk->steps[0]->perkHashes[0]]['isDisplayable']) { ?>
 	<div class="perk row" id="<?=(string)$this->info['itemHash']."-".(string)$perk->steps[0]->perkHashes[0]?>">
-		<img class="col-xs-2" src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/util/SimpleImage.php?size=50&url=http://www.bungie.net".$perk->steps[0]->icon)?>"/>
+		<img class="col-xs-2" src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$perk->steps[0]->icon)?>"/>
 		<div class="col-xs-10">
 			<span><?=$perk->steps[0]->nodeStepName?></span><br/>
 			<small><?=$perk->steps[0]->nodeStepDescription?></small>

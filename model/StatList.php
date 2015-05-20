@@ -13,6 +13,7 @@ class StatList {
 		"kills",
 		"averageKillDistance",
 		"secondsPlayed",
+		"remainingTimeAfterQuitSeconds",
 		"deaths",
 		"averageLifespan",
 		"averageScorePerKill",
@@ -36,6 +37,7 @@ class StatList {
 		"weaponKillsScoutRifle",
 		"weaponKillsShotgun",
 		"weaponKillsSniper",
+		"weaponKillsSideArm",
 		"weaponBestType",
 		"winLossRatio",
 		"defensiveKills",
@@ -51,9 +53,11 @@ class StatList {
 		"zonesCaptured",
 		"zonesNeutralized",
 		"combatRating",
+		"score",
 	);
 
 	private $data = array();
+	private $invalid = array();
 	private $defs;
 	private $lang;
 
@@ -61,6 +65,8 @@ class StatList {
 		foreach($data as $id => $stat) {
 			if (in_array($id, $this->validStats)) {
 				$this->data[$id] = $stat;
+			} else {
+				$this->invalid[$id] = $stat;
 			}
 		}
 		$this->defs = $defs;
@@ -80,6 +86,13 @@ class StatList {
 				<span class='value'><?=$stat->basic->displayValue?></span>
 			</div>
 		<?php } ?>
+		<?php /* foreach($this->invalid as $id => $stat) { ?>
+			<div class="inner">
+				<div class='filler'></div>
+				<span class='name'>[HIDDEN] <?=$this->defs[$id]['statName']?> [<?=$id?>]</span>
+				<span class='value'><?=$stat->basic->displayValue?></span>
+			</div>
+		<?php } */ ?>
 		</div>
 	<?php }
 
