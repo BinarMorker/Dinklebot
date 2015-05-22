@@ -83,7 +83,7 @@ class ItemCard {
 					$hash = $stat->statHash;
 					if (in_array($hash, $stats)) { ?>
 					<div class="stat" id="<?=(string)$this->data->itemHash."-".(string)$hash?>">
-						<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/20/0/0/www.bungie.net".$this->defs['stats'][(string)$hash]['icon'])?>"/>
+						<img src="http://www.bungie.net<?=$this->defs['stats'][(string)$hash]['icon']?>"/>
 						<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
 						<small class="stat-text"><?=$stat->value?></small>
 					</div>
@@ -131,8 +131,9 @@ class ItemCard {
 		$shaderClass = ($shader && (string)$this->data->itemHash !== "4248210736") ? " shader" : "";
 ?>
 <div id="<?=(string)$this->data->itemHash."-".(string)$this->data->itemInstanceId?>" class="item tier-<?=$tier?> card-popup">
-	<div class="item-data<?=$shaderClass?>" <?=$emblem?"style=\"background-image:url('".Cache::base64Convert($GLOBALS['config']->site_root."/image/271x50/0/0/www.bungie.net".$this->info['secondaryIcon'])."');background-size:cover;background-repeat:no-repeat;background-position:top left\"":""?>>
-		<img src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$this->info['icon'], $shader)?>" />
+	<div class="item-data<?=$shaderClass?>" <?=$emblem?"style=\"background-image:url(http://www.bungie.net".$this->info['secondaryIcon'].");background-size:cover;background-repeat:no-repeat;background-position:top left\"":""?>>
+		<?php $url = $shader ? $GLOBALS['config']->site_root."/image/50/0/0/" : "http://"; ?>
+		<img src="<?=$url?>www.bungie.net<?=$this->info['icon']?>" />
 		<div class="item-name"><span><?=$this->info['itemName']?></span></div>
 		<small class="dark"><?=$this->info['tierTypeName']?></small>
 		<small class="type" style="display: none;"><?=$this->info['itemTypeName']?></small>
@@ -162,7 +163,7 @@ class ItemCard {
 	<?php foreach($this->data->perks as $index => $perk) { 
 		$perk_enabled = $perk->isActive ? "" : " style=\"opacity: 0.2;\""; ?>
 	<div class="perk row" <?=$perk_enabled?>id="<?=(string)$this->data->itemHash."-".(string)$perk->perkHash?>">
-		<img class="col-xs-2" src="<?=Cache::base64Convert($GLOBALS['config']->site_root."/image/50/0/0/www.bungie.net".$perk->iconPath)?>"/>
+		<img class="col-xs-2" src="http://www.bungie.net<?=$perk->iconPath?>"/>
 		<div class="col-xs-10">
 			<span><?=$this->defs['perks'][(string)$perk->perkHash]['displayName']?></span><br/>
 			<small><?=$this->defs['perks'][(string)$perk->perkHash]['displayDescription']?></small>

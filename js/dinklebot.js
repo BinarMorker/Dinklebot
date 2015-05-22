@@ -14,6 +14,7 @@ $(document).ready(function(){
 		var img = $(this).children('img')[0];
 		context.drawImage(img, 0, 0);
 		var p = context.getImageData(0, 0, 1, 1).data;
+        console.log(p);
 		$(this).css("background-color", "rgb("+p[0]+","+p[1]+","+p[2]+")");
 	});
     var grimoire = new Masonry('#grimoire', {

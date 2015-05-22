@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="<?=$language?>">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# mastodonparking: http://ogp.me/ns/fb/mastodonparking#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# dinklebotapp: http://ogp.me/ns/fb/dinklebotapp#">
 	<meta charset="utf-16">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

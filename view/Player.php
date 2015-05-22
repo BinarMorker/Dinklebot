@@ -102,12 +102,12 @@ $validProgressions = array(
 	$inventory = $response->data;
 	$inventoryDefs = json_decode(json_encode($response->definitions), true); ?>
 		<div class='col-md-4'>
-			<div class='character-label equip' style='background:url(<?=Cache::base64Convert($config->site_root."/image/301x59/0/0/www.bungie.net".$character->backgroundPath)?>);background-size:cover;background-repeat:no-repeat'>
-				<img src='<?=Cache::base64Convert($config->site_root."/image/48/0/0/www.bungie.net".$character->emblemPath)?>'/>
+			<div class='character-label equip' style='background:url(http://www.bungie.net<?=$character->backgroundPath?>);background-size:cover;background-repeat:no-repeat'>
+				<img src='http://www.bungie.net<?=$character->emblemPath?>'/>
 				<h2><?=$definitions['classes'][(string)$character->characterBase->classHash]['className'.$gender]?><br/>
 				<small><?=$definitions['races'][(string)$character->characterBase->raceHash]['raceName'.$gender]?></small></h2>
 				<h3<?=$prestigeClass?>><?=$character->characterLevel?><br/>
-				<small><img src='<?=Cache::base64Convert($config->site_root."/img/icon_grimoire_lightgray.png")?>'><?=$account->grimoireScore?></small></h3>
+				<small><img src='<?=$config->site_root?>/img/icon_grimoire_lightgray.png'><?=$account->grimoireScore?></small></h3>
 				<div class='progress-bar'>
 					<div<?=$prestigeClass?> style='width:<?=$character->percentToNextLevel?>%'></div>
 				</div>

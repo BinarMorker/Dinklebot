@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="<?=$language?>">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# mastodonparking: http://ogp.me/ns/fb/mastodonparking#">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# dinklebotapp: http://ogp.me/ns/fb/dinklebotapp#">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,8 @@
 	<?php if (!empty($membership)) { ?>
 	<meta property="og:title" content="<?=$membership->displayName?>"/>
 	<meta property="og:url" content="http://<?=$config->site_root.$_SERVER['REQUEST_URI']?>"/>
-	<meta property="og:image" content="<?=$config->site_root?>/util/SimpleImage.php?size=100&url=http://www.bungie.net<?=$account->characters[0]->emblemPath?>"/>
-	<meta property="og:type"   content="mastodonparking:player" /> 
+	<meta property="og:image" content="<?=$config->site_root."/image/200/0/0".$account->characters[0]->emblemPath?>"/>
+	<meta property="og:type"   content="dinklebotapp:player" /> 
 	<meta property="og:description" content="<?php
 		foreach ($account->characters as $key => $character) {
 			$gender = $character->characterBase->genderType ? "Female" : "Male";
