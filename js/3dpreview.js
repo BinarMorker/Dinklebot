@@ -3,12 +3,12 @@ $(function() {
     Data.Platform = $("#destiny-info-pl").attr("data");
     Data.CanvasList = [];
     Data.SpasmList = [];
-    fetchAccount(Data.Platform, Data.AccountId, function(complete) {
-        $('.character-model').each(function() {
-            var charId = $(this).attr('data');
-            Data.CanvasList[charId] = $('#canvas-' + charId).get()[0];
-            Data.SpasmList[charId] = new Spasm.ItemPreview(Data.CanvasList[charId], Url+"/proxy/www.bungie.net");
-            $('#button-' + charId).on('click', function(e) {
+    $('.character-model').each(function() {
+        var charId = $(this).attr('data');
+        Data.CanvasList[charId] = $('#canvas-' + charId).get()[0];
+        $('#button-' + charId).on('click', function(e) {
+            fetchAccount(Data.Platform, Data.AccountId, function(complete) {
+                Data.SpasmList[charId] = new Spasm.ItemPreview(Data.CanvasList[charId], Url+"/proxy/www.bungie.net");
                 e.preventDefault();
                 $('#button-' + charId).off('click');
                 var text = $('#button-' + charId).text();
@@ -116,8 +116,8 @@ function getGearDetails(itemHashes) {
 
 function loadCharacter(characterId, callback) {
     var character = getCharacter(characterId);
-    Data.Spasm = Data.SpasmList[characterId];
-    Data.Canvas = Data.CanvasList[characterId];
+    //Data.Spasm = Data.SpasmList[characterId];
+    //Data.Canvas = Data.CanvasList[characterId];
     var equippedItemHashes = character.characterBase.peerView.equipment.map(function(item) {
         return item.itemHash;
     });
@@ -133,20 +133,20 @@ function loadCharacter(characterId, callback) {
             var shaderHash = getEquippedShaderHash(equippedItemHashes);
             getShaderDetails(shaderHash, function(completed) {
                 var shaderDefinition = Data.Shader;
-                Data.Canvas.setAttribute("data-character", characterId);
-                Data.Canvas.setAttribute("data-shader", shaderHash);
-                updateSpasm(armorIds, character.characterBase.genderType, shaderDefinition, callback);
+                Data.CanvasList[characterId].setAttribute("data-character", characterId);
+                Data.CanvasList[characterId].setAttribute("data-shader", shaderHash);
+                updateSpasm(characterId, armorIds, character.characterBase.genderType, shaderDefinition, callback);
             });
         });
     });
 }
 
-function setGender(gender) {
-    Data.Canvas.setAttribute("data-gender", gender.toString());
-    updateSpasm(Data.Spasm.itemReferenceIds, gender, Data.Spasm.shaderItemDefinition, null);
+function setGender(characterId, gender) {
+    Data.CanvasList[characterId].setAttribute("data-gender", gender.toString());
+    updateSpasm(characterId, Data.SpasmList[characterId].itemReferenceIds, gender, Data.SpasmList[characterId].shaderItemDefinition, null);
 }
 
-function setShader(shaderHash) {
+function setShader(characterId, shaderHash) {
     Data.Canvas.setAttribute("data-shader", shaderHash);
     fetchGearAssets([shaderHash], function(completed) {
         getShaderDetails([shaderHash], function(completed) {
@@ -155,21 +155,24 @@ function setShader(shaderHash) {
     });
 }
 
-function updateSpasm(armorIds, gender, shader, callback) {
-    Data.Spasm.setGenderType(gender);
+function updateSpasm(characterId, armorIds, gender, shader, callback) {
+    Data.SpasmList[characterId].setGenderType(gender);
     try {
-        Data.Spasm.setItemReferenceIds(armorIds, null, shader, Data.GearAssets, function(a) {
+        Data.SpasmList[characterId].setItemReferenceIds(armorIds, null, shader, Data.GearAssets, function(a) {
             if (callback != null)
                 callback(a);
         });
     } catch (error) {
     }
-    Data.Spasm.setFocusedItemReferenceId(null);
-    Data.Spasm.startAnimating();
-    console.log(Data.Spasm);
+    Data.SpasmList[characterId].setFocusedItemReferenceId(null);
+    Data.SpasmList[characterId].startAnimating();
+    console.log(Data.SpasmList[characterId]);
 }
 
 function fetchAccount(platform, id, callback) {
+    if (Data.Characters != undefined) {
+        callback(true);
+    }
     var req = new XMLHttpRequest();
     req.open("GET", Url+"/proxy/www.bungie.net/Platform/Destiny/" + platform + "/Account/" + id, true);
     req.onload = function() {
