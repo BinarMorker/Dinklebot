@@ -19,12 +19,12 @@ class ProgressionCard {
 			$max = 5;
 		} elseif ($this->data->progressionHash == "692939593") {
 			$icon = $GLOBALS['config']->site_root."/img/osiris.png";
-			$percent = $this->data->level;
+			$percent = ($this->data->level / 9) * 100;
 			$count = $this->data->level;
 			$max = 9;
 		} elseif ($this->data->progressionHash == "2760041825") {
 			$icon = $GLOBALS['config']->site_root."/img/osiris.png";
-			$percent = $this->data->level;
+			$percent = ($this->data->level / 3) * 100;
 			$count = $this->data->level;
 			$max = 3;
 		} elseif ($this->data->progressionHash == "2033897742") {
