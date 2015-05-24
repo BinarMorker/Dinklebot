@@ -11,7 +11,7 @@
 	<?php if (!empty($membership)) { ?>
 	<meta property="og:title" content="<?=$membership->displayName?>"/>
 	<meta property="og:url" content="http://<?=$config->site_root.$_SERVER['REQUEST_URI']?>"/>
-	<meta property="og:image" content="<?=$config->site_root."/image/200/0/0".$account->characters[0]->emblemPath?>"/>
+	<meta property="og:image" content="<?=$config->site_root."/image/200/0/0/www.bungie.net".$account->characters[0]->emblemPath?>"/>
 	<meta property="og:type"   content="dinklebotapp:player" /> 
 	<meta property="og:description" content="<?php
 		foreach ($account->characters as $key => $character) {
