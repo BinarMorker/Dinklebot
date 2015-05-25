@@ -23,7 +23,7 @@ class TimedActivityCard extends ActivityCard {
 			foreach ($this->data->activities as $activity) {
 				if ((string)$activity->activityDetails->referenceId == (string)$this->hash 
 					&& $activity->values->completed->basic->value == 1 
-					&& $activity->values->completionReason->basic->value == 0) {
+					&& $activity->values->completionReason->basic->value != 1) {
 					if (date($time) < date(strtotime($activity->period)) && date(strtotime($activity->period)) < $date) {
 						$this->time = $activity->period;
 						$this->completed = true;

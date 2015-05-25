@@ -282,7 +282,7 @@ $validProgressions = array(
 						}
 						$card->display();
 					}
-					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Nightfall&count=3&lc=".$language;
+					$url = "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/".$account->membershipType."/".$account->membershipId."/".$character->characterBase->characterId."/?mode=Nightfall&count=5&lc=".$language;
 					$activities = (new ApiRequest($url))->get_response()->data;
 					$hash = (string)$advisors->nightfallActivityHash;
 					$card = new TimedActivityCard($hash, $advisorsDefs, $activities, $advisors->nightfallResetDate, "1 week", $advisorsDefs['activities'][(string)$hash], $language);

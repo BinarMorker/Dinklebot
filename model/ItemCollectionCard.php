@@ -3,14 +3,14 @@
 class ItemCollectionCard extends ItemCard {
 
 	private $normalizedValue = array(
-		"attack" => 331,
+		"attack" => 365,
 		"defense" => array(
-			"helmet" => 447,
-			"gauntlets" => 366,
-			"chest" => 488,
-			"legs" => 325,
+			"helmet" => 491,
+			"gauntlets" => 402,
+			"chest" => 536,
+			"legs" => 357,
 		),
-		"light" => 36,
+		"light" => 42,
 );
 
 	private $has;
