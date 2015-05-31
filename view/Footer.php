@@ -1,5 +1,15 @@
 	</div>
 	<div id="footer">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Dinklebot -->
+		<ins class="adsbygoogle"
+		     style="display:block"
+		     data-ad-client="ca-pub-6332373031553935"
+		     data-ad-slot="7124654099"
+		     data-ad-format="auto"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
 		<span><?=Language::get($language, "site_footer_contact")?></span><br/>
 		<span><?=Language::get($language, "site_name")?> <?=Language::get($language, "site_footer_mention")?></span><br/>
 		<span><a href="http://kitaiweb.ca">KitaiWeb (François Allard)</a> &copy; <?=date('Y', time())?></span>
