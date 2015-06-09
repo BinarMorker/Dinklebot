@@ -1,4 +1,4 @@
-$(document).load(function(){
+$(document).on('load', function(){
 	$('.shader').each(function(){
 		var canvas = document.getElementById('canvas');
 		var context = canvas.getContext('2d');
