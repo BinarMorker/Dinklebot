@@ -795,7 +795,7 @@ span.prestige:before {
 
 .progress-card .progress-bar {
     border-right-style: solid;
-    border-right-color: #555
+    border-right-color: #555;
     border-right-width: 30px;
     position: absolute;
     width: 100%;

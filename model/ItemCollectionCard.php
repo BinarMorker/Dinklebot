@@ -52,9 +52,9 @@ class ItemCollectionCard extends ItemCard {
 		<hr/>
 		<?php $count = 0;
 		foreach($this->info['stats'] as $hash => $stat) { 
-			if ($hash != "368428387" && $hash != "3555269338" && $hash != "3871231066" &&
-				$hash != "1931675084" && $hash != "943549884" && $hash != "1345609583" &&
-				$hash != "2715839340" && $count < 5) { ?>
+			if ($hash != "368428387" /*&& $hash != "3555269338"*/ && $hash != "3871231066" &&
+				$hash != "1931675084" /*&& $hash != "943549884" && $hash != "1345609583"*/ &&
+				$hash != "2715839340" /*&& $count < 5*/) { ?>
 		<div class="stat" id="<?=(string)$this->info['itemHash']."-".(string)$hash?>">
 			<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
 			<div class="stat-bar">

@@ -1,49 +1,59 @@
 <?php
 
-$database = DatabaseRequest::init($config->db_host, $config->database, $config->db_user, $config->db_pass);
-$query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
-$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
-$request->send();
+try {
+	$database = DatabaseRequest::init($config->db_host, $config->database, $config->db_user, $config->db_pass);
+	$query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
+	$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
+	$request->send();
 
-$query = "SELECT id FROM users WHERE console = ? AND membership_id = ?;";
-$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
-$request->receive();
-$userId = $request->get_result();
-
-if (array_key_exists(0, $userId)) {
-	$query = "SELECT id, hash FROM items WHERE hidden = 0";
-	$request = new DatabaseRequest($database, $query, null);
+	$query = "SELECT id FROM users WHERE console = ? AND membership_id = ?;";
+	$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
 	$request->receive();
-	$itemList = $request->get_result();
-	$total = $request->get_count();
+	$userId = $request->get_result();
 
-	if ($account->membershipId == 1) {
-		foreach($itemList as $key => $item) {
-			if (ItemTypes::get((string)$item['itemHash'], "playstation")) {
-				unset($itemList[$key]);
-				$total--;
-			}
-		}
-	}
+	if (array_key_exists(0, $userId)) {
+		$query = "SELECT id, hash FROM items WHERE hidden = 0";
+		$request = new DatabaseRequest($database, $query, null);
+		$request->receive();
+		$itemList = $request->get_result();
+		$total = $request->get_count();
 
-	foreach ($account->characters as $character) {
-		foreach ($character->characterBase->peerView->equipment as $item) {
-			foreach ($itemList as $possibleItem) {
-				if ((string)$item->itemHash == (string)$possibleItem['hash']) {
-					$query = "INSERT IGNORE INTO users_items (`user_id`, `item_id`) VALUES (?, ?);";
-					$request = new DatabaseRequest($database, $query, array($userId[0]['id'], $possibleItem['id']));
-					$request->send();
-					break;
+		if ($account->membershipId == 1) {
+			foreach($itemList as $key => $item) {
+				if (ItemTypes::get((string)$item['itemHash'], "playstation")) {
+					unset($itemList[$key]);
+					$total--;
 				}
 			}
 		}
-	}
 
-	$query = "SELECT item_id FROM users_items WHERE user_id = ?;";
-	$request = new DatabaseRequest($database, $query, array($userId[0]['id']));
-	$request->receive();
-	$itemList = $request->get_result();
-	$count = $request->get_count();
+		foreach ($account->characters as $character) {
+			foreach ($character->characterBase->peerView->equipment as $item) {
+				foreach ($itemList as $possibleItem) {
+					if ((string)$item->itemHash == (string)$possibleItem['hash']) {
+						$query = "INSERT IGNORE INTO users_items (`user_id`, `item_id`) VALUES (?, ?);";
+						$request = new DatabaseRequest($database, $query, array($userId[0]['id'], $possibleItem['id']));
+						$request->send();
+						break;
+					}
+				}
+			}
+		}
+
+		$query = "SELECT item_id FROM users_items WHERE user_id = ?;";
+		$request = new DatabaseRequest($database, $query, array($userId[0]['id']));
+		$request->receive();
+		$itemList = $request->get_result();
+		$count = $request->get_count();
+	}
+}
+catch (Exception $e) {
+	echo "<!-- Could not save items in the database -->";
+	echo "<!-- Could not load items from the database -->";
+	$userId = array();
+	$itemList = array();
+	$count = 0;
+	$total = 0;
 }
 
 ?>

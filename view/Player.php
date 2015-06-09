@@ -1,33 +1,38 @@
 <?php
 
-$database = DatabaseRequest::init($config->db_host, $config->database, $config->db_user, $config->db_pass);
-$query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
-$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
-$request->send();
+try {
+	$database = DatabaseRequest::init($config->db_host, $config->database, $config->db_user, $config->db_pass);
+	$query = "INSERT IGNORE INTO users (`console`, `membership_id`) VALUES (?, ?);";
+	$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
+	$request->send();
 
-$query = "SELECT id FROM users WHERE console = ? AND membership_id = ?;";
-$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
-$request->receive();
-$userId = $request->get_result();
-
-if (array_key_exists(0, $userId)) {
-	$query = "SELECT id, hash FROM items";
-	$request = new DatabaseRequest($database, $query, null);
+	$query = "SELECT id FROM users WHERE console = ? AND membership_id = ?;";
+	$request = new DatabaseRequest($database, $query, array((int)$account->membershipType, (string)$account->membershipId));
 	$request->receive();
-	$itemList = $request->get_result();
+	$userId = $request->get_result();
 
-	foreach ($account->characters as $character) {
-		foreach ($character->characterBase->peerView->equipment as $item) {
-			foreach ($itemList as $possibleItem) {
-				if ((string)$item->itemHash == (string)$possibleItem['hash']) {
-					$query = "INSERT IGNORE INTO users_items (`user_id`, `item_id`) VALUES (?, ?);";
-					$request = new DatabaseRequest($database, $query, array($userId[0]['id'], $possibleItem['id']));
-					$request->send();
-					break;
+	if (array_key_exists(0, $userId)) {
+		$query = "SELECT id, hash FROM items";
+		$request = new DatabaseRequest($database, $query, null);
+		$request->receive();
+		$itemList = $request->get_result();
+
+		foreach ($account->characters as $character) {
+			foreach ($character->characterBase->peerView->equipment as $item) {
+				foreach ($itemList as $possibleItem) {
+					if ((string)$item->itemHash == (string)$possibleItem['hash']) {
+						$query = "INSERT IGNORE INTO users_items (`user_id`, `item_id`) VALUES (?, ?);";
+						$request = new DatabaseRequest($database, $query, array($userId[0]['id'], $possibleItem['id']));
+						$request->send();
+						break;
+					}
 				}
 			}
 		}
 	}
+}
+catch (Exception $e) {
+	echo "<!-- Could not save items in the database -->";
 }
 
 $url = "https://www.bungie.net/Platform/Destiny/Stats/Account/".$account->membershipType."/".$account->membershipId."/?lc=".$language;

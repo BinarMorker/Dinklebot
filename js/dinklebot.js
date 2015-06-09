@@ -1,3 +1,14 @@
+$(document).load(function(){
+	$('.shader').each(function(){
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		var img = $(this).children('img')[0];
+		context.drawImage(img, 0, 0);
+		var p = context.getImageData(0, 0, 1, 1).data;
+        console.log(p);
+		$(this).css("background-color", "rgb("+p[0]+","+p[1]+","+p[2]+")");
+	});
+});
 $(document).ready(function(){
 	$(".character-label").click(function(){
 		$(this).next(".character-content").animate({
@@ -8,15 +19,6 @@ $(document).ready(function(){
 	$('.progress-name').textfill({maxFontPixels:15,explicitWidth:200,explicitHeight:30});
     $('.activity-name').textfill({maxFontPixels:15,explicitWidth:200,explicitHeight:30});
     $('.grimoire-name').textfill({maxFontPixels:18});
-	$('.shader').each(function(){
-		var canvas = document.getElementById('canvas');
-		var context = canvas.getContext('2d');
-		var img = $(this).children('img')[0];
-		context.drawImage(img, 0, 0);
-		var p = context.getImageData(0, 0, 1, 1).data;
-        console.log(p);
-		$(this).css("background-color", "rgb("+p[0]+","+p[1]+","+p[2]+")");
-	});
     var grimoire = new Masonry('#grimoire', {
       itemSelector: '.grimoire'
     });

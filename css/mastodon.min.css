@@ -45,7 +45,7 @@ h3.prestige,span.prestige{color:#f5dc56}h3.prestige:before,span.prestige:before{
 .progress-data small.more{display:block;margin-left:30px;margin-top:-2px;float:left;padding-left:10px;position:absolute}.progress-card .progress-info{display:table-cell;line-height:1;vertical-align:middle;width:100%;text-align:left;font-size:15px;overflow:hidden;height:30px}
 .progress-info .progress-name{display:table-cell;padding-left:10px;position:absolute;top:0;height:30px;vertical-align:middle;line-height:1}.progress-name span{vertical-align:middle;line-height:1;height:30px;display:table-cell}
 .level{text-align:center;float:right;display:inline-block;width:30px;height:30px}.level h3{margin:auto;vertical-align:middle;line-height:1.5;font-size:18px}
-.progress-card .progress-bar{border-right-style:solid;border-right-color:#555 border-right-width:30px;position:absolute;width:100%;top:0;background:#111;float:none}
+.progress-card .progress-bar{border-right-style:solid;border-right-color:#555;border-right-width:30px;position:absolute;width:100%;top:0;background:#111;float:none}
 .progress-card .progress-bar>div{height:100%;background:#555}.statcard{background:#333;width:301px;color:#ddd;padding:0 10px 5px}.statcard .stat small.stat-text{width:33%;margin-left:0}
 .statcard .outer{width:100%;display:inline-block;*display:inline;zoom:1;position:relative;clip:auto;overflow:hidden}.statcard .inner{position:relative;text-align:right;white-space:nowrap}
 .statcard .filler{position:absolute;left:0;right:0;border-bottom:1px dotted #aaa;height:60%}.statcard .name{background:#333;float:left;padding-right:4px;position:relative}

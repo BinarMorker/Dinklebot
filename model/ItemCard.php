@@ -35,10 +35,10 @@ class ItemCard {
 		<hr/>
 		<?php $count = 0;
 		foreach($this->info['stats'] as $hash => $stat) { 
-			if ($hash != "368428387" && $hash != "3555269338" && $hash != "3871231066" &&
-				$hash != "1931675084" && $hash != "943549884" && $hash != "1345609583" &&
-				$hash != "2715839340" && $count < 5) { 
-				$maximum = $stat['maximum'] > 0 ? $stat['maximum'] : $stat['value']; ?>
+			if ($hash != "368428387" /*&& $hash != "3555269338"*/ && $hash != "3871231066" &&
+				$hash != "1931675084" /*&& $hash != "943549884" && $hash != "1345609583"*/ &&
+				$hash != "2715839340" /*&& $count < 5*/) {
+				$maximum = $stat['maximum'] > 0 ? ($stat['maximum'] < 100 ? $stat['maximum'] : 100) : $stat['value']; ?>
 		<div class="stat" id="<?=(string)$this->data->itemHash."-".(string)$hash?>">
 			<span><?=$this->defs['stats'][(string)$hash]['statName']?></span>
 			<div class="stat-bar">
