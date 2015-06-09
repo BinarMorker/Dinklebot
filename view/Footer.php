@@ -48,6 +48,7 @@
 	<script src="<?=$config->site_root?>/js/jquery.tooltipster.min.js"></script>
 	<script src="<?=$config->site_root?>/js/jquery.timeago.min.js"></script>
 	<script src="<?=$config->site_root?>/js/jquery.timeago.<?=$language?>.js"></script>
+	<script src="<?=$config->site_root?>/js/imagesloaded.pkgd.min.js"></script>
 	<script src="<?=$config->site_root?>/js/masonry.pkgd.min.js"></script>
 	<script src="<?=$config->site_root?>/js/bootstrap.min.js"></script>
 	<script src="<?=$config->site_root?>/js/dinklebot.min.js"></script>

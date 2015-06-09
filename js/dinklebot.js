@@ -1,15 +1,16 @@
-$(document).on('load', function(){
-	$('.shader').each(function(){
-		var canvas = document.getElementById('canvas');
-		var context = canvas.getContext('2d');
-		var img = $(this).children('img')[0];
-		context.drawImage(img, 0, 0);
-		var p = context.getImageData(0, 0, 1, 1).data;
-        console.log(p);
-		$(this).css("background-color", "rgb("+p[0]+","+p[1]+","+p[2]+")");
-	});
-});
 $(document).ready(function(){
+    $('.shader').imagesLoaded(function(){
+        console.log("Loaded");
+        $('.shader').each(function(){
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+            var img = $(this).children('img')[0];
+            context.drawImage(img, 0, 0);
+            var p = context.getImageData(0, 0, 1, 1).data;
+            console.log(p);
+            $(this).css("background-color", "rgb("+p[0]+","+p[1]+","+p[2]+")");
+        });
+    });
 	$(".character-label").click(function(){
 		$(this).next(".character-content").animate({
 			height: 'toggle'
